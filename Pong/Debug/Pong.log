@@ -1,2 +1,3 @@
-﻿  Pong.cpp
+﻿  Engine.cpp
+D:\acrylicdigital\Pong\Pong\Engine\Engine.cpp(92,29): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
   Pong.vcxproj -> D:\acrylicdigital\Pong\Debug\Pong.exe
