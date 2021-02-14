@@ -19,6 +19,8 @@ public:
 	void Update();
 	void Render();
 
+	void SetPos(float x, float y);
+
 private:
 	Texture texture;
 	float xPos;

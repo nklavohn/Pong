@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "IO/Mouse.h"
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
@@ -45,6 +46,12 @@ bool Engine::Initialize(const char* windowTitle) {
 	int xPos = (mode->width - SCREEN_WIDTH) / 2;  // use -> instead of . because it is a pointer
 	int yPos = (mode->height - SCREEN_HEIGHT) / 2;
 	glfwSetWindowPos(window, xPos, yPos);
+
+
+	// ---------- Input Event Callbacks --------
+	// any time we poll events, we get new mouse data, this will call the mouse class and properly update the local variables, retrieved with getters
+	glfwSetCursorPosCallback(window, Mouse::MousePosCallback);
+	glfwSetMouseButtonCallback(window, Mouse::MouseButtonCallback);
 
 
 	// ---------- Base GL Setup --------------
