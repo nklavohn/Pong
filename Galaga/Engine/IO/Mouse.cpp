@@ -8,9 +8,9 @@ bool Mouse::buttonsJustPressed[GLFW_MOUSE_BUTTON_LAST] = { 0 };
 bool Mouse::buttonsJustReleased[GLFW_MOUSE_BUTTON_LAST] = { 0 };
 
 const enum mouseButtons {
-	LEFT = 0,
-	RIGHT = 1,
-	MIDDLE = 2
+	LEFT = GLFW_MOUSE_BUTTON_LEFT,
+	RIGHT = GLFW_MOUSE_BUTTON_RIGHT,
+	MIDDLE = GLFW_MOUSE_BUTTON_MIDDLE
 };
 
 void Mouse::MousePosCallback(GLFWwindow* window, double _x, double _y) {
@@ -25,9 +25,8 @@ void Mouse::MousePosCallback(GLFWwindow* window, double _x, double _y) {
 
 void Mouse::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
 	// this method is called when there is an event (that event is either getting pressed or getting released)
-	if (button < 0) {
+	if (button < 0)
 		return;
-	}
 
 	// possible values for action:
 	/* GLFW_RELEASE 0 when button was released
@@ -61,18 +60,21 @@ double Mouse::getMouseY() {
 
 bool Mouse::isButtonJustPressed(int button) {
 	// maintains the button just pressed until it is handled by this function, and then it turns it off
-	// because a mouse pressed event can only happen once per frame
+	// this function can only be called once and still receive the correct result... that means all justpressed events
+	// must be handled by a single function call
 	bool x = buttonsJustPressed[button];
 	buttonsJustPressed[button] = false;
 	return x;
 }
 
 bool Mouse::isButtonJustReleased(int button) {
+	// same dealio as above but for just released
 	bool x = buttonsJustReleased[button];
 	buttonsJustReleased[button] = false;
 	return x;
 }
 
 bool Mouse::isButtonPressed(int button) {
+	// returns the current state of the button
 	return buttonsPressed[button];
 }

@@ -12,13 +12,14 @@ int main() {
 	Engine engine;
 	engine.Initialize("Pong");
 
-	Sprite testSprite = Sprite("Galaga/assets/ship.png", 100, 100);
+	Sprite testSprite = Sprite("Galaga/assets/ship.png", 100, 100, 10);
+	Sprite test2 = Sprite("Galaga/assets/ship.png", 200, 200);
 
 	while (true) {
 		engine.Update();
 		testSprite.Update();
 
-		if (Mouse::isButtonJustReleased(Mouse::MIDDLE)) {
+		if (Mouse::isButtonPressed(Mouse::LEFT)) {
 			testSprite.SetPos((float)Mouse::getMouseX(), (float)Mouse::getMouseY());
 		}
 
@@ -26,6 +27,7 @@ int main() {
 
 		// -------- all drawing below here ------------
 		testSprite.Render();
+		test2.Render();
 
 
 

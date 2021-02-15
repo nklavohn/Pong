@@ -1,12 +1,15 @@
 #include "Engine.h"
 #include "IO/Mouse.h"
+#include "IO/Keyboard.h"
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
 GLFWwindow* Engine::window = nullptr;
 
-Engine::Engine() {
+double Engine::deltaTime = 0;
 
+Engine::Engine() {
+	
 }
 
 Engine::~Engine() {
@@ -52,7 +55,7 @@ bool Engine::Initialize(const char* windowTitle) {
 	// any time we poll events, we get new mouse data, this will call the mouse class and properly update the local variables, retrieved with getters
 	glfwSetCursorPosCallback(window, Mouse::MousePosCallback);
 	glfwSetMouseButtonCallback(window, Mouse::MouseButtonCallback);
-
+	glfwSetKeyCallback(window, Keyboard::KeyCallback);
 
 	// ---------- Base GL Setup --------------
 	// ----- Viewport setup -------
@@ -86,10 +89,18 @@ bool Engine::Initialize(const char* windowTitle) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	// initialize prevTime
+	prevTime = glfwGetTime();
+
 	return true;
 }
 
 void Engine::Update() {
+	// calculate delta time from last frame
+	double now = glfwGetTime();
+	deltaTime = now - prevTime;
+	prevTime = now;
+
 	// allow glfw to handle all events stacking up in the queue (moving mouse, screen around, etc.)
 	glfwPollEvents();
 }
@@ -105,4 +116,8 @@ void Engine::BeginRender() {
 void Engine::EndRender() {
 	// swap buffers
 	glfwSwapBuffers(window);
+}
+
+double Engine::GetDeltaTime() {
+	return deltaTime;
 }

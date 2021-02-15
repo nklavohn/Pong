@@ -13,6 +13,8 @@ public:
 	static int SCREEN_WIDTH;
 	static int SCREEN_HEIGHT;
 
+	static double GetDeltaTime();
+
 	Engine();
 	~Engine();
 
@@ -24,7 +26,9 @@ public:
 
 private:
 	static GLFWwindow* window;
+	static double deltaTime;
 
+	double prevTime;
 };
 
 #endif
