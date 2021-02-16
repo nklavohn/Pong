@@ -1,4 +1,5 @@
 #include "Mouse.h"
+#include "../Engine.h"
 
 double Mouse::x = 0;
 double Mouse::y = 0;
@@ -50,15 +51,23 @@ void Mouse::MouseButtonCallback(GLFWwindow* window, int button, int action, int 
 	buttonsPressed[button] = action != GLFW_RELEASE;
 }
 
-double Mouse::getMouseX() {
+double Mouse::GetMouseX() {
 	return x;
 }
 
-double Mouse::getMouseY() {
+double Mouse::GetMouseY() {
 	return y;
 }
 
-bool Mouse::isButtonJustPressed(int button) {
+double Mouse::GetScaledMouseX() {
+	return x / Engine::GetScale();
+}
+
+double Mouse::GetScaledMouseY() {
+	return y / Engine::GetScale();
+}
+
+bool Mouse::IsButtonJustPressed(int button) {
 	// maintains the button just pressed until it is handled by this function, and then it turns it off
 	// this function can only be called once and still receive the correct result... that means all justpressed events
 	// must be handled by a single function call
@@ -67,14 +76,14 @@ bool Mouse::isButtonJustPressed(int button) {
 	return x;
 }
 
-bool Mouse::isButtonJustReleased(int button) {
+bool Mouse::IsButtonJustReleased(int button) {
 	// same dealio as above but for just released
 	bool x = buttonsJustReleased[button];
 	buttonsJustReleased[button] = false;
 	return x;
 }
 
-bool Mouse::isButtonPressed(int button) {
+bool Mouse::IsButtonPressed(int button) {
 	// returns the current state of the button
 	return buttonsPressed[button];
 }

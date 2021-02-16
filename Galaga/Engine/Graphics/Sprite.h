@@ -32,8 +32,8 @@ public:
 
 private:
 	Texture texture;
-	float xPos;
-	float yPos;
+	float xPos;  // center of image
+	float yPos;  // center of image
 	float rot;  // measured in degrees counterclockwise
 	float xScale;
 	float yScale;

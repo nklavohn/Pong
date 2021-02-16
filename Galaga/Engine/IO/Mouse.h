@@ -9,12 +9,14 @@ public:
 	static void MousePosCallback(GLFWwindow* window, double _x, double _y);
 	static void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);  // glfw enums destinguish button and action
 
-	static double getMouseX();
-	static double getMouseY();
+	static double GetMouseX();
+	static double GetMouseY();
+	static double GetScaledMouseX();
+	static double GetScaledMouseY();
 
-	static bool isButtonPressed(int button);
-	static bool isButtonJustPressed(int button);
-	static bool isButtonJustReleased(int button);
+	static bool IsButtonPressed(int button);
+	static bool IsButtonJustPressed(int button);
+	static bool IsButtonJustReleased(int button);
 
 	static const enum mouseButtons {LEFT, RIGHT, MIDDLE};
 

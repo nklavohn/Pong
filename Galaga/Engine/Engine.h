@@ -12,8 +12,11 @@ class Engine {
 public:
 	static int SCREEN_WIDTH;
 	static int SCREEN_HEIGHT;
+	static float SCALE;
 
 	static double GetDeltaTime();
+	static float GetScale();
+	static void SetScale(float scale);
 
 	Engine();
 	~Engine();

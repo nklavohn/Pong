@@ -4,6 +4,8 @@
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
+float Engine::SCALE = 1;
+
 GLFWwindow* Engine::window = nullptr;
 
 double Engine::deltaTime = 0;
@@ -75,7 +77,7 @@ bool Engine::Initialize(const char* windowTitle) {
 	// setup ortho view, width (0,0) in the bottom left corner and (width, height) in the top right corner, and define bounds for z (clipping range)
 	// this is basically making the world coordinate frame
 	// Here is where you can set properties like the zoom factor, aspect ratio, etc. (apparently)
-	glOrtho(0, width, 0, height, zNear, zFar);
+	glOrtho(0, width/SCALE, 0, height/SCALE, zNear, zFar);
 
 	// give GL the depth range again
 	glDepthRange(zNear, zFar);
@@ -120,4 +122,12 @@ void Engine::EndRender() {
 
 double Engine::GetDeltaTime() {
 	return deltaTime;
+}
+
+float Engine::GetScale() {
+	return SCALE;
+}
+
+void Engine::SetScale(float _scale) {
+	SCALE = _scale;
 }
