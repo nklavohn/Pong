@@ -1,62 +1,47 @@
 #include "Sprite.h"
 
+
 Sprite::Sprite() {
-	texture = Texture();
-	xPos = 0;
-	yPos = 0;
-	rot = 0;
-	xScale = 1;
-	yScale = 1;
-	interp = GL_NEAREST;
+	Sprite(-1, Vector::ZERO, Vector::ONE, 0);
 }
 
 Sprite::Sprite(string imgPath) {
-	texture = Texture(imgPath);
-	xPos = 0;
-	yPos = 0;
-	rot = 0;
-	xScale = 1;
-	yScale = 1;
-	interp = GL_NEAREST;
+	Sprite(imgPath, Vector::ZERO, Vector::ONE, 0);
 }
 
 Sprite::Sprite(int imgID) {
+	Sprite(imgID, Vector::ZERO, Vector::ONE, 0);
+}
+
+Sprite::Sprite(string imgPath, Vector _pos) {
+	Sprite(imgPath, _pos, Vector::ONE, 0);
+}
+
+Sprite::Sprite(int imgID, Vector _pos) {
+	Sprite(imgID, _pos, Vector::ONE, 0);
+}
+
+Sprite::Sprite(string imgPath, Vector _pos, float _scale) {
+	Sprite(imgPath, _pos, Vector(_scale), 0);
+}
+
+Sprite::Sprite(int imgID, Vector _pos, float _scale) {
+	Sprite(imgID, _pos, Vector(_scale), 0);
+}
+
+Sprite::Sprite(string imgPath, Vector _pos, Vector _scale, float _rot) {
+	texture = Texture(imgPath);
+	pos = _pos.GetCopy();
+	scale = _scale.GetCopy();
+	rot = _rot;
+	interp = GL_NEAREST;
+}
+
+Sprite::Sprite(int imgID, Vector _pos, Vector _scale, float _rot) {
 	texture = Texture(imgID);
-	xPos = 0;
-	yPos = 0;
-	rot = 0;
-	xScale = 1;
-	yScale = 1;
-	interp = GL_NEAREST;
-}
-
-Sprite::Sprite(string imgPath, float _xPos, float _yPos) {
-	texture = Texture(imgPath);
-	xPos = _xPos;
-	yPos = _yPos;
-	rot = 0;
-	xScale = 1;
-	yScale = 1;
-	interp = GL_NEAREST;
-}
-
-Sprite::Sprite(string imgPath, float _xPos, float _yPos, float scale) {
-	texture = Texture(imgPath);
-	xPos = _xPos;
-	yPos = _yPos;
-	rot = 0;
-	xScale = scale;
-	yScale = scale;
-	interp = GL_NEAREST;
-}
-
-Sprite::Sprite(string imgPath, float _xPos, float _yPos, float _rot, float _xScale, float _yScale) {
-	texture = Texture(imgPath);
-	xPos = _xPos;
-	yPos = _yPos;
-	rot = 0;
-	xScale = _xScale;
-	yScale = -yScale;
+	pos = _pos.GetCopy();
+	scale = _scale.GetCopy();
+	rot = _rot;
 	interp = GL_NEAREST;
 }
 
@@ -81,14 +66,14 @@ void Sprite::Render() {
 	glLoadIdentity();
 
 	// first execute locations
-	glTranslatef(xPos, yPos, 0);
+	glTranslatef(pos.x, pos.y, 0);
 
 	// then execute rotations
 	// rotates around the z axis (perpendicular to screen) only, because it is a 2D game
 	glRotatef(rot, 0, 0, 1);
 
 	// then execute scales
-	glScalef(xScale, yScale, 1);
+	glScalef(scale.x, scale.y, 1);
 
 
 	// --------- Actual Rendering ----------
@@ -113,8 +98,13 @@ void Sprite::Render() {
 }
 
 void Sprite::SetPos(float x, float y) {
-	xPos = x;
-	yPos = y;
+	pos.x = x;
+	pos.y = y;
+}
+
+void Sprite::SetPos(Vector v) {
+	pos.x = v.x;
+	pos.y = v.y;
 }
 
 void Sprite::SetRot(float _rot) {
@@ -126,15 +116,34 @@ void Sprite::AddRot(float _rot) {
 }
 
 void Sprite::SetScale(float xy) {
-	xScale = xy;
-	yScale = xy;
+	scale.x = xy;
+	scale.y = xy;
 }
 
 void Sprite::SetScale(float x, float y) {
-	xScale = x;
-	yScale = y;
+	scale.x = x;
+	scale.y = y;
+}
+
+void Sprite::SetScale(Vector v) {
+	pos.x = v.x;
+	pos.y = v.y;
 }
 
 void Sprite::SetInterpolationFunction(int _interp) {
 	interp = _interp;
+}
+
+float Sprite::GetHeight(bool scaled) {
+	if (scaled) return texture.GetHeight() * scale.y;
+	return texture.GetHeight();
+}
+
+float Sprite::GetWidth(bool scaled) {
+	if (scaled) return texture.GetWidth() * scale.x;
+	return texture.GetWidth();
+}
+
+int Sprite::GetTextureID() {
+	return texture.GetID();
 }

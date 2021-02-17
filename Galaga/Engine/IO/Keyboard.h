@@ -1,5 +1,5 @@
-#ifndef KEYBOARD
-#define KEYBOARD
+#ifndef ENGINE_KEYBOARD
+#define ENGINE_KEYBOARD
 
 #include "GLFW/glfw3.h"
 
@@ -17,6 +17,5 @@ private:
 	static bool keysJustPressed[];
 	static bool keysJustReleased[];
 };
-
 
 #endif

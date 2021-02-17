@@ -1,6 +1,8 @@
 #include "Engine/Engine.h"
 #include "Engine/Graphics/Sprite.h"
 #include "Engine/IO/Mouse.h"
+#include "Engine/Math/Vector.h"
+#include "Galaga/Screens/GameScreen.h"
 
 #include <iostream>
 using namespace std;
@@ -13,31 +15,13 @@ int main() {
 	engine.SetScale(4);
 	engine.Initialize("Pong");
 
-	Sprite testSprite = Sprite("Galaga/assets/ship.png", 0, 0);
-	//Sprite test2 = Sprite("Galaga/assets/ship.png", 200, 200);
-
-	double dts[20] = { 0 };
+	GameScreen screen = GameScreen(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT);
+	engine.SetScreen(screen);
 
 	while (true) {
 		engine.Update();
-		testSprite.Update();
-
-		if (Mouse::IsButtonPressed(Mouse::LEFT)) {
-			testSprite.SetPos((float)Mouse::GetScaledMouseX(), (float)Mouse::GetScaledMouseY());
-		}
-
 		cout << "DeltaTime: " << Engine::GetDeltaTime() << endl;
-
-
-		engine.BeginRender();
-		// -------- all drawing below here ------------
-		testSprite.Render();
-		//test2.Render();
-
-
-
-		// -------- all drawing above here ------------
-		engine.EndRender();
+		engine.Render();
 	}
 
 	return 0;

@@ -1,5 +1,5 @@
-#ifndef TEXTURE
-#define TEXTURE
+#ifndef ENGINE_TEXTURE
+#define ENGINE_TEXTURE
 
 #include "GLFW/glfw3.h"
 #include "SOIL2/SOIL2.h"

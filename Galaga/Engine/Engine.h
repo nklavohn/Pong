@@ -2,6 +2,7 @@
 #define ENGINE
 
 #include "GLFW/glfw3.h"
+#include "Engine/Graphics/Screen.h"
 #pragma comment(lib, "opengl32.lib")
 
 #include <iostream>
@@ -14,6 +15,9 @@ public:
 	static int SCREEN_HEIGHT;
 	static float SCALE;
 
+	static GLFWwindow* window;
+	static Screen& screen;
+
 	static double GetDeltaTime();
 	static float GetScale();
 	static void SetScale(float scale);
@@ -22,13 +26,12 @@ public:
 	~Engine();
 
 	bool Initialize(const char* windowTitle);
+	static void SetScreen(Screen& _screen);
 
 	void Update();
-	void BeginRender();
-	void EndRender();
+	void Render();
 
 private:
-	static GLFWwindow* window;
 	static double deltaTime;
 
 	double prevTime;

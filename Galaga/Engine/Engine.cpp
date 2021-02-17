@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "IO/Mouse.h"
 #include "IO/Keyboard.h"
+#include "Engine/Math/Vector.h"
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
@@ -11,7 +12,7 @@ GLFWwindow* Engine::window = nullptr;
 double Engine::deltaTime = 0;
 
 Engine::Engine() {
-	
+	prevTime = 0;
 }
 
 Engine::~Engine() {
@@ -105,19 +106,13 @@ void Engine::Update() {
 
 	// allow glfw to handle all events stacking up in the queue (moving mouse, screen around, etc.)
 	glfwPollEvents();
+
+	// let screen do the rest
+	screen.Update();
 }
 
-void Engine::BeginRender() {
-	// clear background with a color
-	glClearColor(0.8, 0.8, 1, 1);
-
-	// clear the color and the buffer by bit-wise ORing the two integers together to make a sort of mask of which things to clear
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-void Engine::EndRender() {
-	// swap buffers
-	glfwSwapBuffers(window);
+void Engine::Render() {
+	screen.Render();
 }
 
 double Engine::GetDeltaTime() {
@@ -130,4 +125,8 @@ float Engine::GetScale() {
 
 void Engine::SetScale(float _scale) {
 	SCALE = _scale;
+}
+
+void Engine::SetScreen(Screen& _screen) {
+	screen = _screen;
 }

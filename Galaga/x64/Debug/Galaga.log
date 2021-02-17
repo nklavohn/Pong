@@ -1,13 +1,17 @@
 ﻿  Engine.cpp
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(21): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
-D:\acrylicdigital\Galaga\Galaga\Engine\Engine.cpp(112,29): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(24): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
+  Screen.cpp
+D:\acrylicdigital\Galaga\Galaga\Engine\Graphics\Screen.cpp(13,30): warning C4305: 'argument': truncation from 'double' to 'float'
   Mouse.cpp
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(21): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
+D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(24): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
+D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.cpp(22,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.cpp(23,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Galaga.cpp
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(21): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
+D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(24): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
+  GameScreen.cpp
+  TitleScreen.cpp
   Generating Code...
-soil2-debug.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(SOIL2.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
-soil2-debug.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(image_DXT.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
-soil2-debug.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(image_helper.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
-soil2-debug.lib(wfETC.obj) : warning LNK4099: PDB '' was not found with 'soil2-debug.lib(wfETC.obj)' or at ''; linking object as if no debug info
-  Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe
+Engine.obj : error LNK2001: unresolved external symbol "public: static class Screen & Engine::screen" (?screen@Engine@@2AEAVScreen@@EA)
+Screen.obj : error LNK2001: unresolved external symbol "public: static class Color const Color::BLACK" (?BLACK@Color@@2V1@B)
+GameScreen.obj : error LNK2001: unresolved external symbol "public: static class Color const Color::RED" (?RED@Color@@2V1@B)
+D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe : fatal error LNK1120: 3 unresolved externals

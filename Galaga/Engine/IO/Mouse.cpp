@@ -1,8 +1,7 @@
 #include "Mouse.h"
-#include "../Engine.h"
+#include "Engine/Engine.h"
 
-double Mouse::x = 0;
-double Mouse::y = 0;
+Vector Mouse::pos = Vector::ZERO;
 
 bool Mouse::buttonsPressed[GLFW_MOUSE_BUTTON_LAST] = { 0 }; // set to the total number of buttons glfw can handle
 bool Mouse::buttonsJustPressed[GLFW_MOUSE_BUTTON_LAST] = { 0 };
@@ -20,8 +19,8 @@ void Mouse::MousePosCallback(GLFWwindow* window, double _x, double _y) {
 	glfwGetFramebufferSize(window, &width, &height);
 
 	// glfw calculates mouse position from top left, we want to change to bottom left
-	x = _x;
-	y = height - _y;
+	pos.x = _x;
+	pos.y = height - _y;
 }
 
 void Mouse::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
@@ -51,20 +50,28 @@ void Mouse::MouseButtonCallback(GLFWwindow* window, int button, int action, int 
 	buttonsPressed[button] = action != GLFW_RELEASE;
 }
 
-double Mouse::GetMouseX() {
-	return x;
+float Mouse::GetMouseX() {
+	return pos.x;
 }
 
-double Mouse::GetMouseY() {
-	return y;
+float Mouse::GetMouseY() {
+	return pos.y;
 }
 
-double Mouse::GetScaledMouseX() {
-	return x / Engine::GetScale();
+Vector Mouse::GetMousePos() {
+	return pos;
 }
 
-double Mouse::GetScaledMouseY() {
-	return y / Engine::GetScale();
+float Mouse::GetScaledMouseX() {
+	return pos.x / Engine::GetScale();
+}
+
+float Mouse::GetScaledMouseY() {
+	return pos.y / Engine::GetScale();
+}
+
+Vector Mouse::GetScaledMousePos() {
+	return pos / Engine::GetScale();
 }
 
 bool Mouse::IsButtonJustPressed(int button) {
