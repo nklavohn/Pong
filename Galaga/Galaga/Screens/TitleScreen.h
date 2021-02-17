@@ -8,6 +8,7 @@ class TitleScreen: public Screen {
 public:
 	void Update() override;
 	void Render() override;
+	Screen* Clone() override;
 
 	TitleScreen(int w, int h);
 	~TitleScreen();

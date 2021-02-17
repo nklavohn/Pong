@@ -16,17 +16,18 @@ public:
 	static float SCALE;
 
 	static GLFWwindow* window;
-	static Screen& screen;
+	static Screen* screen;
 
 	static double GetDeltaTime();
 	static float GetScale();
 	static void SetScale(float scale);
+	static void SetScreen(Screen& _screen);
 
 	Engine();
 	~Engine();
 
 	bool Initialize(const char* windowTitle);
-	static void SetScreen(Screen& _screen);
+	
 
 	void Update();
 	void Render();

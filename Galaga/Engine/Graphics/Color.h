@@ -4,15 +4,15 @@
 class Color {
 
 public:
-	float r;
-	float g;
-	float b;
-	float a;
-
 	Color();
 	Color(float gray, float _a);
 	Color(float _r, float _g, float _b, float _a);
 	~Color();
+
+	float r;
+	float g;
+	float b;
+	float a;
 
 	static const Color RED;
 	static const Color YELLOW;
@@ -24,6 +24,9 @@ public:
 	static const Color BLACK;
 	static const Color LIGHT_GRAY;
 	static const Color DARK_GRAY;
+
+private:
+	void Initialize(float _r, float _g, float _b, float _a);
 };
 
 

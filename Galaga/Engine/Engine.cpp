@@ -8,6 +8,7 @@ int Engine::SCREEN_HEIGHT = 768;
 float Engine::SCALE = 1;
 
 GLFWwindow* Engine::window = nullptr;
+Screen* Engine::screen = nullptr;
 
 double Engine::deltaTime = 0;
 
@@ -108,11 +109,11 @@ void Engine::Update() {
 	glfwPollEvents();
 
 	// let screen do the rest
-	screen.Update();
+	screen->Update();
 }
 
 void Engine::Render() {
-	screen.Render();
+	screen->Render();
 }
 
 double Engine::GetDeltaTime() {
@@ -128,5 +129,5 @@ void Engine::SetScale(float _scale) {
 }
 
 void Engine::SetScreen(Screen& _screen) {
-	screen = _screen;
+	screen = &_screen;
 }

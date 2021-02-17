@@ -151,6 +151,7 @@
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
     <ClCompile Include="Galaga\Screens\GameScreen.cpp" />
+    <ClCompile Include="Galaga\Screens\TestScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TitleScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="Engine\Math\Vector.h" />
     <ClInclude Include="Engine\Graphics\Screen.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
+    <ClInclude Include="Galaga\Screens\TestScreen.h" />
     <ClInclude Include="Galaga\Screens\TitleScreen.h" />
   </ItemGroup>
   <ItemGroup>

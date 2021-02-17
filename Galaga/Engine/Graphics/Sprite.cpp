@@ -2,34 +2,42 @@
 
 
 Sprite::Sprite() {
-	Sprite(-1, Vector::ZERO, Vector::ONE, 0);
+	Initialize(-1, Vector::ZERO, Vector::ONE, 0);
 }
 
 Sprite::Sprite(string imgPath) {
-	Sprite(imgPath, Vector::ZERO, Vector::ONE, 0);
+	Initialize(imgPath, Vector::ZERO, Vector::ONE, 0);
 }
 
 Sprite::Sprite(int imgID) {
-	Sprite(imgID, Vector::ZERO, Vector::ONE, 0);
+	Initialize(imgID, Vector::ZERO, Vector::ONE, 0);
 }
 
 Sprite::Sprite(string imgPath, Vector _pos) {
-	Sprite(imgPath, _pos, Vector::ONE, 0);
+	Initialize(imgPath, _pos, Vector::ONE, 0);
 }
 
 Sprite::Sprite(int imgID, Vector _pos) {
-	Sprite(imgID, _pos, Vector::ONE, 0);
+	Initialize(imgID, _pos, Vector::ONE, 0);
 }
 
 Sprite::Sprite(string imgPath, Vector _pos, float _scale) {
-	Sprite(imgPath, _pos, Vector(_scale), 0);
+	Initialize(imgPath, _pos, Vector(_scale), 0);
 }
 
 Sprite::Sprite(int imgID, Vector _pos, float _scale) {
-	Sprite(imgID, _pos, Vector(_scale), 0);
+	Initialize(imgID, _pos, Vector(_scale), 0);
 }
 
 Sprite::Sprite(string imgPath, Vector _pos, Vector _scale, float _rot) {
+	Initialize(imgPath, _pos, _scale, _rot);
+}
+
+Sprite::Sprite(int imgID, Vector _pos, Vector _scale, float _rot) {
+	Initialize(imgID, _pos, _scale, _rot);
+}
+
+void Sprite::Initialize(string imgPath, Vector _pos, Vector _scale, float _rot) {
 	texture = Texture(imgPath);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
@@ -37,12 +45,16 @@ Sprite::Sprite(string imgPath, Vector _pos, Vector _scale, float _rot) {
 	interp = GL_NEAREST;
 }
 
-Sprite::Sprite(int imgID, Vector _pos, Vector _scale, float _rot) {
+void Sprite::Initialize(int imgID, Vector _pos, Vector _scale, float _rot) {
 	texture = Texture(imgID);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
 	rot = _rot;
 	interp = GL_NEAREST;
+}
+
+Sprite::~Sprite() {
+
 }
 
 void Sprite::Update() {

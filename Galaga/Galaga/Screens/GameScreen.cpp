@@ -9,9 +9,15 @@ GameScreen::~GameScreen() {
 }
 
 void GameScreen::Update() {
-
+	
 }
 
 void GameScreen::Render() {
+	BeginRender();
 
+	EndRender();
+}
+
+Screen* GameScreen::Clone() {
+	return new GameScreen(*this);
 }

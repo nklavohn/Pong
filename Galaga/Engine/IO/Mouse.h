@@ -21,7 +21,7 @@ public:
 	static bool IsButtonJustPressed(int button);
 	static bool IsButtonJustReleased(int button);
 
-	static const enum mouseButtons {LEFT, RIGHT, MIDDLE};
+	static const enum mouseButtons { LEFT, RIGHT, MIDDLE };
 
 private:
 	static Vector pos;

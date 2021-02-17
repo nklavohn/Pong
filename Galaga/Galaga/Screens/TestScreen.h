@@ -1,18 +1,19 @@
-#ifndef GALAGA_GAMESCREEN
-#define GALAGA_GAMESCREEN
+#ifndef GALAGA_TESTSCREEN
+#define GALAGA_TESTSCREEN
 
 #include "Engine/Graphics/Screen.h"
 
-class GameScreen: public Screen {
+class TestScreen: public Screen {
 
 public:
 	void Update() override;
 	void Render() override;
 	Screen* Clone() override;
 
-	GameScreen(int w, int h);
-	~GameScreen();
+	TestScreen(int w, int h);
+	~TestScreen();
 
 };
+
 
 #endif

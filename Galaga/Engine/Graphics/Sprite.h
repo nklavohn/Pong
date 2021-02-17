@@ -22,6 +22,7 @@ public:
 	Sprite(int imgID, Vector _pos);
 	Sprite(int imgID, Vector _pos, float _scale);
 	Sprite(int imgID, Vector _pos, Vector _scale, float _rot);
+	~Sprite();
 
 	void Update();
 	void Render();
@@ -46,6 +47,9 @@ private:
 	Vector scale;
 	float rot;	
 	int interp;
+
+	void Initialize(string imgPath, Vector _pos, Vector _scale, float _rot);
+	void Initialize(int imgID, Vector _pos, Vector _scale, float _rot);
 };
 
 #endif

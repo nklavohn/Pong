@@ -48,6 +48,9 @@
     <ClCompile Include="Engine\Graphics\Color.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Galaga\Screens\TestScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Graphics\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Galaga\Screens\TestScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
