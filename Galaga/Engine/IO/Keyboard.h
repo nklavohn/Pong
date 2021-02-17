@@ -12,10 +12,11 @@ public:
 	static bool IsKeyJustPressed(int key);
 	static bool IsKeyJustReleased(int key);
 
+	static void ResetJustChanged();
+
 private:
-	static bool keysPressed[];
-	static bool keysJustPressed[];
-	static bool keysJustReleased[];
+	static bool keys[];
+	static bool justChanged[];
 };
 
 #endif

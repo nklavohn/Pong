@@ -21,15 +21,15 @@ public:
 	static bool IsButtonJustPressed(int button);
 	static bool IsButtonJustReleased(int button);
 
+	static void ResetJustChanged();
+
 	static const enum mouseButtons { LEFT, RIGHT, MIDDLE };
 
 private:
 	static Vector pos;
 		
-	static bool buttonsPressed[];  // true if currently held down
-	static bool buttonsJustPressed[];  // true if just pressed down
-	static bool buttonsJustReleased[];  // true if just released
-
+	static bool buttons[];
+	static bool justChanged[];
 };
 
 #endif

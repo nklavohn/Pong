@@ -2,6 +2,7 @@
 #define GALAGA_TESTSCREEN
 
 #include "Engine/Graphics/Screen.h"
+#include "Engine/Graphics/Sprite.h"
 
 class TestScreen: public Screen {
 
@@ -13,6 +14,7 @@ public:
 	TestScreen(int w, int h);
 	~TestScreen();
 
+	Sprite sprite;
 };
 
 

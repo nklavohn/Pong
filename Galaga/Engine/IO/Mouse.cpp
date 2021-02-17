@@ -3,17 +3,18 @@
 
 Vector Mouse::pos = Vector::ZERO;
 
-bool Mouse::buttonsPressed[GLFW_MOUSE_BUTTON_LAST] = { 0 }; // set to the total number of buttons glfw can handle
-bool Mouse::buttonsJustPressed[GLFW_MOUSE_BUTTON_LAST] = { 0 };
-bool Mouse::buttonsJustReleased[GLFW_MOUSE_BUTTON_LAST] = { 0 };
+bool Mouse::buttons[GLFW_MOUSE_BUTTON_LAST] = { 0 }; // set to the total number of buttons glfw can handle
+bool Mouse::justChanged[GLFW_MOUSE_BUTTON_LAST] = { 0 };
 
-const enum mouseButtons {
+const enum mouseButtons
+{
 	LEFT = GLFW_MOUSE_BUTTON_LEFT,
 	RIGHT = GLFW_MOUSE_BUTTON_RIGHT,
 	MIDDLE = GLFW_MOUSE_BUTTON_MIDDLE
 };
 
-void Mouse::MousePosCallback(GLFWwindow* window, double _x, double _y) {
+void Mouse::MousePosCallback(GLFWwindow* window, double _x, double _y)
+{
 	// get screen width and height
 	int width, height;
 	glfwGetFramebufferSize(window, &width, &height);
@@ -23,74 +24,61 @@ void Mouse::MousePosCallback(GLFWwindow* window, double _x, double _y) {
 	pos.y = height - _y;
 }
 
-void Mouse::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
+void Mouse::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+{
 	// this method is called when there is an event (that event is either getting pressed or getting released)
 	if (button < 0)
 		return;
 
-	// possible values for action:
-	/* GLFW_RELEASE 0 when button was released
-	*  GLFW_PRESS 1 when button was pressed
-	*  GLFW_REPEAT 2 when button was held down until it repeated
-	*/
-
-	// if the button was not just released and it is currently not pressed, then it was just pressed
-	if (action != GLFW_RELEASE && buttonsPressed[button] == false) {
-		buttonsJustPressed[button] = true;
-		buttonsJustReleased[button] = false;
-	}
-
-	// if the button was just released and it is currently pressed, then it was just released
-	if (action == GLFW_RELEASE && buttonsPressed[button] == true) {
-		buttonsJustPressed[button] = false;
-		buttonsJustReleased[button] = true;
-	}
-
-	// if the button wasn't released, then the button is pressed
-	buttonsPressed[button] = action != GLFW_RELEASE;
+	buttons[button] = action != GLFW_RELEASE;
+	justChanged[button] = true;
 }
 
-float Mouse::GetMouseX() {
+float Mouse::GetMouseX() 
+{
 	return pos.x;
 }
 
-float Mouse::GetMouseY() {
+float Mouse::GetMouseY() 
+{
 	return pos.y;
 }
 
-Vector Mouse::GetMousePos() {
+Vector Mouse::GetMousePos() 
+{
 	return pos;
 }
 
-float Mouse::GetScaledMouseX() {
+float Mouse::GetScaledMouseX() 
+{
 	return pos.x / Engine::GetScale();
 }
 
-float Mouse::GetScaledMouseY() {
+float Mouse::GetScaledMouseY() 
+{
 	return pos.y / Engine::GetScale();
 }
 
-Vector Mouse::GetScaledMousePos() {
+Vector Mouse::GetScaledMousePos() 
+{
 	return pos / Engine::GetScale();
 }
 
-bool Mouse::IsButtonJustPressed(int button) {
-	// maintains the button just pressed until it is handled by this function, and then it turns it off
-	// this function can only be called once and still receive the correct result... that means all justpressed events
-	// must be handled by a single function call
-	bool x = buttonsJustPressed[button];
-	buttonsJustPressed[button] = false;
-	return x;
+bool Mouse::IsButtonJustPressed(int button)
+{
+	return buttons[button] && justChanged[button];
 }
 
-bool Mouse::IsButtonJustReleased(int button) {
-	// same dealio as above but for just released
-	bool x = buttonsJustReleased[button];
-	buttonsJustReleased[button] = false;
-	return x;
+bool Mouse::IsButtonJustReleased(int button)
+{
+	return !buttons[button] && justChanged[button];
 }
 
-bool Mouse::IsButtonPressed(int button) {
-	// returns the current state of the button
-	return buttonsPressed[button];
+bool Mouse::IsButtonPressed(int button)
+{
+	return buttons[button];
+}
+
+void Mouse::ResetJustChanged() {
+	for (int i = 0; i < GLFW_MOUSE_BUTTON_LAST; i++) justChanged[i] = false;
 }

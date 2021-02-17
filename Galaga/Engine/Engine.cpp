@@ -106,6 +106,8 @@ void Engine::Update() {
 	prevTime = now;
 
 	// allow glfw to handle all events stacking up in the queue (moving mouse, screen around, etc.)
+	Mouse::ResetJustChanged();
+	Keyboard::ResetJustChanged();
 	glfwPollEvents();
 
 	// let screen do the rest
