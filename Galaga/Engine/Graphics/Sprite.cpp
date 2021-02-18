@@ -29,20 +29,11 @@ Sprite::Sprite(int imgID, Vector _pos, float _scale) {
 	Initialize(imgID, _pos, Vector(_scale), 0);
 }
 
-Sprite::Sprite(string imgPath, Vector _pos, Vector _scale, float _rot) {
-	Initialize(imgPath, _pos, _scale, _rot);
-}
-
-Sprite::Sprite(int imgID, Vector _pos, Vector _scale, float _rot) {
-	Initialize(imgID, _pos, _scale, _rot);
-}
-
 void Sprite::Initialize(string imgPath, Vector _pos, Vector _scale, float _rot) {
 	texture = Texture(imgPath);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
 	rot = _rot;
-	interp = GL_NEAREST;
 }
 
 void Sprite::Initialize(int imgID, Vector _pos, Vector _scale, float _rot) {
@@ -50,7 +41,6 @@ void Sprite::Initialize(int imgID, Vector _pos, Vector _scale, float _rot) {
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
 	rot = _rot;
-	interp = GL_NEAREST;
 }
 
 Sprite::~Sprite() {
@@ -65,8 +55,8 @@ void Sprite::Render() {
 	RenderHelper(pos);
 }
 
-void Sprite::RenderRelativeTo(Vector rPos) {
-	RenderHelper(pos + rPos);
+void Sprite::RenderRelativeTo(Vector _Pos) {
+	RenderHelper(pos + _Pos);
 }
 
 void Sprite::RenderHelper(Vector offset)

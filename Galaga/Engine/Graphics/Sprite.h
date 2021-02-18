@@ -17,16 +17,14 @@ public:
 	Sprite(string imgPath);
 	Sprite(string imgPath, Vector _pos);
 	Sprite(string imgPath, Vector _pos, float _scale);
-	Sprite(string imgPath, Vector _pos, Vector _scale, float _rot);
 	Sprite(int imgID);
 	Sprite(int imgID, Vector _pos);
 	Sprite(int imgID, Vector _pos, float _scale);
-	Sprite(int imgID, Vector _pos, Vector _scale, float _rot);
 	~Sprite();
 
 	void Update();
 	void Render();
-	void RenderRelativeTo(Vector pos);
+	void RenderRelativeTo(Vector _pos);
 
 	void SetPos(float x, float y);
 	void SetPos(Vector v);
@@ -42,12 +40,12 @@ public:
 	float GetHeight(bool scaled = true);
 	int GetTextureID();
 
-private:
+protected:
 	Texture texture;
 	Vector pos;
 	Vector scale;
 	float rot;	
-	int interp;
+	int interp = GL_NEAREST;
 
 	void Initialize(string imgPath, Vector _pos, Vector _scale, float _rot);
 	void Initialize(int imgID, Vector _pos, Vector _scale, float _rot);

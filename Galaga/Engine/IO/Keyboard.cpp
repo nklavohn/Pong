@@ -7,13 +7,8 @@ bool Keyboard::justChanged[GLFW_KEY_LAST] = { 0 };
 
 void Keyboard::KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) 
 {
-	cout << "This is working at least" << endl;
 	if (key < 0)
 		return;
-
-	cout << key << endl;
-	cout << W << endl;
-	cout << GLFW_KEY_W << endl;
 
 	keys[key] = action != GLFW_RELEASE;
 	justChanged[key] = true;

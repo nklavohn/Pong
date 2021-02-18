@@ -144,11 +144,13 @@
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Graphics\Color.cpp" />
     <ClCompile Include="Engine\Graphics\Sprite.cpp" />
+    <ClCompile Include="Engine\Graphics\SpriteSheet.cpp" />
     <ClCompile Include="Engine\Graphics\Texture.cpp" />
     <ClCompile Include="Engine\IO\InputHandler.cpp" />
     <ClCompile Include="Engine\IO\Keyboard.cpp" />
     <ClCompile Include="Engine\IO\Mouse.cpp" />
     <ClCompile Include="Engine\Math\Camera.cpp" />
+    <ClCompile Include="Engine\Math\IVector.cpp" />
     <ClCompile Include="Engine\Math\Vector.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
@@ -161,11 +163,13 @@
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Graphics\Color.h" />
     <ClInclude Include="Engine\Graphics\Sprite.h" />
+    <ClInclude Include="Engine\Graphics\SpriteSheet.h" />
     <ClInclude Include="Engine\Graphics\Texture.h" />
     <ClInclude Include="Engine\IO\InputHandler.h" />
     <ClInclude Include="Engine\IO\Keyboard.h" />
     <ClInclude Include="Engine\IO\Mouse.h" />
     <ClInclude Include="Engine\Math\Camera.h" />
+    <ClInclude Include="Engine\Math\IVector.h" />
     <ClInclude Include="Engine\Math\Vector.h" />
     <ClInclude Include="Engine\Graphics\Screen.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />

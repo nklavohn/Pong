@@ -13,7 +13,7 @@ int main() {
 	engine.SetScale(4);
 	engine.Initialize("Galaga");
 
-	int mode = 0;
+	int mode = 1;
 	SetStartScreen(mode);
 
 	while (true) {

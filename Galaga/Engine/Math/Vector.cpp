@@ -83,17 +83,20 @@ float Vector::Dist2Between(Vector v1, Vector v2) {
  * @param status 1 -> parallel, 0 -> found intersection, -1 -> no intersection
  * @return Vector, represent the point of intersection, or null if there is no intersection
  */
-Vector Vector::DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int& status) {
+Vector Vector::DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status) {
 	const float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
 	if (denom == 0.0f)  // Lines are parallel.
+		*status = 1;
 		return nullptr;
 	
 	const float ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / denom;
 	const float ub = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / denom;
 	if (ua >= 0.0f && ua <= 1.0f && ub >= 0.0f && ub <= 1.0f) {
 		// Get the intersection point.
+		*status = 0;
 		return Vector((x1 + ua * (x2 - x1)), (y1 + ua * (y2 - y1)));
 	}
+	*status = -1;
 	return nullptr;
 }
 
@@ -107,7 +110,7 @@ Vector Vector::DoLinesIntersect(float x1, float y1, float x2, float y2, float x3
  * @param status 1 -> parallel, 0 -> found intersection, -1 -> no intersection
  * @return Vector, represent the point of intersection, or null if there is no intersection
  */
-Vector Vector::DoLinesIntersect(Vector v1, Vector v2, Vector v3, Vector v4, int& status) {
+Vector Vector::DoLinesIntersect(Vector v1, Vector v2, Vector v3, Vector v4, int* status) {
 	return DoLinesIntersect(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, v4.x, v4.y, status);
 }
 

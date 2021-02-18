@@ -1,7 +1,7 @@
 #include "GameScreen.h"
 
 GameScreen::GameScreen(int w, int h) : Screen(w, h) {
-	color = Color::RED;
+	color = Color(0.114, 0.114, 0.227, 1);
 }
 
 GameScreen::~GameScreen() {

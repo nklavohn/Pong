@@ -23,8 +23,8 @@ public:
 	static float DistBetween(Vector v1, Vector v2);
 	static float Dist2Between(float x1, float y1, float x2, float y2);
 	static float Dist2Between(Vector v1, Vector v2);
-	static Vector DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int& status);
-	static Vector DoLinesIntersect(Vector v1, Vector v2, Vector v3, Vector v4, int& status);
+	static Vector DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
+	static Vector DoLinesIntersect(Vector v1, Vector v2, Vector v3, Vector v4, int* status);
 	static void Constrain(Vector* v, float xMin, float xMax, float yMin, float yMax);
 
 	//static float AngleBetween(Vector v1, Vector v2);

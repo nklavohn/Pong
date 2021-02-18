@@ -1,3 +1,3 @@
-﻿  Spaceship.cpp
-D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(39,44): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+﻿  TitleScreen.cpp
+D:\acrylicdigital\Galaga\Galaga\Galaga\Screens\TitleScreen.cpp(7,38): warning C4305: 'argument': truncation from 'double' to 'float'
   Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe

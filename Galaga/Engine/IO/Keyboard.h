@@ -26,7 +26,8 @@ public:
 		X = GLFW_KEY_X,
 		C = GLFW_KEY_C,
 		P = GLFW_KEY_P,
-		ESC = GLFW_KEY_ESCAPE
+		ESC = GLFW_KEY_ESCAPE,
+		SPACE = GLFW_KEY_SPACE
 	};
 
 private:
