@@ -62,6 +62,15 @@ void Sprite::Update() {
 }
 
 void Sprite::Render() {
+	RenderHelper(pos);
+}
+
+void Sprite::RenderRelativeTo(Vector rPos) {
+	RenderHelper(pos + rPos);
+}
+
+void Sprite::RenderHelper(Vector offset)
+{
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first
 	// enable the texture_2D
@@ -78,7 +87,8 @@ void Sprite::Render() {
 	glLoadIdentity();
 
 	// first execute locations
-	glTranslatef(pos.x, pos.y, 0);
+	Vector center = Vector((float)(texture.GetWidth()) / 2 * scale.x, (float)(texture.GetHeight()) / 2 * scale.y);
+	glTranslatef(offset.x - center.x, offset.y - center.y, 0);
 
 	// then execute rotations
 	// rotates around the z axis (perpendicular to screen) only, because it is a 2D game

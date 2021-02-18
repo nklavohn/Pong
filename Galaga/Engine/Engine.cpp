@@ -9,18 +9,21 @@ float Engine::SCALE = 1;
 
 GLFWwindow* Engine::window = nullptr;
 Screen* Engine::screen = nullptr;
-
 double Engine::deltaTime = 0;
 
-Engine::Engine() {
+Engine::Engine()
+{
 	prevTime = 0;
+	maxFrameRate = 120;
 }
 
-Engine::~Engine() {
+Engine::~Engine()
+{
 
 }
 
-bool Engine::Initialize(const char* windowTitle) {
+bool Engine::Initialize(const char* windowTitle)
+{
 	// Initialize GLFW, return false if not initialized properly
 	if (!glfwInit()) {
 		cout << "Error initializing GLFW" << endl;
@@ -99,7 +102,8 @@ bool Engine::Initialize(const char* windowTitle) {
 	return true;
 }
 
-void Engine::Update() {
+void Engine::Update()
+{
 	// calculate delta time from last frame
 	double now = glfwGetTime();
 	deltaTime = now - prevTime;
@@ -114,22 +118,32 @@ void Engine::Update() {
 	screen->Update();
 }
 
-void Engine::Render() {
+void Engine::Render()
+{
 	screen->Render();
 }
 
-double Engine::GetDeltaTime() {
+double Engine::GetDeltaTime()
+{
 	return deltaTime;
 }
 
-float Engine::GetScale() {
+float Engine::GetScale()
+{
 	return SCALE;
 }
 
-void Engine::SetScale(float _scale) {
+void Engine::SetScale(float _scale)
+{
 	SCALE = _scale;
 }
 
-void Engine::SetScreen(Screen& _screen) {
+void Engine::SetScreen(Screen& _screen)
+{
 	screen = &_screen;
+}
+
+void Engine::SetFrameRate(float fRate)
+{
+	maxFrameRate = fRate;
 }

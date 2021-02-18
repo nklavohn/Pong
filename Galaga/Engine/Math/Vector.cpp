@@ -111,6 +111,19 @@ Vector Vector::DoLinesIntersect(Vector v1, Vector v2, Vector v3, Vector v4, int&
 	return DoLinesIntersect(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, v4.x, v4.y, status);
 }
 
+void Vector::Constrain(Vector* v, float xMin, float xMax, float yMin, float yMax)
+{
+	if (v->x < xMin) 
+		v->x = xMin;
+	else if (v->x > xMax) 
+		v->x = xMax;
+
+	if (v->y < yMin) 
+		v->y = yMin;
+	else if (v->y > yMax) 
+		v->y = yMax;
+}
+
 // -------- INSTANCE METHODS -------------
 Vector Vector::Add(float _x, float _y) {
 	return Vector(x + _x, y + _y);

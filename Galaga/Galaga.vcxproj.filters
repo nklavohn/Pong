@@ -57,6 +57,9 @@
     <ClCompile Include="Engine\IO\InputHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Galaga\Entities\Spaceship.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\IO\InputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Galaga\Entities\Spaceship.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

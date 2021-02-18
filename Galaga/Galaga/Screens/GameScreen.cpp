@@ -9,12 +9,12 @@ GameScreen::~GameScreen() {
 }
 
 void GameScreen::Update() {
-	
+	ship.Move();
 }
 
 void GameScreen::Render() {
 	BeginRender();
-
+	ship.Render();
 	EndRender();
 }
 

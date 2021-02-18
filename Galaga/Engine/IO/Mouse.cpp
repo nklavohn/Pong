@@ -6,13 +6,6 @@ Vector Mouse::pos = Vector::ZERO;
 bool Mouse::buttons[GLFW_MOUSE_BUTTON_LAST] = { 0 }; // set to the total number of buttons glfw can handle
 bool Mouse::justChanged[GLFW_MOUSE_BUTTON_LAST] = { 0 };
 
-const enum mouseButtons
-{
-	LEFT = GLFW_MOUSE_BUTTON_LEFT,
-	RIGHT = GLFW_MOUSE_BUTTON_RIGHT,
-	MIDDLE = GLFW_MOUSE_BUTTON_MIDDLE
-};
-
 void Mouse::MousePosCallback(GLFWwindow* window, double _x, double _y)
 {
 	// get screen width and height

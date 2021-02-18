@@ -13,18 +13,17 @@ int main() {
 	engine.SetScale(4);
 	engine.Initialize("Galaga");
 
-	int mode = -1;
+	int mode = 0;
 	SetStartScreen(mode);
 
 	while (true) {
 		engine.Update();
-		cout << "DeltaTime: " << Engine::GetDeltaTime() << endl;
+		//cout << "DeltaTime: " << Engine::GetDeltaTime() << endl;
 		engine.Render();
 	}
 
 	return 0;
 }
-
 
 void SetStartScreen(int mode) {
 	Screen* screen = nullptr;

@@ -155,6 +155,7 @@
     <ClCompile Include="Galaga\Screens\GameScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TestScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TitleScreen.cpp" />
+    <ClCompile Include="Galaga\Entities\Spaceship.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />
     <ClInclude Include="Galaga\Screens\TitleScreen.h" />
+    <ClInclude Include="Galaga\Entities\Spaceship.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

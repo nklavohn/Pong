@@ -7,7 +7,8 @@ public:
 	InputHandler();
 	~InputHandler();
 
-	bool IsConditionMet();
+	virtual bool Listen() = 0;
+	virtual void Act() = 0;
 
 protected:
 

@@ -23,7 +23,12 @@ public:
 
 	static void ResetJustChanged();
 
-	static const enum mouseButtons { LEFT, RIGHT, MIDDLE };
+	const enum mouseButtons
+	{
+		LEFT = GLFW_MOUSE_BUTTON_LEFT,
+		RIGHT = GLFW_MOUSE_BUTTON_RIGHT,
+		MIDDLE = GLFW_MOUSE_BUTTON_MIDDLE
+	};
 
 private:
 	static Vector pos;

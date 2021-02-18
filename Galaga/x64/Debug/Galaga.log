@@ -1,9 +1,3 @@
-﻿  Engine.cpp
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(26): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
-  Keyboard.cpp
-  Mouse.cpp
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(26): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.cpp(23,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.cpp(24,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+﻿  Spaceship.cpp
+D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(39,44): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
   Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe

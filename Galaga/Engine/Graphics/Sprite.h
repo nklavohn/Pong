@@ -26,6 +26,7 @@ public:
 
 	void Update();
 	void Render();
+	void RenderRelativeTo(Vector pos);
 
 	void SetPos(float x, float y);
 	void SetPos(Vector v);
@@ -50,6 +51,7 @@ private:
 
 	void Initialize(string imgPath, Vector _pos, Vector _scale, float _rot);
 	void Initialize(int imgID, Vector _pos, Vector _scale, float _rot);
+	void RenderHelper(Vector offset);
 };
 
 #endif

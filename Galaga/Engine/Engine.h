@@ -28,14 +28,15 @@ public:
 
 	bool Initialize(const char* windowTitle);
 	
-
 	void Update();
 	void Render();
+	void SetFrameRate(float fRate);
 
 private:
 	static double deltaTime;
 
 	double prevTime;
+	float maxFrameRate;
 };
 
 #endif
