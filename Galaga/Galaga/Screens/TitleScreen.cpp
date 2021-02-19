@@ -21,7 +21,7 @@ void TitleScreen::Update() {
 	}
 	else if (Keyboard::IsKeyPressed(Keyboard::ESC))
 	{
-		//TODO handle quitting with ESC
+		glfwSetWindowShouldClose(Engine::window, 1);
 	}
 }
 

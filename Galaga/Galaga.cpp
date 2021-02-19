@@ -4,6 +4,8 @@
 #include "Galaga/Screens/TestScreen.h"
 
 #include <iostream>
+#include <thread>
+#include <chrono>
 using namespace std;
 
 void SetStartScreen(int mode);
@@ -13,13 +15,27 @@ int main() {
 	engine.SetScale(4);
 	engine.Initialize("Galaga");
 
-	int mode = 1;
+	int mode = 0;
 	SetStartScreen(mode);
 
-	while (true) {
+	double TARGET_FPS = 60;
+	chrono::duration<double, milli> frameDur (1000 / TARGET_FPS);  // in milliseconds
+
+	while (!glfwWindowShouldClose(Engine::window)) {
+		auto start = chrono::high_resolution_clock::now();
+
 		engine.Update();
-		//cout << "DeltaTime: " << Engine::GetDeltaTime() << endl;
 		engine.Render();
+
+		auto end = chrono::high_resolution_clock::now();
+		chrono::duration<double, milli> sleepTime = frameDur - (end - start);
+		double elapsed = frameDur.count() / 1000;
+
+		if (elapsed > 0)
+		{
+			cout << "Elapsed: " << elapsed << endl;
+			this_thread::sleep_for(frameDur);
+		}
 	}
 
 	return 0;

@@ -147,3 +147,8 @@ void Engine::SetFrameRate(float fRate)
 {
 	maxFrameRate = fRate;
 }
+
+double Engine::GetPrevTime()
+{
+	return prevTime;
+}

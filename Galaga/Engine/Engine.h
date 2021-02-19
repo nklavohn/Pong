@@ -31,6 +31,7 @@ public:
 	void Update();
 	void Render();
 	void SetFrameRate(float fRate);
+	double GetPrevTime();
 
 private:
 	static double deltaTime;

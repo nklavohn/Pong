@@ -1,3 +1,2 @@
-﻿  TitleScreen.cpp
-D:\acrylicdigital\Galaga\Galaga\Galaga\Screens\TitleScreen.cpp(7,38): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  Galaga.cpp
   Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe
