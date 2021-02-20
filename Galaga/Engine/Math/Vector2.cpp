@@ -188,12 +188,17 @@ Vector2 Vector2::operator*(const Vector2& v)
 
 Vector2 Vector2::operator*(const float f)
 {
-	return Vector2(x * f, y * f);
+	return Mult(f, f);
 }
 
 Vector2 Vector2::operator/(const Vector2& v)
 {
 	return Div(v.x, v.y);
+}
+
+Vector2 Vector2::operator/(const float f)
+{
+	return Div(f, f);
 }
 
 bool Vector2::operator==(const Vector2& v)

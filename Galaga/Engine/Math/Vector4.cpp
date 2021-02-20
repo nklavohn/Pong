@@ -80,6 +80,11 @@ Vector4::Vector4(float f)
 	Initialize(f, f, f, f);
 }
 
+Vector4::Vector4(Vector2 v1, Vector2 v2)
+{
+	Initialize(v1.x, v1.y, v2.x, v2.y);
+}
+
 Vector4::Vector4(float _x, float _y, float _z, float _w)
 {
 	Initialize(_x, _y, _z, _w);
@@ -203,6 +208,11 @@ Vector4 Vector4::operator/(const Vector4& v)
 	return Div(v.x, v.y, v.z, v.w);
 }
 
+Vector4 Vector4::operator/(const float f)
+{
+	return Div(f, f, f, f);
+}
+
 bool Vector4::operator==(const Vector4& v)
 {
 	return (x == v.x) && (y == v.y) && (z == v.z) && (w == v.w);
@@ -321,4 +331,14 @@ float Vector4::y1()
 float Vector4::y2()
 {
 	return w;
+}
+
+Vector2 Vector4::p1()
+{
+	return Vector2(x, y);
+}
+
+Vector2 Vector4::p2()
+{
+	return Vector2(z, w);
 }

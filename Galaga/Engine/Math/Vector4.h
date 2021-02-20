@@ -27,6 +27,7 @@ public:
 	Vector4();
 	Vector4(std::nullptr_t);
 	Vector4(float f);
+	Vector4(Vector2 v1, Vector2 v2);
 	Vector4(float _x, float _y, float _z, float _w);
 
 	// arithmetic
@@ -46,6 +47,7 @@ public:
 	Vector4 operator*(const Vector4& v);
 	Vector4 operator*(const float f);
 	Vector4 operator/(const Vector4& v);
+	Vector4 operator/(const float f);
 	bool operator==(const Vector4& v);
 	bool operator!=(const Vector4& v);
 
@@ -72,6 +74,8 @@ public:
 	float x2();
 	float y1();
 	float y2();
+	Vector2 p1();
+	Vector2 p2();
 	
 	float x;
 	float y;
