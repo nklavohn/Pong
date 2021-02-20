@@ -77,9 +77,14 @@ public:
 	// object stuff
 	Vector2 GetCopy();
 	std::string ToString();
+	void SetTo(const Vector2& v);
+	void SetTo(float _x, float _y);
 
 	float x;
 	float y;
+
+private:
+	void Initialize(float _x, float _y);
 };
 
 #endif

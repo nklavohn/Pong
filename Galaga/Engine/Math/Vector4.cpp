@@ -67,29 +67,25 @@ void Vector4::Constrain(Vector4* v, float xMin, float xMax, float yMin, float yM
 // constructors
 Vector4::Vector4()
 {
-	x = 0;
-	y = 0;
-	z = 0;
-	w = 0;
+	Initialize(0, 0, 0, 0);
 }
 
 Vector4::Vector4(std::nullptr_t)
 {
-	x = 0;
-	y = 0;
-	z = 0;
-	w = 0;
+	Initialize(0, 0, 0, 0);
 }
 
 Vector4::Vector4(float f)
 {
-	x = f;
-	y = f;
-	z = f;
-	w = f;
+	Initialize(f, f, f, f);
 }
 
 Vector4::Vector4(float _x, float _y, float _z, float _w)
+{
+	Initialize(_x, _y, _z, _w);
+}
+
+void Vector4::Initialize(float _x, float _y, float _z, float _w)
 {
 	x = _x;
 	y = _y;
@@ -295,4 +291,34 @@ Vector4 Vector4::GetCopy()
 std::string Vector4::ToString()
 {
 	return "(" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + "," + std::to_string(w) + ")";
+}
+
+void Vector4::SetTo(const Vector4& v)
+{
+	Initialize(v.x, v.y, v.z, v.w);
+}
+
+void Vector4::SetTo(float _x, float _y, float _z, float _w)
+{
+	Initialize(_x, _y, _z, _w);
+}
+
+float Vector4::x1()
+{
+	return x;
+}
+
+float Vector4::x2()
+{
+	return z;
+}
+
+float Vector4::y1()
+{
+	return y;
+}
+
+float Vector4::y2()
+{
+	return w;
 }

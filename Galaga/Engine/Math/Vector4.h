@@ -65,11 +65,21 @@ public:
 	// object stuff
 	Vector4 GetCopy();
 	std::string ToString();
+	void SetTo(const Vector4& v);
+	void SetTo(float _x, float _y, float _z, float _w);
+
+	float x1();
+	float x2();
+	float y1();
+	float y2();
 	
 	float x;
 	float y;
 	float z;
 	float w;
+
+private:
+	void Initialize(float _x, float _y, float _z, float _w);
 };
 
 

@@ -2,9 +2,11 @@
 #define GALAGA_TESTSCREEN
 
 #include "Engine/Graphics/Screen.h"
-#include "Engine/Graphics/Sprite.h"
+#include "Engine/Graphics/SpriteSheet.h"
+#include "Engine/Math/IVector2.h"
 
-class TestScreen: public Screen {
+class TestScreen : public Screen
+{
 
 public:
 	void Update() override;
@@ -14,7 +16,8 @@ public:
 	TestScreen(int w, int h);
 	~TestScreen();
 
-	Sprite sprite;
+private:
+	SpriteSheet sprite = SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31));
 };
 
 

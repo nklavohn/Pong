@@ -1,9 +1,9 @@
 #include "TestScreen.h"
 #include "Engine/IO/Mouse.h"
+#include "Engine/Graphics/ShapeRenderer.h"
 
 TestScreen::TestScreen(int w, int h) : Screen(w, h) {
 	color = Color::LIGHT_GRAY;
-	sprite = Sprite("Galaga/Assets/ship.png");
 }
 
 TestScreen::~TestScreen() {
@@ -19,7 +19,8 @@ void TestScreen::Update() {
 
 void TestScreen::Render() {
 	BeginRender();
-	sprite.Render();
+	sprite.RenderSprite(IVector2(1, 0));
+	ShapeRenderer::StrokeBox(Color::CYAN, Vector4(10, 10, 100, 100));
 	EndRender();
 }
 

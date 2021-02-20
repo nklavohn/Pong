@@ -5,7 +5,7 @@
 #include "Sprite.h"
 #include <string>
 
-class SpriteSheet: public Sprite
+class SpriteSheet : public Sprite
 {
 public:
 	SpriteSheet();
@@ -14,8 +14,8 @@ public:
 	SpriteSheet(string imgPath, IVector2 _dim, Vector2 _pos, float _scale);
 	SpriteSheet(int imgID, IVector2 _dim);
 	SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos);
-	void RenderSprite(IVector2 spriteCoord);
-	void RenderSpriteRelativeTo(Vector2 _pos, IVector2 spriteCoord);
+	void RenderSprite(IVector2 sheetCoord);
+	void RenderSpriteRelativeTo(Vector2 _pos, IVector2 sheetCoord);
 	SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos, float _scale);
 
 
@@ -25,7 +25,7 @@ private:
 	Vector2 dimPercent;
 
 	void Initialize(IVector2 _dim);
-	void RenderSpriteHelper(IVector2 spriteCoord, Vector2 offset);
+	void RenderSpriteHelper(IVector2 sheetCoord, Vector2 offset);
 };
 
 #endif

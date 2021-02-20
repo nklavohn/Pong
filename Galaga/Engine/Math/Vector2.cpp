@@ -3,23 +3,25 @@
 // ------- CONSTRUCTORS ------------
 Vector2::Vector2() 
 {
-	x = 0;
-	y = 0;
+	Initialize(0, 0);
 }
 
 Vector2::Vector2(std::nullptr_t)
 {
-	x = 0;
-	y = 0;
+	Initialize(0, 0);
 }
 
 Vector2::Vector2(float _f)
 {
-	x = _f;
-	y = _f;
+	Initialize(_f, _f);
 }
 
 Vector2::Vector2(float _x, float _y)
+{
+	Initialize(_x, _y);
+}
+
+void Vector2::Initialize(float _x, float _y)
 {
 	x = _x;
 	y = _y;
@@ -349,3 +351,12 @@ std::string Vector2::ToString()
 	return "(" + std::to_string(x) + "," + std::to_string(y) + ")";
 }
 
+void Vector2::SetTo(const Vector2& v)
+{
+	Initialize(v.x, v.y);
+}
+
+void Vector2::SetTo(float _x, float _y)
+{
+	Initialize(_x, _y);
+}

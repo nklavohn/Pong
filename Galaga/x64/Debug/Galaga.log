@@ -1,11 +1,2 @@
-﻿  Vector4.cpp
-  Entity.cpp
-  Spaceship.cpp
-D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(28,44): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Generating Code...
-D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(13): warning C4717: 'Vector4::Len': recursive on all control paths, function will cause runtime stack overflow
-soil2-debug.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(SOIL2.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
-soil2-debug.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(image_DXT.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
-soil2-debug.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(image_helper.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
-soil2-debug.lib(wfETC.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(wfETC.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
+﻿  TestScreen.cpp
   Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe

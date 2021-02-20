@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Graphics\Color.cpp" />
+    <ClCompile Include="Engine\Graphics\ShapeRenderer.cpp" />
     <ClCompile Include="Engine\Graphics\Sprite.cpp" />
     <ClCompile Include="Engine\Graphics\SpriteSheet.cpp" />
     <ClCompile Include="Engine\Graphics\Texture.cpp" />
@@ -166,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Graphics\Color.h" />
+    <ClInclude Include="Engine\Graphics\ShapeRenderer.h" />
     <ClInclude Include="Engine\Graphics\Sprite.h" />
     <ClInclude Include="Engine\Graphics\SpriteSheet.h" />
     <ClInclude Include="Engine\Graphics\Texture.h" />

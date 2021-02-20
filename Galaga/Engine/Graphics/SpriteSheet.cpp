@@ -41,17 +41,17 @@ void SpriteSheet::Initialize(IVector2 _dim)
 	dimPercent = Vector2((float)dimPxl.x / texture.GetWidth(), (float)dimPxl.y / texture.GetHeight());
 }
 
-void SpriteSheet::RenderSprite(IVector2 spriteCoord)
+void SpriteSheet::RenderSprite(IVector2 sheetCoord)
 {
-	RenderSpriteHelper(spriteCoord, pos);
+	RenderSpriteHelper(sheetCoord, pos);
 }
 
-void SpriteSheet::RenderSpriteRelativeTo(Vector2 _pos, IVector2 spriteCoord)
+void SpriteSheet::RenderSpriteRelativeTo(Vector2 _pos, IVector2 sheetCoord)
 {
-	RenderSpriteHelper(spriteCoord, pos + _pos);
+	RenderSpriteHelper(sheetCoord, pos + _pos);
 }
 
-void SpriteSheet::RenderSpriteHelper(IVector2 spriteCoord, Vector2 offset)
+void SpriteSheet::RenderSpriteHelper(IVector2 sheetCoord, Vector2 offset)
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first
@@ -89,7 +89,7 @@ void SpriteSheet::RenderSpriteHelper(IVector2 spriteCoord, Vector2 offset)
 
 	// this takes the bottom left coordinate of the image, (0,0) and draws it at (xPos, yPos)
 	// because we translated already above, xPos and yPos is now at (0, 0)
-	Vector2 start = spriteCoord.ToVector() * dimPercent;
+	Vector2 start = sheetCoord.ToVector() * dimPercent;
 
 	glTexCoord2f(start.x, 0);											glVertex2f(0, 0);
 
