@@ -2,6 +2,7 @@
 #define ENGINE_VECTOR4
 
 #include <string>
+#include "Vector2.h"
 
 class Vector4
 {
@@ -18,8 +19,8 @@ public:
 	static Vector4 Scale(Vector4* v, float scale);
 	static float DistBetween(Vector4* v1, Vector4* v2);
 	static float Dist2Between(Vector4* v1, Vector4* v2);
-	static Vector DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
-	static Vector DoLinesIntersect(Vector4* v1, Vector4* v2, int* status);
+	static Vector2 DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
+	static Vector2 DoLinesIntersect(Vector4* v1, Vector4* v2, int* status);
 	static void Constrain(Vector4* v, float xMin, float xMax, float yMin, float yMax, float zMin, float zMax, float wMin, float wMax);
 
 	// constructors

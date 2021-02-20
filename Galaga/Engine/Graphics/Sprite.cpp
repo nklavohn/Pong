@@ -2,41 +2,41 @@
 
 
 Sprite::Sprite() {
-	Initialize(-1, Vector::ZERO, Vector::ONE, 0);
+	Initialize(-1, Vector2::ZERO, Vector2::ONE, 0);
 }
 
 Sprite::Sprite(string imgPath) {
-	Initialize(imgPath, Vector::ZERO, Vector::ONE, 0);
+	Initialize(imgPath, Vector2::ZERO, Vector2::ONE, 0);
 }
 
 Sprite::Sprite(int imgID) {
-	Initialize(imgID, Vector::ZERO, Vector::ONE, 0);
+	Initialize(imgID, Vector2::ZERO, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(string imgPath, Vector _pos) {
-	Initialize(imgPath, _pos, Vector::ONE, 0);
+Sprite::Sprite(string imgPath, Vector2 _pos) {
+	Initialize(imgPath, _pos, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(int imgID, Vector _pos) {
-	Initialize(imgID, _pos, Vector::ONE, 0);
+Sprite::Sprite(int imgID, Vector2 _pos) {
+	Initialize(imgID, _pos, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(string imgPath, Vector _pos, float _scale) {
-	Initialize(imgPath, _pos, Vector(_scale), 0);
+Sprite::Sprite(string imgPath, Vector2 _pos, float _scale) {
+	Initialize(imgPath, _pos, Vector2(_scale), 0);
 }
 
-Sprite::Sprite(int imgID, Vector _pos, float _scale) {
-	Initialize(imgID, _pos, Vector(_scale), 0);
+Sprite::Sprite(int imgID, Vector2 _pos, float _scale) {
+	Initialize(imgID, _pos, Vector2(_scale), 0);
 }
 
-void Sprite::Initialize(string imgPath, Vector _pos, Vector _scale, float _rot) {
+void Sprite::Initialize(string imgPath, Vector2 _pos, Vector2 _scale, float _rot) {
 	texture = Texture(imgPath);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
 	rot = _rot;
 }
 
-void Sprite::Initialize(int imgID, Vector _pos, Vector _scale, float _rot) {
+void Sprite::Initialize(int imgID, Vector2 _pos, Vector2 _scale, float _rot) {
 	texture = Texture(imgID);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
@@ -55,11 +55,11 @@ void Sprite::Render() {
 	RenderHelper(pos);
 }
 
-void Sprite::RenderRelativeTo(Vector _Pos) {
+void Sprite::RenderRelativeTo(Vector2 _Pos) {
 	RenderHelper(pos + _Pos);
 }
 
-void Sprite::RenderHelper(Vector offset)
+void Sprite::RenderHelper(Vector2 offset)
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first
@@ -77,7 +77,7 @@ void Sprite::RenderHelper(Vector offset)
 	glLoadIdentity();
 
 	// first execute locations
-	Vector center = Vector((float)(texture.GetWidth()) / 2 * scale.x, (float)(texture.GetHeight()) / 2 * scale.y);
+	Vector2 center = Vector2((float)(texture.GetWidth()) / 2 * scale.x, (float)(texture.GetHeight()) / 2 * scale.y);
 	glTranslatef(offset.x - center.x, offset.y - center.y, 0);
 
 	// then execute rotations
@@ -114,7 +114,7 @@ void Sprite::SetPos(float x, float y) {
 	pos.y = y;
 }
 
-void Sprite::SetPos(Vector v) {
+void Sprite::SetPos(Vector2 v) {
 	pos.x = v.x;
 	pos.y = v.y;
 }
@@ -137,7 +137,7 @@ void Sprite::SetScale(float x, float y) {
 	scale.y = y;
 }
 
-void Sprite::SetScale(Vector v) {
+void Sprite::SetScale(Vector2 v) {
 	pos.x = v.x;
 	pos.y = v.y;
 }

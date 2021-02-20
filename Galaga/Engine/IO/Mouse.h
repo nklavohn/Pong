@@ -2,7 +2,7 @@
 #define ENGINE_MOUSE
 
 #include "GLFW/glfw3.h"
-#include "Engine/Math/Vector.h"
+#include "Engine/Math/Vector2.h"
 
 class Mouse {
 // can keep this class static because there should only ever be one of them
@@ -12,10 +12,10 @@ public:
 
 	static float GetMouseX();
 	static float GetMouseY();
-	static Vector GetMousePos();
+	static Vector2 GetMousePos();
 	static float GetScaledMouseX();
 	static float GetScaledMouseY();
-	static Vector GetScaledMousePos();
+	static Vector2 GetScaledMousePos();
 
 	static bool IsButtonPressed(int button);
 	static bool IsButtonJustPressed(int button);
@@ -31,7 +31,7 @@ public:
 	};
 
 private:
-	static Vector pos;
+	static Vector2 pos;
 		
 	static bool buttons[];
 	static bool justChanged[];

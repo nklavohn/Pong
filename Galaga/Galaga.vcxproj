@@ -150,8 +150,8 @@
     <ClCompile Include="Engine\IO\Keyboard.cpp" />
     <ClCompile Include="Engine\IO\Mouse.cpp" />
     <ClCompile Include="Engine\Math\Camera.cpp" />
-    <ClCompile Include="Engine\Math\IVector.cpp" />
-    <ClCompile Include="Engine\Math\Vector.cpp" />
+    <ClCompile Include="Engine\Math\IVector2.cpp" />
+    <ClCompile Include="Engine\Math\Vector2.cpp" />
     <ClCompile Include="Engine\Math\Vector3.cpp" />
     <ClCompile Include="Engine\Math\Vector4.cpp" />
     <ClCompile Include="Engine\Physics\Entity.cpp" />
@@ -173,8 +173,8 @@
     <ClInclude Include="Engine\IO\Keyboard.h" />
     <ClInclude Include="Engine\IO\Mouse.h" />
     <ClInclude Include="Engine\Math\Camera.h" />
-    <ClInclude Include="Engine\Math\IVector.h" />
-    <ClInclude Include="Engine\Math\Vector.h" />
+    <ClInclude Include="Engine\Math\IVector2.h" />
+    <ClInclude Include="Engine\Math\Vector2.h" />
     <ClInclude Include="Engine\Graphics\Screen.h" />
     <ClInclude Include="Engine\Math\Vector3.h" />
     <ClInclude Include="Engine\Math\Vector4.h" />

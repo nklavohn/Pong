@@ -1,7 +1,7 @@
 #include "Mouse.h"
 #include "Engine/Engine.h"
 
-Vector Mouse::pos = Vector::ZERO;
+Vector2 Mouse::pos = Vector2::ZERO;
 
 bool Mouse::buttons[GLFW_MOUSE_BUTTON_LAST] = { 0 }; // set to the total number of buttons glfw can handle
 bool Mouse::justChanged[GLFW_MOUSE_BUTTON_LAST] = { 0 };
@@ -37,7 +37,7 @@ float Mouse::GetMouseY()
 	return pos.y;
 }
 
-Vector Mouse::GetMousePos() 
+Vector2 Mouse::GetMousePos() 
 {
 	return pos;
 }
@@ -52,7 +52,7 @@ float Mouse::GetScaledMouseY()
 	return pos.y / Engine::GetScale();
 }
 
-Vector Mouse::GetScaledMousePos() 
+Vector2 Mouse::GetScaledMousePos() 
 {
 	return pos / Engine::GetScale();
 }

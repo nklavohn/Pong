@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include "IO/Mouse.h"
 #include "IO/Keyboard.h"
-#include "Engine/Math/Vector.h"
+#include "Engine/Math/Vector2.h"
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;

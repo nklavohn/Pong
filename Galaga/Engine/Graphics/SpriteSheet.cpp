@@ -2,56 +2,56 @@
 
 SpriteSheet::SpriteSheet() : Sprite()
 {
-	Initialize(IVector::ONE);
+	Initialize(IVector2::ONE);
 }
 
-SpriteSheet::SpriteSheet(string imgPath, IVector _dim) : Sprite(imgPath)
+SpriteSheet::SpriteSheet(string imgPath, IVector2 _dim) : Sprite(imgPath)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(string imgPath, IVector _dim, Vector _pos) : Sprite(imgPath, _pos)
+SpriteSheet::SpriteSheet(string imgPath, IVector2 _dim, Vector2 _pos) : Sprite(imgPath, _pos)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(string imgPath, IVector _dim, Vector _pos, float _scale) : Sprite(imgPath, _pos, _scale)
+SpriteSheet::SpriteSheet(string imgPath, IVector2 _dim, Vector2 _pos, float _scale) : Sprite(imgPath, _pos, _scale)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(int imgID, IVector _dim) : Sprite(imgID)
+SpriteSheet::SpriteSheet(int imgID, IVector2 _dim) : Sprite(imgID)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(int imgID, IVector _dim, Vector _pos) : Sprite(imgID, _pos)
+SpriteSheet::SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos) : Sprite(imgID, _pos)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(int imgID, IVector _dim, Vector _pos, float _scale) : Sprite(imgID, _pos, _scale)
+SpriteSheet::SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos, float _scale) : Sprite(imgID, _pos, _scale)
 {
 	Initialize(_dim);
 }
 
-void SpriteSheet::Initialize(IVector _dim)
+void SpriteSheet::Initialize(IVector2 _dim)
 {
 	dimPxl = _dim;
-	dimPercent = Vector((float)dimPxl.x / texture.GetWidth(), (float)dimPxl.y / texture.GetHeight());
+	dimPercent = Vector2((float)dimPxl.x / texture.GetWidth(), (float)dimPxl.y / texture.GetHeight());
 }
 
-void SpriteSheet::RenderSprite(IVector spriteCoord)
+void SpriteSheet::RenderSprite(IVector2 spriteCoord)
 {
 	RenderSpriteHelper(spriteCoord, pos);
 }
 
-void SpriteSheet::RenderSpriteRelativeTo(Vector _pos, IVector spriteCoord)
+void SpriteSheet::RenderSpriteRelativeTo(Vector2 _pos, IVector2 spriteCoord)
 {
 	RenderSpriteHelper(spriteCoord, pos + _pos);
 }
 
-void SpriteSheet::RenderSpriteHelper(IVector spriteCoord, Vector offset)
+void SpriteSheet::RenderSpriteHelper(IVector2 spriteCoord, Vector2 offset)
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first
@@ -69,7 +69,7 @@ void SpriteSheet::RenderSpriteHelper(IVector spriteCoord, Vector offset)
 	glLoadIdentity();
 
 	// first execute locations
-	Vector center = Vector((float)(dimPxl.x) / 2 * scale.x, (float)(dimPxl.y) / 2 * scale.y);
+	Vector2 center = Vector2((float)(dimPxl.x) / 2 * scale.x, (float)(dimPxl.y) / 2 * scale.y);
 	glTranslatef(offset.x - center.x, offset.y - center.y, 0);
 
 	// then execute rotations
@@ -89,7 +89,7 @@ void SpriteSheet::RenderSpriteHelper(IVector spriteCoord, Vector offset)
 
 	// this takes the bottom left coordinate of the image, (0,0) and draws it at (xPos, yPos)
 	// because we translated already above, xPos and yPos is now at (0, 0)
-	Vector start = spriteCoord.ToVector() * dimPercent;
+	Vector2 start = spriteCoord.ToVector() * dimPercent;
 
 	glTexCoord2f(start.x, 0);											glVertex2f(0, 0);
 

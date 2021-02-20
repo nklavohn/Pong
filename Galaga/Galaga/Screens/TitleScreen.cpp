@@ -27,7 +27,7 @@ void TitleScreen::Update() {
 
 void TitleScreen::Render() {
 	BeginRender();
-	title.RenderRelativeTo(Vector((float)Engine::SCREEN_WIDTH / Engine::SCALE / 2, (float)Engine::SCREEN_HEIGHT / Engine::SCALE / 2));
+	title.RenderRelativeTo(Vector2((float)Engine::SCREEN_WIDTH / Engine::SCALE / 2, (float)Engine::SCREEN_HEIGHT / Engine::SCALE / 2));
 	EndRender();
 }
 

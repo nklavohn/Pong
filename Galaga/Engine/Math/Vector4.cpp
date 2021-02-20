@@ -1,5 +1,5 @@
 #include "Vector4.h"
-#include "Vector.h"
+#include "Vector2.h"
 
 // static methods
 float Vector4::Dot(Vector4* a, Vector4* b)
@@ -39,15 +39,15 @@ float Vector4::Dist2Between(Vector4* v1, Vector4* v2)
 	return Len2(&diff);
 }
 
-Vector Vector4::DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status) {
-	return Vector::DoLinesIntersect(x1, y1, x2, y2, x3, y3, x4, y4, status);
+Vector2 Vector4::DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status) {
+	return Vector2::DoLinesIntersect(x1, y1, x2, y2, x3, y3, x4, y4, status);
 }
 
 /**
  * @param status 1 -> parallel, 0 -> found intersection, -1 -> no intersection
  * @return Vector, represent the point of intersection, or null if there is no intersection
  */
-Vector Vector4::DoLinesIntersect(Vector4* l1, Vector4* l2, int* status) {
+Vector2 Vector4::DoLinesIntersect(Vector4* l1, Vector4* l2, int* status) {
 	return DoLinesIntersect(l1->x, l1->y, l1->z, l1->w, l2->x, l2->y, l2->z, l2->w, status);
 }
 

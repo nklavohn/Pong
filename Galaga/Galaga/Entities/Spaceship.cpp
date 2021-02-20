@@ -15,20 +15,20 @@ Spaceship::~Spaceship()
 
 void Spaceship::Move()
 {
-	dir = Vector::ZERO;
+	dir = Vector2::ZERO;
 
-	if (Keyboard::IsKeyPressed(Keyboard::W)) dir += Vector::JHAT;
-	if (Keyboard::IsKeyPressed(Keyboard::A)) dir -= Vector::IHAT;
-	if (Keyboard::IsKeyPressed(Keyboard::S)) dir -= Vector::JHAT;
-	if (Keyboard::IsKeyPressed(Keyboard::D)) dir += Vector::IHAT;
+	if (Keyboard::IsKeyPressed(Keyboard::W)) dir += Vector2::JHAT;
+	if (Keyboard::IsKeyPressed(Keyboard::A)) dir -= Vector2::IHAT;
+	if (Keyboard::IsKeyPressed(Keyboard::S)) dir -= Vector2::JHAT;
+	if (Keyboard::IsKeyPressed(Keyboard::D)) dir += Vector2::IHAT;
 
-	if (dir != Vector::ZERO)
+	if (dir != Vector2::ZERO)
 	{
 		dir = dir.Unitize();
 		pos += dir * speed * Engine::GetDeltaTime();
 	}
 
-	Vector::Constrain(&pos, 
+	Vector2::Constrain(&pos, 
 					  posMins.x, 
 					  Engine::SCREEN_WIDTH / Engine::SCALE - posMaxs.x, 
 					  posMaxs.y, 
