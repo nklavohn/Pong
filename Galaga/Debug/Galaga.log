@@ -1,3 +1,0 @@
-﻿  Galaga.cpp
-D:\acrylicdigital\Galaga\Galaga\Engine\IO\Mouse.h(19): warning C4091: 'static ': ignored on left of 'const Mouse::mouseButtons' when no variable is declared
-  Galaga.vcxproj -> D:\acrylicdigital\Galaga\Debug\Galaga.exe
