@@ -13,18 +13,18 @@ public:
 	static const Vector ONE;
 
 	// static methods
-	static float Cross(Vector a, Vector b);
-	static float Dot(Vector a, Vector b);
-	static float Len(Vector v);
-	static float Len2(Vector v);
-	static Vector Add(Vector a, Vector b);
-	static Vector Scale(Vector v, float scale);
+	static float Cross(Vector* a, Vector* b);
+	static float Dot(Vector* a, Vector* b);
+	static float Len(Vector* v);
+	static float Len2(Vector* v);
+	static Vector Add(Vector* a, Vector* b);
+	static Vector Scale(Vector* v, float scale);
 	static float DistBetween(float x1, float y1, float x2, float y2);
-	static float DistBetween(Vector v1, Vector v2);
+	static float DistBetween(Vector* v1, Vector* v2);
 	static float Dist2Between(float x1, float y1, float x2, float y2);
-	static float Dist2Between(Vector v1, Vector v2);
+	static float Dist2Between(Vector* v1, Vector* v2);
 	static Vector DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
-	static Vector DoLinesIntersect(Vector v1, Vector v2, Vector v3, Vector v4, int* status);
+	static Vector DoLinesIntersect(Vector* v1, Vector* v2, Vector* v3, Vector* v4, int* status);
 	static void Constrain(Vector* v, float xMin, float xMax, float yMin, float yMax);
 
 	//static float AngleBetween(Vector v1, Vector v2);
@@ -58,9 +58,9 @@ public:
 
 	// vector algrebra
 	float Cross(float _x, float _y);
-	float Cross(const Vector v);
+	float Cross(const Vector& v);
 	float Dot(float _x, float _y);
-	float Dot(const Vector v);
+	float Dot(const Vector& v);
 	float Len();
 	float Len2();
 
@@ -72,7 +72,7 @@ public:
 	Vector Rotate(float degrees);
 	Vector RotateRad(float radians);
 	Vector Rotate90(bool clockwise);
-	Vector ProjOnto(Vector v);
+	Vector ProjOnto(Vector& v);
 
 	// object stuff
 	Vector GetCopy();

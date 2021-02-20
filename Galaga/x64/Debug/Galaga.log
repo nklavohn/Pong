@@ -1,2 +1,43 @@
-﻿  Galaga.cpp
-  Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe
+﻿  Vector.cpp
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector.cpp(275,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Vector3.cpp
+  Vector4.cpp
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(21,32): error C3646: 'DoLinesIntersect': unknown override specifier
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(21,39): error C2062: type 'float' unexpected
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(21,125): error C2238: unexpected token(s) preceding ';'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(22,32): error C3646: 'DoLinesIntersect': unknown override specifier
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(22,42): error C2065: 'v1': undeclared identifier
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(22,33): error C2275: 'Vector4': illegal use of this type as an expression
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(22,55): error C2065: 'v2': undeclared identifier
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(22,46): error C2275: 'Vector4': illegal use of this type as an expression
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(22,62): error C2062: type 'int' unexpected
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(22,71): error C2238: unexpected token(s) preceding ';'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(42,17): error C2039: 'DoLinesIntersect': is not a member of 'Vector4'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(6): message : see declaration of 'Vector4'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(63,17): error C2039: 'DoLinesIntersect': is not a member of 'Vector4'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.h(6): message : see declaration of 'Vector4'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(206,1): error C2143: syntax error: missing ';' before '}'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(206,1): error C3867: 'Vector4::Sub': non-standard syntax; use '&' to create a pointer to member
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(205,2): error C2440: 'return': cannot convert from 'Vector4 (__cdecl Vector4::* )(float,float,float,float)' to 'Vector4'
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(206,1): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(208,45): error C2761: '*': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(209,42): error C2761: '*': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(210,45): error C2761: 'Vector4 Vector4::operator /(const Vector4 &)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(211,43): error C2761: 'bool Vector4::operator ==(const Vector4 &)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(212,43): error C2761: 'bool Vector4::operator !=(const Vector4 &)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(215,59): error C2761: 'Dot': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(216,31): error C2761: 'Dot': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(217,21): error C2761: 'Len': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(218,22): error C2761: 'Len2': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(220,35): error C2761: 'Vector4 Vector4::Resize(float)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(221,27): error C2761: 'Vector4 Vector4::Unitize(void)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(222,51): error C2761: 'Vector4 Vector4::Limit(float,float)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(223,40): error C2761: 'Vector4 Vector4::LimitMax(float)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(224,40): error C2761: 'Vector4 Vector4::LimitMin(float)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(225,38): error C2761: 'Vector4 Vector4::ProjOnto(Vector4 *)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(228,27): error C2761: 'Vector4 Vector4::GetCopy(void)': redeclaration of member is not allowed
+D:\acrylicdigital\Galaga\Galaga\Engine\Math\Vector4.cpp(229,32): error C2761: 'std::string Vector4::ToString(void)': redeclaration of member is not allowed
+  Entity.cpp
+  Hitbox.cpp
+  Galaga.cpp
+  Generating Code...
