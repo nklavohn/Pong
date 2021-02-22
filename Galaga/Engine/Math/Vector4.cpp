@@ -313,26 +313,6 @@ void Vector4::SetTo(float _x, float _y, float _z, float _w)
 	Initialize(_x, _y, _z, _w);
 }
 
-float Vector4::x1()
-{
-	return x;
-}
-
-float Vector4::x2()
-{
-	return z;
-}
-
-float Vector4::y1()
-{
-	return y;
-}
-
-float Vector4::y2()
-{
-	return w;
-}
-
 Vector2 Vector4::p1()
 {
 	return Vector2(x, y);

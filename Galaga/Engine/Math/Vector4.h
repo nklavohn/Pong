@@ -70,10 +70,6 @@ public:
 	void SetTo(const Vector4& v);
 	void SetTo(float _x, float _y, float _z, float _w);
 
-	float x1();
-	float x2();
-	float y1();
-	float y2();
 	Vector2 p1();
 	Vector2 p2();
 	

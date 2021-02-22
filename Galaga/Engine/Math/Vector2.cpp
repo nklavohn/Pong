@@ -33,34 +33,34 @@ const Vector2 Vector2::JHAT = Vector2(0, 1);
 const Vector2 Vector2::ZERO = Vector2(0, 0);
 const Vector2 Vector2::ONE = Vector2(1, 1);
 
-float Vector2::Cross(Vector2* a, Vector2* b)
+float Vector2::Cross(Vector2& a, Vector2& b)
 {
-	return a->x * b->y - a->y * b->x;
+	return a.x * b.y - a.y * b.x;
 }
 
-float Vector2::Dot(Vector2* a, Vector2* b)
+float Vector2::Dot(Vector2& a, Vector2& b)
 {
-	return a->x * b->x + a->y * b->y;
+	return a.x * b.x + a.y * b.y;
 }
 
-float Vector2::Len(Vector2* v)
+float Vector2::Len(Vector2& v)
 {
 	return (float)sqrt((double)Vector2::Len2(v));
 }
 
-float Vector2::Len2(Vector2* v)
+float Vector2::Len2(Vector2& v)
 {
-	return v->x * v->x + v->y * v->y;
+	return v.x * v.x + v.y * v.y;
 }
 
-Vector2 Vector2::Add(Vector2* a, Vector2* b)
+Vector2 Vector2::Add(Vector2& a, Vector2& b)
 {
-	return Vector2(a->x + b->x, a->y + b->y);
+	return Vector2(a.x + b.x, a.y + b.y);
 }
 
-Vector2 Vector2::Scale(Vector2* v, float scale)
+Vector2 Vector2::Scale(Vector2& v, float scale)
 {
-	return Vector2(v->x * scale, v->y * scale);
+	return Vector2(v.x * scale, v.y * scale);
 }
 
 float Vector2::DistBetween(float x1, float y1, float x2, float y2)
@@ -68,9 +68,9 @@ float Vector2::DistBetween(float x1, float y1, float x2, float y2)
 	return (float)sqrt(Dist2Between(x1, y1, x2, y2));
 }
 
-float Vector2::DistBetween(Vector2* v1, Vector2* v2)
+float Vector2::DistBetween(Vector2& v1, Vector2& v2)
 {
-	return DistBetween(v1->x, v1->y, v2->x, v2->y);
+	return DistBetween(v1.x, v1.y, v2.x, v2.y);
 }
 
 float Vector2::Dist2Between(float x1, float y1, float x2, float y2)
@@ -80,9 +80,9 @@ float Vector2::Dist2Between(float x1, float y1, float x2, float y2)
 	return xDiff * xDiff + yDiff * yDiff;
 }
 
-float Vector2::Dist2Between(Vector2* v1, Vector2* v2)
+float Vector2::Dist2Between(Vector2& v1, Vector2& v2)
 {
-	return Dist2Between(v1->x, v1->y, v2->x, v2->y);
+	return Dist2Between(v1.x, v1.y, v2.x, v2.y);
 }
 
 /**
@@ -127,9 +127,9 @@ Vector2 Vector2::DoLinesIntersect(float x1, float y1, float x2, float y2, float 
  * @param status 1 -> parallel, 0 -> found intersection, -1 -> no intersection
  * @return Vector, represent the point of intersection, or null if there is no intersection
  */
-Vector2 Vector2::DoLinesIntersect(Vector2* v1, Vector2* v2, Vector2* v3, Vector2* v4, int* status)
+Vector2 Vector2::DoLinesIntersect(Vector2& v1, Vector2& v2, Vector2& v3, Vector2& v4, int* status)
 {
-	return DoLinesIntersect(v1->x, v1->y, v2->x, v2->y, v3->x, v3->y, v4->x, v4->y, status);
+	return DoLinesIntersect(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, v4.x, v4.y, status);
 }
 
 void Vector2::Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax)
@@ -342,7 +342,7 @@ Vector2 Vector2::Rotate90(bool clockwise)
 
 Vector2 Vector2::ProjOnto(Vector2& v)
 {
-	return Scale(&v, Dot(v) / v.Dot(v));
+	return Scale(v, Dot(v) / v.Dot(v));
 }
 
 // object stuff

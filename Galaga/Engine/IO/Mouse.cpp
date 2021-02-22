@@ -57,17 +57,17 @@ Vector2 Mouse::GetScaledMousePos()
 	return pos / Engine::GetScale();
 }
 
-bool Mouse::IsButtonJustPressed(int button)
+bool Mouse::IsButtonJustPressed(const int& button)
 {
 	return buttons[button] && justChanged[button];
 }
 
-bool Mouse::IsButtonJustReleased(int button)
+bool Mouse::IsButtonJustReleased(const int& button)
 {
 	return !buttons[button] && justChanged[button];
 }
 
-bool Mouse::IsButtonPressed(int button)
+bool Mouse::IsButtonPressed(const int& button)
 {
 	return buttons[button];
 }

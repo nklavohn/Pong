@@ -13,18 +13,18 @@ public:
 	static const Vector2 ONE;
 
 	// static methods
-	static float Cross(Vector2* a, Vector2* b);
-	static float Dot(Vector2* a, Vector2* b);
-	static float Len(Vector2* v);
-	static float Len2(Vector2* v);
-	static Vector2 Add(Vector2* a, Vector2* b);
-	static Vector2 Scale(Vector2* v, float scale);
+	static float Cross(Vector2& a, Vector2& b);
+	static float Dot(Vector2& a, Vector2& b);
+	static float Len(Vector2& v);
+	static float Len2(Vector2& v);
+	static Vector2 Add(Vector2& a, Vector2& b);
+	static Vector2 Scale(Vector2& v, float scale);
 	static float DistBetween(float x1, float y1, float x2, float y2);
-	static float DistBetween(Vector2* v1, Vector2* v2);
+	static float DistBetween(Vector2& v1, Vector2& v2);
 	static float Dist2Between(float x1, float y1, float x2, float y2);
-	static float Dist2Between(Vector2* v1, Vector2* v2);
+	static float Dist2Between(Vector2& v1, Vector2& v2);
 	static Vector2 DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
-	static Vector2 DoLinesIntersect(Vector2* v1, Vector2* v2, Vector2* v3, Vector2* v4, int* status);
+	static Vector2 DoLinesIntersect(Vector2& v1, Vector2& v2, Vector2& v3, Vector2& v4, int* status);
 	static void Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax);
 
 	//static float AngleBetween(Vector v1, Vector v2);

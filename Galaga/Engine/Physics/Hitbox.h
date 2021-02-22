@@ -14,17 +14,18 @@ public:
 	Hitbox(Vector4 _box);
 	~Hitbox();
 
-	bool IsPointInside(Vector2& pos, bool inclusive);
-	bool DoesBoxOverlap(Vector4& _box, bool inclusive);
+	bool IsPointInside(const Vector2& pos, bool inclusive = false);
+	bool DoesBoxOverlap(const Vector4& _box, bool inclusive = false);
 
-	void SetHitbox(Vector4& _box);
-	void SetCenter(Vector2& _center);
-	void AddToCenter(Vector2& delta);
+	void SetHitbox(const Vector4& _box);
+	void SetCenter(const Vector2& _center);
+	void AddToCenter(const Vector2& delta);
 
-	void Render(Color c);
+	void Render(const Color& c);
 
 	Vector2 GetCenter();
 	Vector4 GetBox();
+	Vector2 GetDim();
 
 private:
 	Vector2 center;

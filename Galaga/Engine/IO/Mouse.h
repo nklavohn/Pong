@@ -17,9 +17,9 @@ public:
 	static float GetScaledMouseY();
 	static Vector2 GetScaledMousePos();
 
-	static bool IsButtonPressed(int button);
-	static bool IsButtonJustPressed(int button);
-	static bool IsButtonJustReleased(int button);
+	static bool IsButtonPressed(const int& button);
+	static bool IsButtonJustPressed(const int& button);
+	static bool IsButtonJustReleased(const int& button);
 
 	static void ResetJustChanged();
 

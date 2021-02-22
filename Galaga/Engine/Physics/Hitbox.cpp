@@ -25,8 +25,8 @@ Hitbox::Hitbox(Vector2 _center, Vector2 _dim)
 
 Hitbox::Hitbox(Vector4 _box)
 {
-	center = center = Vector2((_box.x1() + _box.x2()) / 2, (_box.y1() + _box.y2()) / 2);
-	dim = Vector2(std::abs(_box.x1() - _box.x2()), std::abs(_box.y1() - _box.y2()));
+	center = center = Vector2((_box.x + _box.z) / 2, (_box.y + _box.w) / 2);
+	dim = Vector2(std::abs(_box.x - _box.z), std::abs(_box.y - _box.w));
 	box = Vector4(center - dim / 2, center + dim / 2);
 }
 
@@ -35,34 +35,34 @@ Hitbox::~Hitbox()
 
 }
 
-bool Hitbox::IsPointInside(Vector2& p, bool inclusive)
+bool Hitbox::IsPointInside(const Vector2& p, bool inclusive)
 {
 	if (inclusive)
-		return (p.x <= box.x2()) && (p.x >= box.x1()) && (p.y <= box.y2()) && (p.y >= box.y1());
-	return (p.x < box.x2()) && (p.x > box.x1()) && (p.y < box.y2()) && (p.y > box.y1());
+		return (p.x <= box.z) && (p.x >= box.x) && (p.y <= box.w) && (p.y >= box.y);
+	return (p.x < box.z) && (p.x > box.x) && (p.y < box.w) && (p.y > box.y);
 }
 
-bool Hitbox::DoesBoxOverlap(Vector4& _box, bool inclusive)
+bool Hitbox::DoesBoxOverlap(const Vector4& _box, bool inclusive)
 {
 	if (inclusive)
-		return (box.x1() <= _box.x2()) && (_box.x1() <= box.x2()) && (box.y1() <= _box.y2()) && (_box.y1() <= box.y2());
-	return (box.x1() < _box.x2()) && (_box.x1() < box.x2()) && (box.y1() < _box.y2()) && (_box.y1() < box.y2());
+		return (box.x <= _box.z) && (_box.x <= box.z) && (box.y <= _box.w) && (_box.y <= box.w);
+	return (box.x < _box.z) && (_box.x < box.z) && (box.y < _box.w) && (_box.y < box.w);
 }
 
-void Hitbox::SetHitbox(Vector4& _box)
+void Hitbox::SetHitbox(const Vector4& _box)
 {
-	center = center = Vector2((_box.x1() + _box.x2()) / 2, (_box.y1() + _box.y2()) / 2);
-	dim = Vector2(std::abs(_box.x1() - _box.x2()), std::abs(_box.y1() - _box.y2()));
+	center = center = Vector2((_box.x + _box.z) / 2, (_box.y + _box.w) / 2);
+	dim = Vector2(std::abs(_box.x - _box.z), std::abs(_box.y - _box.w));
 	box = Vector4(center - dim/2, center - dim/2);
 }
 
-void Hitbox::SetCenter(Vector2& _center)
+void Hitbox::SetCenter(const Vector2& _center)
 {
 	center.SetTo(_center);
 	box = Vector4(center - dim / 2, center + dim / 2);
 }
 
-void Hitbox::AddToCenter(Vector2& delta)
+void Hitbox::AddToCenter(const Vector2& delta)
 {
 	center += delta;
 	box = box.Add(delta.x, delta.y, delta.x, delta.y);
@@ -78,8 +78,13 @@ Vector4 Hitbox::GetBox()
 	return box;
 }
 
-void Hitbox::Render(Color c)
+void Hitbox::Render(const Color& c)
 {
 	Vector4 displayPos = Camera::ToDisplayCoords(box, Camera::F_METER_TO_PIXELS);
 	ShapeRenderer::StrokeBox(c, displayPos);
+}
+
+Vector2 Hitbox::GetDim()
+{
+	return Vector2(box.z - box.x, box.w - box.y);
 }
