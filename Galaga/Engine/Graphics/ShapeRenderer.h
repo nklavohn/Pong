@@ -14,15 +14,23 @@ public:
 	static void StrokeBox(Color c, Vector2 p1, Vector2 p2, float lineWidth = 2);
 	static void StrokeBox(Color c, Vector4 box, float lineWidth = 2);
 
-	static void DrawBox(Color c, Vector2 p1, Vector2 p2, float lineWidth = 2);
-	static void DrawBox(Color c, Vector4 box, float lineWidth = 2);
+	static void FillBox(Color c, Vector2 p1, Vector2 p2);
+	static void FillBox(Color c, Vector4 box);
 
-	static void DrawStrokeBox(Color fill, Color stroke, Vector2 p1, Vector2 p2, float lineWidth = 2);
-	static void DrawStrokeBox(Color fill, Color stroke, Vector4 box, float lineWidth = 2);
+	static void DrawBox(Color fill, Color stroke, Vector2 p1, Vector2 p2, float lineWidth = 2);
+	static void DrawBox(Color fill, Color stroke, Vector4 box, float lineWidth = 2);
+
+	static void StrokeCircle(Color c, Vector2 center, float r, float sides = 10, float linewidth = 2);
+	static void FillCircle(Color c, Vector2 center, float r, float sides = 10);
+	static void DrawCircle(Color fill, Color stroke, Vector2 center, float r, float sides = 10, float linewidth = 2);
 
 private:
 	static void Start(Color c, float lineWidth);
+	static void Start(Color c);
 	static void End();
+
+	static void BoxHelper(Vector2 p1, Vector2 p2);
+	static void CircleHelper(Vector2 center, float r, float sides);
 };
 
 #endif
