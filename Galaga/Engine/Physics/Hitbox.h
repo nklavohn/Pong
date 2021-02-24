@@ -4,8 +4,10 @@
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
 #include "Engine/Graphics/Color.h"
+#include "CollisionDetector.h"
+#include "Hitcircle.h"
 
-class Hitbox
+class Hitbox : public CollisionDetector
 {
 public:
 	Hitbox();
@@ -14,18 +16,23 @@ public:
 	Hitbox(Vector4 _box);
 	~Hitbox();
 
-	bool IsPointInside(const Vector2& pos, bool inclusive = false);
-	bool DoesBoxOverlap(const Vector4& _box, bool inclusive = false);
+	bool IsPointInside(const Vector2& p) const;
+	bool AreAllPointsInside(const vector<Vector2>& ps) const;
+	bool DoesLineIntersect(const Vector4& line) const;
+	bool IsCollidingWith(CollisionDetector* cDetector) const;
 
 	void SetHitbox(const Vector4& _box);
 	void SetCenter(const Vector2& _center);
 	void AddToCenter(const Vector2& delta);
 
-	void Render(const Color& c);
+	void Render(const Color& c) const;
 
-	Vector2 GetCenter();
-	Vector4 GetBox();
-	Vector2 GetDim();
+	Vector2 GetCenter() const;
+	Vector4 GetBox() const;
+	Vector2 GetDim() const;
+
+	vector<Vector4> GetSides() const;
+	vector<Vector2> GetVertices() const;
 
 private:
 	Vector2 center;

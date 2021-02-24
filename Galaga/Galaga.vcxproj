@@ -147,6 +147,9 @@
     <ClCompile Include="Engine\Graphics\Sprite.cpp" />
     <ClCompile Include="Engine\Graphics\SpriteSheet.cpp" />
     <ClCompile Include="Engine\Graphics\Texture.cpp" />
+    <ClCompile Include="Engine\IO\CircleClickListener.cpp" />
+    <ClCompile Include="Engine\IO\ClickListener.cpp" />
+    <ClCompile Include="Engine\IO\RectClickListener.cpp" />
     <ClCompile Include="Engine\IO\InputHandler.cpp" />
     <ClCompile Include="Engine\IO\Keyboard.cpp" />
     <ClCompile Include="Engine\IO\Mouse.cpp" />
@@ -155,8 +158,10 @@
     <ClCompile Include="Engine\Math\Vector2.cpp" />
     <ClCompile Include="Engine\Math\Vector3.cpp" />
     <ClCompile Include="Engine\Math\Vector4.cpp" />
+    <ClCompile Include="Engine\Physics\CollisionDetector.cpp" />
     <ClCompile Include="Engine\Physics\Entity.cpp" />
     <ClCompile Include="Engine\Physics\Hitbox.cpp" />
+    <ClCompile Include="Engine\Physics\Hitcircle.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
     <ClCompile Include="Galaga\Screens\GameScreen.cpp" />
@@ -171,6 +176,9 @@
     <ClInclude Include="Engine\Graphics\Sprite.h" />
     <ClInclude Include="Engine\Graphics\SpriteSheet.h" />
     <ClInclude Include="Engine\Graphics\Texture.h" />
+    <ClInclude Include="Engine\IO\CircleClickListener.h" />
+    <ClInclude Include="Engine\IO\ClickListener.h" />
+    <ClInclude Include="Engine\IO\RectClickListener.h" />
     <ClInclude Include="Engine\IO\InputHandler.h" />
     <ClInclude Include="Engine\IO\Keyboard.h" />
     <ClInclude Include="Engine\IO\Mouse.h" />
@@ -180,8 +188,10 @@
     <ClInclude Include="Engine\Graphics\Screen.h" />
     <ClInclude Include="Engine\Math\Vector3.h" />
     <ClInclude Include="Engine\Math\Vector4.h" />
+    <ClInclude Include="Engine\Physics\CollisionDetector.h" />
     <ClInclude Include="Engine\Physics\Entity.h" />
     <ClInclude Include="Engine\Physics\Hitbox.h" />
+    <ClInclude Include="Engine\Physics\Hitcircle.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />
     <ClInclude Include="Galaga\Screens\TitleScreen.h" />

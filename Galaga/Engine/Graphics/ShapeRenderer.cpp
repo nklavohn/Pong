@@ -133,7 +133,7 @@ void ShapeRenderer::CircleHelper(Vector2 center, float r, float sides)
 	float degrees = 0;
 	for (int i = 0; i < sides; i++)
 	{
-		glVertex2f(radius.x, radius.y);
+		glVertex2f(center.x + radius.x, center.y + radius.y);
 		radius = radius.Rotate(360 / sides);
 	}
 }

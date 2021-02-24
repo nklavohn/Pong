@@ -12,15 +12,15 @@ public:
 	static const Vector4 ONE;
 
 	// static methods
-	static float Dot(Vector4* a, Vector4* b);
-	static float Len(Vector4* v);
-	static float Len2(Vector4* v);
-	static Vector4 Add(Vector4* a, Vector4* b);
-	static Vector4 Scale(Vector4* v, float scale);
-	static float DistBetween(Vector4* v1, Vector4* v2);
-	static float Dist2Between(Vector4* v1, Vector4* v2);
+	static float Dot(const Vector4& a, const Vector4& b);
+	static float Len(const Vector4& v);
+	static float Len2(const Vector4& v);
+	static Vector4 Add(const Vector4& a, const Vector4& b);
+	static Vector4 Scale(const Vector4& v, float scale);
+	static float DistBetween(const Vector4& v1, const Vector4& v2);
+	static float Dist2Between(const Vector4& v1, const Vector4& v2);
 	static Vector2 DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
-	static Vector2 DoLinesIntersect(Vector4* v1, Vector4* v2, int* status);
+	static Vector2 DoLinesIntersect(const Vector4& v1, const Vector4& v2, int* status);
 	static void Constrain(Vector4* v, float xMin, float xMax, float yMin, float yMax, float zMin, float zMax, float wMin, float wMax);
 
 	// constructors
@@ -52,26 +52,26 @@ public:
 	bool operator!=(const Vector4& v);
 
 	// vector algrebra
-	float Dot(float _x, float _y, float _z, float _w);
-	float Dot(Vector4* v);
-	float Len();
-	float Len2();
+	float Dot(float _x, float _y, float _z, float _w) const;
+	float Dot(const Vector4& v) const;
+	float Len() const;
+	float Len2() const;
 
-	Vector4 Resize(float len);
-	Vector4 Unitize();
-	Vector4 Limit(float minLen, float maxLen);
-	Vector4 LimitMax(float maxLen);
-	Vector4 LimitMin(float minLen);
-	Vector4 ProjOnto(Vector4* v);
+	Vector4 Resize(float len, bool inplace = true);
+	Vector4 Unitize(bool inplace = true);
+	Vector4 Limit(float minLen, float maxLen, bool inplace = true);
+	Vector4 LimitMax(float maxLen, bool inplace = true);
+	Vector4 LimitMin(float minLen, bool inplace = true);
+	Vector4 ProjOnto(const Vector4& v, bool inplace = true);
 
 	// object stuff
-	Vector4 GetCopy();
-	std::string ToString();
+	Vector4 GetCopy() const;
+	std::string ToString() const;
 	void SetTo(const Vector4& v);
 	void SetTo(float _x, float _y, float _z, float _w);
 
-	Vector2 p1();
-	Vector2 p2();
+	Vector2 p1() const;
+	Vector2 p2() const;
 	
 	float x;
 	float y;

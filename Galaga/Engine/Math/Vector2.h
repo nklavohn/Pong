@@ -13,18 +13,18 @@ public:
 	static const Vector2 ONE;
 
 	// static methods
-	static float Cross(Vector2& a, Vector2& b);
-	static float Dot(Vector2& a, Vector2& b);
-	static float Len(Vector2& v);
-	static float Len2(Vector2& v);
-	static Vector2 Add(Vector2& a, Vector2& b);
-	static Vector2 Scale(Vector2& v, float scale);
+	static float Cross(const Vector2& a, const Vector2& b);
+	static float Dot(const Vector2& a, const Vector2& b);
+	static float Len(const Vector2& v);
+	static float Len2(const Vector2& v);
+	static Vector2 Add(const Vector2& a, const Vector2& b);
+	static Vector2 Scale(const Vector2& v, float scale);
 	static float DistBetween(float x1, float y1, float x2, float y2);
-	static float DistBetween(Vector2& v1, Vector2& v2);
+	static float DistBetween(const Vector2& v1, const Vector2& v2);
 	static float Dist2Between(float x1, float y1, float x2, float y2);
-	static float Dist2Between(Vector2& v1, Vector2& v2);
+	static float Dist2Between(const Vector2& v1, const Vector2& v2);
 	static Vector2 DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
-	static Vector2 DoLinesIntersect(Vector2& v1, Vector2& v2, Vector2& v3, Vector2& v4, int* status);
+	static Vector2 DoLinesIntersect(const Vector2& v1, const Vector2& v2, const Vector2& v3, const Vector2& v4, int* status);
 	static void Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax);
 
 	//static float AngleBetween(Vector v1, Vector v2);
@@ -48,36 +48,36 @@ public:
 	Vector2& operator*=(const Vector2& v);
 	Vector2& operator*=(const float f);
 	Vector2& operator/=(const Vector2& v);
-	Vector2 operator+(const Vector2& v);
-	Vector2 operator-(const Vector2& v);
-	Vector2 operator*(const Vector2& v);
-	Vector2 operator*(const float f);
-	Vector2 operator/(const Vector2& v);
-	Vector2 operator/(const float f);
-	bool operator==(const Vector2& v);
-	bool operator!=(const Vector2& v);
+	Vector2 operator+(const Vector2& v) const;
+	Vector2 operator-(const Vector2& v) const;
+	Vector2 operator*(const Vector2& v) const;
+	Vector2 operator*(const float f) const;
+	Vector2 operator/(const Vector2& v) const;
+	Vector2 operator/(const float f) const;
+	bool operator==(const Vector2& v) const;
+	bool operator!=(const Vector2& v) const;
 
 	// vector algrebra
-	float Cross(float _x, float _y);
-	float Cross(const Vector2& v);
-	float Dot(float _x, float _y);
-	float Dot(const Vector2& v);
-	float Len();
-	float Len2();
+	float Cross(float _x, float _y) const;
+	float Cross(const Vector2& v) const;
+	float Dot(float _x, float _y) const;
+	float Dot(const Vector2& v) const;
+	float Len() const;
+	float Len2() const;
 
-	Vector2 Resize(float len);
-	Vector2 Unitize();
-	Vector2 Limit(float minLen, float maxLen);
-	Vector2 LimitMax(float maxLen);
-	Vector2 LimitMin(float minLen);
-	Vector2 Rotate(float degrees);
-	Vector2 RotateRad(float radians);
-	Vector2 Rotate90(bool clockwise);
-	Vector2 ProjOnto(Vector2& v);
+	Vector2 Resize(float len, bool inplace = true);
+	Vector2 Unitize(bool inplace = true);
+	Vector2 Limit(float minLen, float maxLen, bool inplace = true);
+	Vector2 LimitMax(float maxLen, bool inplace = true);
+	Vector2 LimitMin(float minLen, bool inplace = true);
+	Vector2 Rotate(float degrees, bool inplace = true);
+	Vector2 RotateRad(float radians, bool inplace = true);
+	Vector2 Rotate90(bool clockwise, bool inplace = true);
+	Vector2 ProjOnto(const Vector2& v, bool inplace = true);
 
 	// object stuff
-	Vector2 GetCopy();
-	std::string ToString();
+	Vector2 GetCopy() const;
+	std::string ToString() const;
 	void SetTo(const Vector2& v);
 	void SetTo(float _x, float _y);
 

@@ -3,19 +3,17 @@
 
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
-#include "Hitbox.h"
+#include "CollisionDetector.h"
 
 class Entity
 {
 public:
-	bool IsCollidingWith(Vector2 point, bool inclusive = false);
-	bool IsCollidingWith(Vector4 box, bool inclusive = false);
-	Hitbox GetHitbox();
+	bool IsCollidingWith(Vector2 point);
+	bool IsCollidingWith(CollisionDetector* _cDetector);
+	CollisionDetector* GetCollisionDetector();
 
 	Entity();
-	Entity(Vector2 _pos, Vector2 hitboxCenter, Vector2 hitboxDim);
-	Entity(Vector2 _pos, Vector4 _hitbox);
-	Entity(Vector2 _pos, Hitbox _hitbox);
+	Entity(Vector2 _pos, CollisionDetector& _hitbox);
 	~Entity();
 
 	virtual void Move() = 0;
@@ -24,7 +22,8 @@ public:
 
 protected:
 	Vector2 pos;  //in world coordinates
-	Hitbox hitbox;  //in world coordinates
+	CollisionDetector* cDetector;  //in world coordinates
+
 };
 
 #endif

@@ -3,25 +3,13 @@
 Entity::Entity()
 {
 	pos = Vector2::ZERO;
-	hitbox = Hitbox();
+	cDetector = nullptr;
 }
 
-Entity::Entity(Vector2 _pos, Vector2 hitboxCenter, Vector2 hitboxDim)
+Entity::Entity(Vector2 _pos, CollisionDetector& _cDetector)
 {
 	pos = _pos;
-	hitbox = Hitbox(hitboxCenter, hitboxDim);
-}
-
-Entity::Entity(Vector2 _pos, Vector4 _hitbox)
-{
-	pos = _pos;
-	hitbox = Hitbox(_hitbox);
-}
-
-Entity::Entity(Vector2 _pos, Hitbox _hitbox)
-{
-	pos = _pos;
-	hitbox = _hitbox;
+	cDetector = &_cDetector;
 }
 
 Entity::~Entity()
@@ -29,17 +17,17 @@ Entity::~Entity()
 
 }
 
-bool Entity::IsCollidingWith(Vector2 point, bool inclusive)
+bool Entity::IsCollidingWith(Vector2 point)
 {
-	return hitbox.IsPointInside(point, inclusive);
+	return cDetector->IsPointInside(point);
 }
 
-bool Entity::IsCollidingWith(Vector4 box, bool inclusive)
+bool Entity::IsCollidingWith(CollisionDetector* _cDetector)
 {
-	return hitbox.DoesBoxOverlap(box, inclusive);
+	return cDetector->IsCollidingWith(_cDetector);
 }
 
-Hitbox Entity::GetHitbox()
+CollisionDetector* Entity::GetCollisionDetector()
 {
-	return hitbox;
+	return cDetector;
 }

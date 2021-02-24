@@ -4,8 +4,9 @@
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
 #include "Engine/Graphics/Color.h"
+#include "CollisionDetector.h"
 
-class Hitcircle
+class Hitcircle : public CollisionDetector
 {
 public:
 	Hitcircle();
@@ -13,17 +14,19 @@ public:
 	Hitcircle(Vector2 _center, float _r);
 	~Hitcircle();
 
-	bool IsPointInside(Vector2& pos, bool inclusive = false);
-	bool DoesBoxOverlap(const Vector4& _box, bool inclusive = false);
+	bool IsPointInside(const Vector2& p) const;
+	bool AreAllPointsInside(const vector<Vector2>& ps) const;
+	bool DoesLineIntersect(const Vector4& line) const;
+	bool IsCollidingWith(CollisionDetector* cDetector) const;
 
-	void SetRadius(const float& _r);
+	void SetRadius(float _r);
 	void SetCenter(const Vector2& _center);
 	void AddToCenter(const Vector2& delta);
 
-	void Render(const Color& c);
+	void Render(const Color& c) const;
 
 	Vector2 GetCenter();
-	Vector4 GetRadius();
+	float GetRadius();
 
 private:
 	Vector2 center;

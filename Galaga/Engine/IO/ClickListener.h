@@ -2,6 +2,7 @@
 #define ENGINE_CLICKLISTENER
 
 #include "InputHandler.h"
+#include "Engine/Math/Vector2.h"
 
 class ClickListener : public InputHandler
 {

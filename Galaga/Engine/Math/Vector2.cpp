@@ -33,32 +33,32 @@ const Vector2 Vector2::JHAT = Vector2(0, 1);
 const Vector2 Vector2::ZERO = Vector2(0, 0);
 const Vector2 Vector2::ONE = Vector2(1, 1);
 
-float Vector2::Cross(Vector2& a, Vector2& b)
+float Vector2::Cross(const Vector2& a, const Vector2& b)
 {
 	return a.x * b.y - a.y * b.x;
 }
 
-float Vector2::Dot(Vector2& a, Vector2& b)
+float Vector2::Dot(const Vector2& a, const Vector2& b)
 {
 	return a.x * b.x + a.y * b.y;
 }
 
-float Vector2::Len(Vector2& v)
+float Vector2::Len(const Vector2& v)
 {
 	return (float)sqrt((double)Vector2::Len2(v));
 }
 
-float Vector2::Len2(Vector2& v)
+float Vector2::Len2(const Vector2& v)
 {
 	return v.x * v.x + v.y * v.y;
 }
 
-Vector2 Vector2::Add(Vector2& a, Vector2& b)
+Vector2 Vector2::Add(const Vector2& a, const Vector2& b)
 {
 	return Vector2(a.x + b.x, a.y + b.y);
 }
 
-Vector2 Vector2::Scale(Vector2& v, float scale)
+Vector2 Vector2::Scale(const Vector2& v, float scale)
 {
 	return Vector2(v.x * scale, v.y * scale);
 }
@@ -68,7 +68,7 @@ float Vector2::DistBetween(float x1, float y1, float x2, float y2)
 	return (float)sqrt(Dist2Between(x1, y1, x2, y2));
 }
 
-float Vector2::DistBetween(Vector2& v1, Vector2& v2)
+float Vector2::DistBetween(const Vector2& v1, const Vector2& v2)
 {
 	return DistBetween(v1.x, v1.y, v2.x, v2.y);
 }
@@ -80,7 +80,7 @@ float Vector2::Dist2Between(float x1, float y1, float x2, float y2)
 	return xDiff * xDiff + yDiff * yDiff;
 }
 
-float Vector2::Dist2Between(Vector2& v1, Vector2& v2)
+float Vector2::Dist2Between(const Vector2& v1, const Vector2& v2)
 {
 	return Dist2Between(v1.x, v1.y, v2.x, v2.y);
 }
@@ -127,7 +127,7 @@ Vector2 Vector2::DoLinesIntersect(float x1, float y1, float x2, float y2, float 
  * @param status 1 -> parallel, 0 -> found intersection, -1 -> no intersection
  * @return Vector, represent the point of intersection, or null if there is no intersection
  */
-Vector2 Vector2::DoLinesIntersect(Vector2& v1, Vector2& v2, Vector2& v3, Vector2& v4, int* status)
+Vector2 Vector2::DoLinesIntersect(const Vector2& v1, const Vector2& v2, const Vector2& v3, const Vector2& v4, int* status)
 {
 	return DoLinesIntersect(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, v4.x, v4.y, status);
 }
@@ -171,42 +171,42 @@ Vector2& Vector2::operator=(const Vector2& v)
 	return *this;
 }
 
-Vector2 Vector2::operator+(const Vector2& v)
+Vector2 Vector2::operator+(const Vector2& v) const
 {
-	return Add(v.x, v.y);
+	return Vector2(x + v.x, y + v.y);
 }
 
-Vector2 Vector2::operator-(const Vector2& v)
+Vector2 Vector2::operator-(const Vector2& v) const
 {
-	return Sub(v.x, v.y);
+	return Vector2(x - v.x, y - v.y);
 }
 
-Vector2 Vector2::operator*(const Vector2& v)
+Vector2 Vector2::operator*(const Vector2& v) const
 {
-	return Mult(v.x, v.y);
+	return Vector2(x * v.x, y * v.y);
 }
 
-Vector2 Vector2::operator*(const float f)
+Vector2 Vector2::operator*(const float f) const
 {
-	return Mult(f, f);
+	return Vector2(x * f, y * f);
 }
 
-Vector2 Vector2::operator/(const Vector2& v)
+Vector2 Vector2::operator/(const Vector2& v) const
 {
-	return Div(v.x, v.y);
+	return Vector2(x / v.x, y / v.y);
 }
 
-Vector2 Vector2::operator/(const float f)
+Vector2 Vector2::operator/(const float f) const
 {
-	return Div(f, f);
+	return Vector2(x / f, y / f);
 }
 
-bool Vector2::operator==(const Vector2& v)
+bool Vector2::operator==(const Vector2& v) const
 {
 	return (x == v.x) && (y == v.y);
 }
 
-bool Vector2::operator!=(const Vector2& v)
+bool Vector2::operator!=(const Vector2& v) const
 {
 	return !operator==(v);
 }
@@ -251,107 +251,134 @@ Vector2& Vector2::operator/=(const Vector2& v)
 	return *this;
 }
 
-float Vector2::Cross(float _x, float _y)
+float Vector2::Cross(float _x, float _y) const
 {
 	return x * _y - y * _x;
 }
 
-float Vector2::Cross(const Vector2& v)
+float Vector2::Cross(const Vector2& v) const
 {
 	return x * v.y - y * v.x;
 }
 
-float Vector2::Dot(float _x, float _y)
+float Vector2::Dot(float _x, float _y) const
 {
 	return x * _x + y * _y;
 }
 
-float Vector2::Dot(const Vector2& v)
+float Vector2::Dot(const Vector2& v) const
 {
 	return x * v.x + y * v.y;
 }
-float Vector2::Len()
+float Vector2::Len() const
 {
 	return (float)sqrt(Len2());
 }
 
-float Vector2::Len2()
+float Vector2::Len2() const
 {
 	return x * x + y * y;
 }
 
-Vector2 Vector2::Resize(float len)
+Vector2 Vector2::Resize(float len, bool inplace)
 {
 	const float curLen = Len();
 	if (curLen == 0) return nullptr;
 
 	const float sclFctr = len / curLen;
-	return Vector2(x * sclFctr,  y * sclFctr);
+	Vector2 resized = Vector2(x * sclFctr, y * sclFctr);
+
+	if (inplace)
+		Initialize(resized.x, resized.y);
+
+	return resized;
+	
 }
 
-Vector2 Vector2::Unitize()
+Vector2 Vector2::Unitize(bool inplace)
 {
-	return Resize(1);
+	return Resize(1, inplace);
 }
 
-Vector2 Vector2::Limit(float minLen, float maxLen)
+Vector2 Vector2::Limit(float minLen, float maxLen, bool inplace)
 {
 	const float curLen = Len();
 	if (curLen == 0) return nullptr;
-	if (curLen > maxLen) return Resize(maxLen);
-	if (curLen < minLen) return Resize(minLen);
+	if (curLen > maxLen) return Resize(maxLen, inplace);
+	if (curLen < minLen) return Resize(minLen, inplace);
 
 	return GetCopy();
 }
 
-Vector2 Vector2::LimitMax(float maxLen)
+Vector2 Vector2::LimitMax(float maxLen, bool inplace)
 {
 	const float curLen = Len();
 	if (curLen == 0) return nullptr;
-	if (curLen > maxLen) return Resize(maxLen);
+	if (curLen > maxLen) return Resize(maxLen, inplace);
 
 	return GetCopy();
 }
 
-Vector2 Vector2::LimitMin(float minLen)
+Vector2 Vector2::LimitMin(float minLen, bool inplace)
 {
 	const float curLen = Len();
 	if (curLen == 0) return nullptr;
-	if (curLen < minLen) return Resize(minLen);
+	if (curLen < minLen) return Resize(minLen, inplace);
 
 	return GetCopy();
 }
 
-Vector2 Vector2::Rotate(float degrees)
+Vector2 Vector2::Rotate(float degrees, bool inplace)
 {
-	return RotateRad(degrees * 3.14159 / 180);
+	return RotateRad(degrees * 3.14159 / 180, inplace);
 }
 
-Vector2 Vector2::RotateRad(float radians)
+Vector2 Vector2::RotateRad(float radians, bool inplace)
 {
 	const float _cos = (float)cos(radians);
 	const float _sin = (float)sin(radians);
-	return Vector2(x * _cos - y * _sin, x * _sin + y * _cos);
+
+	Vector2 rotated = Vector2(x * _cos - y * _sin, x * _sin + y * _cos);
+
+	if (inplace)
+		Initialize(rotated.x, rotated.y);
+
+	return rotated;
 }
 
-Vector2 Vector2::Rotate90(bool clockwise)
+Vector2 Vector2::Rotate90(bool clockwise, bool inplace)
 {
-	if (clockwise) return Vector2(y, -x);
-	return Vector2(-y, x);
+	if (clockwise)
+	{
+		if (inplace)
+			Initialize(y, -x);
+		return Vector2(y, -x);
+	}
+	else
+	{
+		if (inplace)
+			Initialize(-y, x);
+		return Vector2(-y, x);
+	}
 }
 
-Vector2 Vector2::ProjOnto(Vector2& v)
+Vector2 Vector2::ProjOnto(const Vector2& v, bool inplace)
 {
-	return Scale(v, Dot(v) / v.Dot(v));
+	Vector2 proj = Scale(v, Dot(v) / v.Dot(v));
+
+	if (inplace)
+		Initialize(proj.x, proj.y);
+
+	return proj;
 }
 
 // object stuff
-Vector2 Vector2::GetCopy()
+Vector2 Vector2::GetCopy() const
 {
 	return Vector2(x, y);
 }
 
-std::string Vector2::ToString()
+std::string Vector2::ToString() const
 {
 	return "(" + std::to_string(x) + "," + std::to_string(y) + ")";
 }
