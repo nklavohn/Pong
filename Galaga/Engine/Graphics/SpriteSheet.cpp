@@ -5,17 +5,17 @@ SpriteSheet::SpriteSheet() : Sprite()
 	Initialize(IVector2::ONE);
 }
 
-SpriteSheet::SpriteSheet(string imgPath, IVector2 _dim) : Sprite(imgPath)
+SpriteSheet::SpriteSheet(std::string imgPath, IVector2 _dim) : Sprite(imgPath)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(string imgPath, IVector2 _dim, Vector2 _pos) : Sprite(imgPath, _pos)
+SpriteSheet::SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos) : Sprite(imgPath, _pos)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(string imgPath, IVector2 _dim, Vector2 _pos, float _scale) : Sprite(imgPath, _pos, _scale)
+SpriteSheet::SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos, float _scale) : Sprite(imgPath, _pos, _scale)
 {
 	Initialize(_dim);
 }

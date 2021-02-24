@@ -1,4 +1,5 @@
 #include "Color.h"
+#include <algorithm>
 
 Color::Color() {
 	Initialize(0, 0, 0, 1);
@@ -20,6 +21,41 @@ void Color::Initialize(float _r, float _g, float _b, float _a) {
 }
 
 Color::~Color() {
+
+}
+
+Color Color::Average(const Color& a, const Color& b)
+{
+	return Color((a.r + b.r) / 2, (a.g + b.g) / 2, (a.b + b.b) / 2, (a.a + b.a) / 2);
+}
+
+Color Color::Multiply(const Color& a, const Color& b)
+{
+	return Color(a.r * b.r, a.g * b.g, a.b * b.b, a.a * b.a);
+}
+
+Color Color::Add(const Color& a, const Color& b)
+{
+	return Color(std::min(a.r + b.r, 1.0F), std::min(a.g + b.g, 1.0F), std::min(a.b + b.b, 1.0F), std::min(a.a + b.a, 1.0F));
+}
+
+Color Color::Subtract(const Color& a, const Color& b)
+{
+
+}
+
+Color Color::Max(const Color& a, const Color& b)
+{
+
+}
+
+Color Color::Min(const Color& a, const Color& b)
+{
+
+}
+
+Color ToGrayscale(const Color& c)
+{
 
 }
 

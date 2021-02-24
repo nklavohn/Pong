@@ -1,5 +1,7 @@
 #include "ShapeRenderer.h"
 #include "GLFW/glfw3.h"
+#include <algorithm>
+constexpr float CIRCLE_GRANULARITY = 4;
 
 void ShapeRenderer::Start(Color c, float lineWidth)
 {
@@ -129,11 +131,15 @@ void ShapeRenderer::DrawCircle(Color fill, Color stroke, Vector2 center, float r
 
 void ShapeRenderer::CircleHelper(Vector2 center, float r, float sides)
 {
+	if (sides < 0)
+		sides = std::max((3.14159F * 2 * r) / CIRCLE_GRANULARITY, 8.0F);
+
+	float degs = 360 / sides;
+
 	Vector2 radius = Vector2(r, 0);
-	float degrees = 0;
 	for (int i = 0; i < sides; i++)
 	{
 		glVertex2f(center.x + radius.x, center.y + radius.y);
-		radius = radius.Rotate(360 / sides);
+		radius = radius.Rotate(degs);
 	}
 }

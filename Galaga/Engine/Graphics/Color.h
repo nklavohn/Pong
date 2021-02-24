@@ -9,6 +9,14 @@ public:
 	Color(float _r, float _g, float _b, float _a);
 	~Color();
 
+	static Color Average(const Color& a, const Color& b);
+	static Color Multiply(const Color& a, const Color& b);
+	static Color Add(const Color& a, const Color& b);
+	static Color Subtract(const Color& a, const Color& b);
+	static Color Max(const Color& a, const Color& b);
+	static Color Min(const Color& a, const Color& b);
+	static Color ToGrayscale(const Color& c);
+
 	float r;
 	float g;
 	float b;

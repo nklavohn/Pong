@@ -8,15 +8,13 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Sprite {
 
 public:
 	Sprite();
-	Sprite(string imgPath);
-	Sprite(string imgPath, Vector2 _pos);
-	Sprite(string imgPath, Vector2 _pos, float _scale);
+	Sprite(std::string imgPath);
+	Sprite(std::string imgPath, Vector2 _pos);
+	Sprite(std::string imgPath, Vector2 _pos, float _scale);
 	Sprite(int imgID);
 	Sprite(int imgID, Vector2 _pos);
 	Sprite(int imgID, Vector2 _pos, float _scale);
@@ -47,7 +45,7 @@ protected:
 	float rot;	
 	int interp = GL_NEAREST;
 
-	void Initialize(string imgPath, Vector2 _pos, Vector2 _scale, float _rot);
+	void Initialize(std::string imgPath, Vector2 _pos, Vector2 _scale, float _rot);
 	void Initialize(int imgID, Vector2 _pos, Vector2 _scale, float _rot);
 	void RenderHelper(Vector2 offset);
 };

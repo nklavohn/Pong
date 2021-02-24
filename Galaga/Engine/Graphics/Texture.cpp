@@ -10,17 +10,17 @@ Texture::Texture(int _id) {
 	// and only needs the id to relate to what is stored in memory by GL
 	id = _id;
 	if (!GetTextureParams()) {
-		cout << "Error loading image with ID: " << id << endl;
+		std::cout << "Error loading image with ID: " << id << std::endl;
 	}
 }
 
-Texture::Texture(string path) {
+Texture::Texture(std::string path) {
 	// deals with GL directly, loads the texture and gives it an id
 	// textures are loading into memory tied to an id > 0. if the id is <= 0, then the texture does not exist or failed to load
 	// after the texture is assigned an id, flags are sent in to handle alpha and invert the y
 	id = SOIL_load_OGL_texture(path.c_str(), SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y);
 	if (!GetTextureParams()) {
-		cout << "Error loading image: " << path << endl;
+		std::cout << "Error loading image: " << path << std::endl;
 	}
 }
 

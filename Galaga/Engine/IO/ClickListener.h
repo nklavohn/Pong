@@ -10,8 +10,9 @@ public:
 	ClickListener();
 	~ClickListener();
 
-	virtual void SetPos(Vector2 pos) = 0;
-	virtual void AddToPos(Vector2 delta) = 0;
+	virtual void SetPos(const Vector2& pos) = 0;
+	virtual void AddToPos(const Vector2& delta) = 0;
+	virtual void Render() const = 0;
 
 };
 

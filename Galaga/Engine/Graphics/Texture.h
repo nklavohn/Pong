@@ -6,14 +6,13 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Texture {
 
 public:
 	Texture();
 	Texture(int _id);
-	Texture(string path);
+	Texture(std::string path);
 
 	int GetID();
 	int GetWidth();

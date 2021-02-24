@@ -14,16 +14,16 @@ public:
 	Hitcircle(Vector2 _center, float _r);
 	~Hitcircle();
 
-	bool IsPointInside(const Vector2& p) const;
-	bool AreAllPointsInside(const vector<Vector2>& ps) const;
-	bool DoesLineIntersect(const Vector4& line) const;
-	bool IsCollidingWith(CollisionDetector* cDetector) const;
+	bool IsPointInside(const Vector2& p) const override;
+	bool AreAllPointsInside(const vector<Vector2>& ps) const override;
+	bool DoesLineIntersect(const Vector4& line) const override;
+	bool IsCollidingWith(CollisionDetector* cDetector) const override;
 
 	void SetRadius(float _r);
-	void SetCenter(const Vector2& _center);
-	void AddToCenter(const Vector2& delta);
+	void SetCenter(const Vector2& _center) override;
+	void AddToCenter(const Vector2& delta) override;
 
-	void Render(const Color& c) const;
+	void Render(const Color& c) const override;
 
 	Vector2 GetCenter();
 	float GetRadius();

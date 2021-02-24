@@ -19,9 +19,9 @@ RectClickListener::~RectClickListener()
 
 }
 
-bool RectClickListener::Listen()
+bool RectClickListener::Listen() const
 {
-	return hitbox.IsPointInside(Mouse::GetMousePos()) && Mouse::IsButtonJustPressed(button);
+	return Mouse::IsButtonJustPressed(button) && hitbox.IsPointInside(Mouse::GetMousePos());
 }
 
 void RectClickListener::Act()
@@ -29,13 +29,17 @@ void RectClickListener::Act()
 
 }
 
-void RectClickListener::SetPos(Vector2 pos)
+void RectClickListener::SetPos(const Vector2& pos)
 {
 	hitbox.SetCenter(pos);
 }
 
-void RectClickListener::AddToPos(Vector2 delta)
+void RectClickListener::AddToPos(const Vector2& delta)
 {
 	hitbox.AddToCenter(delta);
 }
 
+void RectClickListener::Render() const
+{
+	hitbox.Render(Color::BLUE);
+}

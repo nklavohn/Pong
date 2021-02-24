@@ -9,9 +9,9 @@ class SpriteSheet : public Sprite
 {
 public:
 	SpriteSheet();
-	SpriteSheet(string imgPath, IVector2 _dim);
-	SpriteSheet(string imgPath, IVector2 _dim, Vector2 _pos);
-	SpriteSheet(string imgPath, IVector2 _dim, Vector2 _pos, float _scale);
+	SpriteSheet(std::string imgPath, IVector2 _dim);
+	SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos);
+	SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos, float _scale);
 	SpriteSheet(int imgID, IVector2 _dim);
 	SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos);
 	void RenderSprite(IVector2 sheetCoord);

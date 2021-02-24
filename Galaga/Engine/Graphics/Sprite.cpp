@@ -5,7 +5,7 @@ Sprite::Sprite() {
 	Initialize(-1, Vector2::ZERO, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(string imgPath) {
+Sprite::Sprite(std::string imgPath) {
 	Initialize(imgPath, Vector2::ZERO, Vector2::ONE, 0);
 }
 
@@ -13,7 +13,7 @@ Sprite::Sprite(int imgID) {
 	Initialize(imgID, Vector2::ZERO, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(string imgPath, Vector2 _pos) {
+Sprite::Sprite(std::string imgPath, Vector2 _pos) {
 	Initialize(imgPath, _pos, Vector2::ONE, 0);
 }
 
@@ -21,7 +21,7 @@ Sprite::Sprite(int imgID, Vector2 _pos) {
 	Initialize(imgID, _pos, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(string imgPath, Vector2 _pos, float _scale) {
+Sprite::Sprite(std::string imgPath, Vector2 _pos, float _scale) {
 	Initialize(imgPath, _pos, Vector2(_scale), 0);
 }
 
@@ -29,7 +29,7 @@ Sprite::Sprite(int imgID, Vector2 _pos, float _scale) {
 	Initialize(imgID, _pos, Vector2(_scale), 0);
 }
 
-void Sprite::Initialize(string imgPath, Vector2 _pos, Vector2 _scale, float _rot) {
+void Sprite::Initialize(std::string imgPath, Vector2 _pos, Vector2 _scale, float _rot) {
 	texture = Texture(imgPath);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();

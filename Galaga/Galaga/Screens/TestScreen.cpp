@@ -34,7 +34,8 @@ void TestScreen::Render() {
 	BeginRender();
 	sprite.RenderSprite(IVector2(1, 0));
 	ShapeRenderer::StrokeBox(Color::CYAN, Vector4(10, 10, 100, 100));
-	ShapeRenderer::StrokeCircle(Color(0.6, 0.1, 0.4, 1), Vector2(50, 50), 20, 100);
+	//ShapeRenderer::StrokeCircle(Color(0.6, 0.1, 0.4, 1), Vector2(50, 50), 20);
+	ShapeRenderer::DrawCircle(Color(0.6, 0.1, 0.4, 1), Color::BLUE, Vector2(50, 50), 20, -1, 5);
 	EndRender();
 }
 

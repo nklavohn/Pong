@@ -20,9 +20,9 @@ public:
 	static void DrawBox(Color fill, Color stroke, Vector2 p1, Vector2 p2, float lineWidth = 2);
 	static void DrawBox(Color fill, Color stroke, Vector4 box, float lineWidth = 2);
 
-	static void StrokeCircle(Color c, Vector2 center, float r, float sides = 10, float linewidth = 2);
-	static void FillCircle(Color c, Vector2 center, float r, float sides = 10);
-	static void DrawCircle(Color fill, Color stroke, Vector2 center, float r, float sides = 10, float linewidth = 2);
+	static void StrokeCircle(Color c, Vector2 center, float r, float sides = -1, float linewidth = 2);
+	static void FillCircle(Color c, Vector2 center, float r, float sides = -1);
+	static void DrawCircle(Color fill, Color stroke, Vector2 center, float r, float sides = -1, float linewidth = 2);
 
 private:
 	static void Start(Color c, float lineWidth);

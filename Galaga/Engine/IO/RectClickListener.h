@@ -11,10 +11,12 @@ public:
 	RectClickListener(int _button, Hitbox _hitbox);
 	~RectClickListener();
 
-	bool Listen() override;
+	bool Listen() const override;
 	void Act() override;
-	void SetPos(Vector2 pos) override;
-	void AddToPos(Vector2 delta) override;
+	void SetPos(const Vector2& pos) override;
+	void AddToPos(const Vector2& delta) override;
+	
+	void Render() const;
 
 private:
 	int button;
