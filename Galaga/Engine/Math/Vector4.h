@@ -42,14 +42,14 @@ public:
 	Vector4& operator*=(const Vector4& v);
 	Vector4& operator*=(const float f);
 	Vector4& operator/=(const Vector4& v);
-	Vector4 operator+(const Vector4& v);
-	Vector4 operator-(const Vector4& v);
-	Vector4 operator*(const Vector4& v);
-	Vector4 operator*(const float f);
-	Vector4 operator/(const Vector4& v);
-	Vector4 operator/(const float f);
-	bool operator==(const Vector4& v);
-	bool operator!=(const Vector4& v);
+	Vector4 operator+(const Vector4& v) const;
+	Vector4 operator-(const Vector4& v) const;
+	Vector4 operator*(const Vector4& v) const;
+	Vector4 operator*(const float f) const;
+	Vector4 operator/(const Vector4& v) const;
+	Vector4 operator/(const float f) const;
+	bool operator==(const Vector4& v) const;
+	bool operator!=(const Vector4& v) const;
 
 	// vector algrebra
 	float Dot(float _x, float _y, float _z, float _w) const;

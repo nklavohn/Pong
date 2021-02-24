@@ -9,7 +9,7 @@ float Vector4::Dot(const Vector4& a, const Vector4& b)
 
 float Vector4::Len(const Vector4& v)
 {
-	return (float)sqrt(Len(v));
+	return (float)sqrt(Len2(v));
 }
 
 float Vector4::Len2(const Vector4& v)
@@ -183,42 +183,42 @@ Vector4& Vector4::operator/=(const Vector4& v)
 	return *this;
 }
 
-Vector4 Vector4::operator+(const Vector4& v)
+Vector4 Vector4::operator+(const Vector4& v) const
 {
-	return Add(v.x, v.y, v.z, v.w);
+	return Vector4(x + v.x, y + v.y, z + v.z, w + v.w);
 }
 
-Vector4 Vector4::operator-(const Vector4& v)
+Vector4 Vector4::operator-(const Vector4& v) const
 {
-	return Sub(v.x, v.y, v.z, v.w);
+	return Vector4(x - v.x, y - v.y, z - v.z, w - v.w);
 }
 
-Vector4 Vector4::operator*(const Vector4& v)
+Vector4 Vector4::operator*(const Vector4& v) const
 {
-	return Mult(v.x, v.y, v.z, v.w);
+	return Vector4(x * v.x, y * v.y, z * v.z, w * v.w);
 }
 
-Vector4 Vector4::operator*(const float f)
+Vector4 Vector4::operator*(const float f) const
 {
-	return Mult(f, f, f, f);
+	return Vector4(x * f, y * f, z * f, w * f);
 }
 
-Vector4 Vector4::operator/(const Vector4& v)
+Vector4 Vector4::operator/(const Vector4& v) const
 {
-	return Div(v.x, v.y, v.z, v.w);
+	return Vector4(x / v.x, y / v.y, z / v.z, w / v.w);
 }
 
-Vector4 Vector4::operator/(const float f)
+Vector4 Vector4::operator/(const float f) const
 {
-	return Div(f, f, f, f);
+	return Vector4(x / f, y / f, z / f, w / f);
 }
 
-bool Vector4::operator==(const Vector4& v)
+bool Vector4::operator==(const Vector4& v) const
 {
 	return (x == v.x) && (y == v.y) && (z == v.z) && (w == v.w);
 }
 
-bool Vector4::operator!=(const Vector4& v)
+bool Vector4::operator!=(const Vector4& v) const
 {
 	return !operator==(v);
 }

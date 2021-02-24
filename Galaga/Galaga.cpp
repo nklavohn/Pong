@@ -29,12 +29,12 @@ int main() {
 
 		auto end = chrono::high_resolution_clock::now();
 		chrono::duration<double, milli> sleepTime = frameDur - (end - start);
-		double elapsed = frameDur.count() / 1000;
+		double toSleep = sleepTime.count() / 1000;
 
-		if (elapsed > 0)
+		if (toSleep > 0)
 		{
-			cout << "Elapsed: " << elapsed << endl;
-			this_thread::sleep_for(frameDur);
+			//cout << "Elapsed: " << toSleep << endl;
+			this_thread::sleep_for(sleepTime);
 		}
 	}
 

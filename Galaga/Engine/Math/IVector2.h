@@ -24,19 +24,21 @@ public:
 	IVector2& operator+=(const IVector2& v);
 	IVector2& operator-=(const IVector2& v);
 	IVector2& operator*=(const IVector2& v);
-	IVector2& operator*=(const int i);
+	IVector2& operator*=(int i);
 	IVector2& operator/=(const IVector2& v);
-	IVector2 operator+(const IVector2& v);
-	IVector2 operator-(const IVector2& v);
-	IVector2 operator*(const IVector2& v);
-	IVector2 operator*(const int i);
-	IVector2 operator/(const IVector2& v);
-	bool operator==(const IVector2& v);
-	bool operator!=(const IVector2& v);
+	IVector2 operator+(const IVector2& v) const;
+	IVector2 operator-(const IVector2& v) const;
+	IVector2 operator*(const IVector2& v) const;
+	IVector2 operator*(int i) const;
+	IVector2 operator/(const IVector2& v) const;
+	bool operator==(const IVector2& v) const;
+	bool operator!=(const IVector2& v) const;
 
-	IVector2 GetCopy();
-	std::string ToString();
-	Vector2 ToVector();
+	IVector2 GetCopy() const;
+	std::string ToString() const;
+	Vector2 ToVector() const;
+	void SetTo(int _x, int _y);
+	void SetTo(const IVector2& v);
 
 	int x;
 	int y;

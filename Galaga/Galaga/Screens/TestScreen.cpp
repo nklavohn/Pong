@@ -11,10 +11,23 @@ TestScreen::~TestScreen() {
 }
 
 void TestScreen::Update() {
-	if (Mouse::IsButtonPressed(Mouse::LEFT))
+	if (Mouse::IsButtonJustPressed(Mouse::LEFT))
+	{
+		Vector4 v1 = Vector4(2, 3, 7, 1);
+		Vector4 v2 = Vector4(12, 0, 0, 0);
+
+		Vector4 v3 = v1.ProjOnto(v2);
+		cout << v3.ToString() << endl;
+
+		/*float f = Vector4::Len2(v2);
+		cout << f << endl;*/
+
+	}
+
+	/*if (Mouse::IsButtonPressed(Mouse::LEFT))
 	{
 		sprite.SetPos(Mouse::GetScaledMousePos());
-	}
+	}*/
 }
 
 void TestScreen::Render() {

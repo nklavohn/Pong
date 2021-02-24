@@ -158,8 +158,6 @@ Vector2 Vector2::Mult(float _x, float _y)
 
 Vector2 Vector2::Div(float _x, float _y)
 {
-	if (_x == 0 || _y == 0) return nullptr;
-
 	return Vector2(x / _x, y / _y);
 }
 
@@ -176,9 +174,19 @@ Vector2 Vector2::operator+(const Vector2& v) const
 	return Vector2(x + v.x, y + v.y);
 }
 
+Vector2 Vector2::operator+(const float f) const
+{
+	return Vector2(x + f, y + f);
+}	
+
 Vector2 Vector2::operator-(const Vector2& v) const
 {
 	return Vector2(x - v.x, y - v.y);
+}
+
+Vector2 Vector2::operator-(const float f) const
+{
+	return Vector2(x - f, y - f);
 }
 
 Vector2 Vector2::operator*(const Vector2& v) const

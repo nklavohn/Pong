@@ -78,7 +78,7 @@ IVector2& IVector2::operator*=(const IVector2& v)
 	return *this;
 }
 
-IVector2& IVector2::operator*=(const int i)
+IVector2& IVector2::operator*=(int i)
 {
 	x *= i;
 	y *= i;
@@ -94,52 +94,64 @@ IVector2& IVector2::operator/=(const IVector2& v)
 	return *this;
 }
 
-IVector2 IVector2::operator+(const IVector2& v)
+IVector2 IVector2::operator+(const IVector2& v) const
 {
-	return Add(v.x, v.y);
+	return IVector2(x + v.x, y + v.y);
 }
 
-IVector2 IVector2::operator-(const IVector2& v)
+IVector2 IVector2::operator-(const IVector2& v) const
 {
-	return Sub(v.x, v.y);
+	return IVector2(x - v.x, y - v.y);
 }
 
-IVector2 IVector2::operator*(const IVector2& v)
+IVector2 IVector2::operator*(const IVector2& v) const
 {
-	return Mult(v.x, v.y);
+	return IVector2(x * v.x, y * v.y);
 }
 
-IVector2 IVector2::operator*(const int i)
+IVector2 IVector2::operator*(int i) const
 {
-	return Mult(i, i);
+	return IVector2(x * i, y * i);
 }
 
-IVector2 IVector2::operator/(const IVector2& v)
+IVector2 IVector2::operator/(const IVector2& v) const
 {
-	return Div(v.x, v.y);
+	return IVector2(x / v.x, y / v.y);
 }
 
-bool IVector2::operator==(const IVector2& v)
+bool IVector2::operator==(const IVector2& v) const
 {
 	return (x == v.x) && (y == v.y);
 }
 
-bool IVector2::operator!=(const IVector2& v)
+bool IVector2::operator!=(const IVector2& v) const
 {
-	return (x != v.x) && (y != v.y);
+	return !operator==(v);
 }
 
-IVector2 IVector2::GetCopy()
+IVector2 IVector2::GetCopy() const
 {
 	return IVector2(x, y);
 }
 
-std::string IVector2::ToString()
+std::string IVector2::ToString() const
 {
 	return "[" + std::to_string(x) + "," + std::to_string(y) + "]";
 }
 
-Vector2 IVector2::ToVector()
+Vector2 IVector2::ToVector() const
 {
 	return Vector2((float)x, (float)y);
+}
+
+void IVector2::SetTo(int _x, int _y)
+{
+	x = _x;
+	y = _y;
+}
+
+void IVector2::SetTo(const IVector2& v)
+{
+	x = v.x;
+	y = v.y;
 }
