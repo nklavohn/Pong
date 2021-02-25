@@ -3,7 +3,7 @@
 #include "Engine/Engine.h"
 
 float Camera::pixelsPerMeter = 1;
-Vector2 Camera::dim = Vector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT) / Engine::SCALE;
+Vector2 Camera::dim = Vector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT) / Engine::SCALE / pixelsPerMeter;
 Vector2 Camera::pos = Camera::dim / 2;
 
 Vector2 Camera::ToPixels(const Vector2& v_meters)

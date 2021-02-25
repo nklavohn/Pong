@@ -4,6 +4,9 @@
 
 TestScreen::TestScreen(int w, int h) : Screen(w, h) {
 	color = Color::LIGHT_GRAY;
+
+	std::cout << box1.GetBox().ToString() << std::endl;
+	std::cout << box2.GetBox().ToString() << std::endl;
 }
 
 TestScreen::~TestScreen() {
@@ -11,31 +14,20 @@ TestScreen::~TestScreen() {
 }
 
 void TestScreen::Update() {
-	if (Mouse::IsButtonJustPressed(Mouse::LEFT))
-	{
-		Vector4 v1 = Vector4(2, 3, 7, 1);
-		Vector4 v2 = Vector4(12, 0, 0, 0);
+	box2.SetCenter(Mouse::GetWorldPos());
 
-		Vector4 v3 = v1.ProjOnto(v2);
-		cout << v3.ToString() << endl;
 
-		/*float f = Vector4::Len2(v2);
-		cout << f << endl;*/
-
-	}
-
-	/*if (Mouse::IsButtonPressed(Mouse::LEFT))
-	{
-		sprite.SetPos(Mouse::GetScaledMousePos());
-	}*/
+	if (box1.IsCollidingWith(&box2))
+		//std::cout << box2.GetBox().ToString() << std::endl;
+		std::cout << "Colliding!" << std::endl;
 }
 
 void TestScreen::Render() {
 	BeginRender();
-	sprite.RenderSprite(IVector2(1, 0));
-	ShapeRenderer::StrokeBox(Color::CYAN, Vector4(10, 10, 100, 100));
-	//ShapeRenderer::StrokeCircle(Color(0.6, 0.1, 0.4, 1), Vector2(50, 50), 20);
-	ShapeRenderer::DrawCircle(Color(0.6, 0.1, 0.4, 1), Color::BLUE, Vector2(50, 50), 20, -1, 5);
+	
+	box1.Render(Color::BLUE);
+	box2.Render(Color::RED);
+
 	EndRender();
 }
 

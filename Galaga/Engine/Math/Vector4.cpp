@@ -1,6 +1,8 @@
 #include "Vector4.h"
 #include "Vector2.h"
 
+#include <iostream>
+
 // static methods
 float Vector4::Dot(const Vector4& a, const Vector4& b)
 {
@@ -128,7 +130,7 @@ Vector4& Vector4::operator=(const Vector4& v)
 	x = v.x;
 	y = v.y;
 	z = v.z;
-	w = v.z;
+	w = v.w;
 
 	return *this;
 }

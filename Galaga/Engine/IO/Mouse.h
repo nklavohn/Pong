@@ -10,12 +10,13 @@ public:
 	static void MousePosCallback(GLFWwindow* window, double _x, double _y);
 	static void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);  // glfw enums destinguish button and action
 
-	static float GetMouseX();
-	static float GetMouseY();
-	static Vector2 GetMousePos();
-	static float GetScaledMouseX();
-	static float GetScaledMouseY();
-	static Vector2 GetScaledMousePos();
+	static float GetX();
+	static float GetY();
+	static Vector2 GetDisplayPos();
+	static float GetScaledX();
+	static float GetScaledY();
+	static Vector2 GetScaledDisplayPos();
+	static Vector2 GetWorldPos();
 
 	static bool IsButtonPressed(const int& button);
 	static bool IsButtonJustPressed(const int& button);

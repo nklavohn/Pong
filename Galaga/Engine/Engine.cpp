@@ -5,7 +5,7 @@
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
-float Engine::SCALE = 1;
+float Engine::SCALE = 4;
 
 GLFWwindow* Engine::window = nullptr;
 Screen* Engine::screen = nullptr;

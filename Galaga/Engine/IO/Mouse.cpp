@@ -1,5 +1,6 @@
 #include "Mouse.h"
 #include "Engine/Engine.h"
+#include "Engine/Math/Camera.h"
 
 Vector2 Mouse::pos = Vector2::ZERO;
 
@@ -27,34 +28,39 @@ void Mouse::MouseButtonCallback(GLFWwindow* window, int button, int action, int 
 	justChanged[button] = true;
 }
 
-float Mouse::GetMouseX() 
+float Mouse::GetX() 
 {
 	return pos.x;
 }
 
-float Mouse::GetMouseY() 
+float Mouse::GetY() 
 {
 	return pos.y;
 }
 
-Vector2 Mouse::GetMousePos() 
+Vector2 Mouse::GetDisplayPos() 
 {
 	return pos;
 }
 
-float Mouse::GetScaledMouseX() 
+float Mouse::GetScaledX() 
 {
 	return pos.x / Engine::GetScale();
 }
 
-float Mouse::GetScaledMouseY() 
+float Mouse::GetScaledY() 
 {
 	return pos.y / Engine::GetScale();
 }
 
-Vector2 Mouse::GetScaledMousePos() 
+Vector2 Mouse::GetScaledDisplayPos() 
 {
 	return pos / Engine::GetScale();
+}
+
+Vector2 Mouse::GetWorldPos()
+{
+	return Camera::ToWorldCoords(pos / Engine::GetScale(), Camera::F_PIXEL_TO_METERS);
 }
 
 bool Mouse::IsButtonJustPressed(const int& button)

@@ -20,7 +20,7 @@ CircleClickListener::~CircleClickListener()
 
 bool CircleClickListener::Listen() const
 {
-	return Mouse::IsButtonJustPressed(button) && hitcircle.IsPointInside(Mouse::GetMousePos());
+	return Mouse::IsButtonJustPressed(button) && hitcircle.IsPointInside(Mouse::GetWorldPos());
 }
 
 void CircleClickListener::Act()

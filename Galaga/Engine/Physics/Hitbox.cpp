@@ -101,13 +101,16 @@ void Hitbox::SetHitbox(const Vector4& _box)
 {
 	center = center = Vector2((_box.x + _box.z) / 2, (_box.y + _box.w) / 2);
 	dim = Vector2(std::abs(_box.x - _box.z), std::abs(_box.y - _box.w));
-	box = Vector4(center - dim/2, center - dim/2);
+
+	Vector2 diagonal = dim / 2;
+	box = Vector4(center - diagonal, center + diagonal);
 }
 
 void Hitbox::SetCenter(const Vector2& _center)
 {
 	center.SetTo(_center);
-	box = Vector4(center - dim / 2, center + dim / 2);
+	Vector2 diagonal = dim / 2;
+	box = Vector4(center - diagonal, center + diagonal);
 }
 
 void Hitbox::AddToCenter(const Vector2& delta)
@@ -134,7 +137,7 @@ void Hitbox::Render(const Color& c) const
 
 Vector2 Hitbox::GetDim() const
 {
-	return Vector2(box.z - box.x, box.w - box.y);
+	return dim;
 }
 
 vector<Vector4> Hitbox::GetSides() const

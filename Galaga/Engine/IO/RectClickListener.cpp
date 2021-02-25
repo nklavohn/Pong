@@ -21,7 +21,7 @@ RectClickListener::~RectClickListener()
 
 bool RectClickListener::Listen() const
 {
-	return Mouse::IsButtonJustPressed(button) && hitbox.IsPointInside(Mouse::GetMousePos());
+	return Mouse::IsButtonJustPressed(button) && hitbox.IsPointInside(Mouse::GetWorldPos());
 }
 
 void RectClickListener::Act()
