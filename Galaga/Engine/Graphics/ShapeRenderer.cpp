@@ -1,16 +1,22 @@
 #include "ShapeRenderer.h"
 #include "GLFW/glfw3.h"
+#include "Engine/Math/Camera.h"
+#include "Engine/Engine.h"
+
 #include <algorithm>
 constexpr float CIRCLE_GRANULARITY = 4;
 
-void ShapeRenderer::Start(Color c, float lineWidth)
+void ShapeRenderer::Start(const Color& c, float lineWidth)
 {
+	if (lineWidth < 0)
+		lineWidth = 2;
+
 	glLoadIdentity();
 	glColor4f(c.r, c.g, c.b, c.a);
 	glLineWidth(lineWidth);
 }
 
-void ShapeRenderer::Start(Color c)
+void ShapeRenderer::Start(const Color& c)
 {
 	glLoadIdentity();
 	glColor4f(c.r, c.g, c.b, c.a);
@@ -21,81 +27,194 @@ void ShapeRenderer::End()
 	glEnd();
 }
 
-void ShapeRenderer::DrawLine(Color c, Vector2 p1, Vector2 p2, float lineWidth)
+void ShapeRenderer::DrawLine(const Color& c, const Vector2& p1, const Vector2& p2, float lineWidth, bool convertToDisplayPos)
 {
 	Start(c, lineWidth);
-	glBegin(GL_LINE);
+	glBegin(GL_LINES);
+
+	if (convertToDisplayPos)
 	{
-		glVertex2f(p1.x, p1.y);
-		glVertex2f(p2.x, p2.y);
+		Vector2 p1Display = ConvertCoords(p1);
+		Vector2 p2Display = ConvertCoords(p2);
+		LineHelper(p1Display, p2Display);
+	}
+	else
+	{
+		LineHelper(p1, p2);
+	}
+
+	End();
+}
+
+void ShapeRenderer::DrawLine(const Color& c, const Vector4& line, float lineWidth, bool convertToDisplayPos)
+{
+	Start(c, lineWidth);
+	glBegin(GL_LINES);
+
+	if (convertToDisplayPos)
+	{
+		Vector4 lineDisplay = ConvertCoords(line);
+		LineHelper(lineDisplay.p1(), lineDisplay.p2());
+	}
+	else
+	{
+		LineHelper(line.p1(), line.p2());
 	}
 	End();
 }
 
-void ShapeRenderer::DrawLine(Color c, Vector4 line, float lineWidth)
+void ShapeRenderer::LineHelper(const Vector2& p1, const Vector2& p2)
 {
+	glVertex2f(p1.x, p1.y);
+	glVertex2f(p2.x, p2.y);
+}
+
+void ShapeRenderer::DrawVector(const Color& c, const Vector2& p1, const Vector2& p2, float lineWidth, bool convertToDisplayPos)
+{
+	
 	Start(c, lineWidth);
-	glBegin(GL_LINE);
+	glBegin(GL_LINES);
+
+	if (convertToDisplayPos)
 	{
-		glVertex2f(line.x, line.y);
-		glVertex2f(line.z, line.w);
+		Vector2 p1Display = ConvertCoords(p1);
+		Vector2 p2Display = ConvertCoords(p2);
+		VectorHelper(p1Display, p2Display);
 	}
+	else 
+	{
+		VectorHelper(p1, p2);
+	}
+
 	End();
 }
 
-void ShapeRenderer::StrokeBox(Color c, Vector2 p1, Vector2 p2, float lineWidth)
+void ShapeRenderer::VectorHelper(const Vector2& p1, const Vector2& p2)
+{
+	glVertex2f(p1.x, p1.y);
+	glVertex2f(p2.x, p2.y);
+
+	Vector2 arrowHead = (p2 - p1).Resize(5 / Engine::SCALE).Rotate(150);
+
+	glVertex2f(p2.x, p2.y);
+	glVertex2f(p2.x + arrowHead.x, p2.y + arrowHead.y);
+
+	arrowHead.Rotate(60);
+
+	glVertex2f(p2.x, p2.y);
+	glVertex2f(p2.x + arrowHead.x, p2.y + arrowHead.y);
+}
+
+void ShapeRenderer::StrokeBox(const Color& c, const Vector2& p1, const Vector2& p2, float lineWidth, bool convertToDisplayPos)
 {
 	Start(c, lineWidth);
 	glBegin(GL_LINE_LOOP);
 	
-	BoxHelper(p1, p2);
+	if (convertToDisplayPos)
+	{
+		Vector2 p1Display = ConvertCoords(p1);
+		Vector2 p2Display = ConvertCoords(p2);
+		BoxHelper(p1Display, p2Display);
+	}
+	else
+	{
+		BoxHelper(p1, p2);
+	}
 
 	End();
 }
 
-void ShapeRenderer::StrokeBox(Color c, Vector4 box, float lineWidth)
+void ShapeRenderer::StrokeBox(const Color& c, const Vector4& box, float lineWidth, bool convertToDisplayPos)
 {
 	Start(c, lineWidth);
 	glBegin(GL_LINE_LOOP);
 	
-	BoxHelper(box.p1(), box.p2());
+	if (convertToDisplayPos)
+	{
+		Vector2 p1Display = ConvertCoords(box.p1());
+		Vector2 p2Display = ConvertCoords(box.p2());
+		BoxHelper(p1Display, p2Display);
+	}
+	else
+	{
+		BoxHelper(box.p1(), box.p2());
+	}
 
 	End();
 }
 
-void ShapeRenderer::FillBox(Color c, Vector2 p1, Vector2 p2)
+void ShapeRenderer::FillBox(const Color& c, const Vector2& p1, const Vector2& p2, bool convertToDisplayPos)
 {
 	Start(c);
 	glBegin(GL_POLYGON);
 	
-	BoxHelper(p1, p2);
+	if (convertToDisplayPos)
+	{
+		Vector2 p1Display = ConvertCoords(p1);
+		Vector2 p2Display = ConvertCoords(p2);
+		BoxHelper(p1Display, p2Display);
+	}
+	else
+	{
+		BoxHelper(p1, p2);
+	}
 
 	End();
 }
 
-void ShapeRenderer::FillBox(Color c, Vector4 box)
+void ShapeRenderer::FillBox(const Color& c, const Vector4& box, bool convertToDisplayPos)
 {
 	Start(c);
 	glBegin(GL_POLYGON);
 	
-	BoxHelper(box.p1(), box.p2());
+	if (convertToDisplayPos)
+	{
+		Vector2 p1Display = ConvertCoords(box.p1());
+		Vector2 p2Display = ConvertCoords(box.p2());
+		BoxHelper(p1Display, p2Display);
+	}
+	else
+	{
+		BoxHelper(box.p1(), box.p2());
+	}
 
 	End();
 }
 
-void ShapeRenderer::DrawBox(Color fill, Color stroke, Vector2 p1, Vector2 p2, float lineWidth)
+void ShapeRenderer::DrawBox(const Color& fill, const Color& stroke, const Vector2& p1, const Vector2& p2, float lineWidth, bool convertToDisplayPos)
 {
-	FillBox(fill, p1, p2);
-	StrokeBox(stroke, p1, p2, lineWidth);
+	if (convertToDisplayPos)
+	{
+		Vector2 p1Display = ConvertCoords(p1);
+		Vector2 p2Display = ConvertCoords(p2);
+		FillBox(fill, p1Display, p2Display, false);
+		StrokeBox(stroke, p1Display, p2Display, lineWidth, false);
+	}
+	else
+	{
+		FillBox(fill, p1, p2, false);
+		StrokeBox(stroke, p1, p2, lineWidth, false);
+	}
 }
 
-void ShapeRenderer::DrawBox(Color fill, Color stroke, Vector4 box, float lineWidth)
+void ShapeRenderer::DrawBox(const Color& fill, const Color& stroke, const Vector4& box, float lineWidth, bool convertToDisplayPos)
 {
-	FillBox(fill, box.p1(), box.p2());
-	StrokeBox(stroke, box.p1(), box.p2(), lineWidth);
+	if (convertToDisplayPos)
+	{
+		Vector2 p1Display = ConvertCoords(box.p1());
+		Vector2 p2Display = ConvertCoords(box.p2());
+		FillBox(fill, p1Display, p2Display, false);
+		StrokeBox(stroke, p1Display, p2Display, lineWidth, false);
+	}
+	else
+	{
+		FillBox(fill, box.p1(), box.p2(), false);
+		StrokeBox(stroke, box.p1(), box.p2(), lineWidth, false);
+	}
+	
 }
 
-void ShapeRenderer::BoxHelper(Vector2 p1, Vector2 p2)
+void ShapeRenderer::BoxHelper(const Vector2& p1, const Vector2& p2)
 {
 	glVertex2f(p1.x, p1.y);
 	glVertex2f(p2.x, p1.y);
@@ -103,33 +222,61 @@ void ShapeRenderer::BoxHelper(Vector2 p1, Vector2 p2)
 	glVertex2f(p1.x, p2.y);
 }
 
-void ShapeRenderer::StrokeCircle(Color c, Vector2 center, float r, float sides, float linewidth)
+void ShapeRenderer::StrokeCircle(const Color& c, const Vector2& center, float r, float sides, float linewidth, bool convertToDisplayPos)
 {
 	Start(c, linewidth);
 	glBegin(GL_LINE_LOOP);
 
-	CircleHelper(center, r, sides);
+	if (convertToDisplayPos)
+	{
+		Vector2 centerDisplay = ConvertCoords(center);
+		float rDisplay = Camera::ToPixels(r);
+		CircleHelper(centerDisplay, rDisplay, sides);
+	}
+	else
+	{
+		CircleHelper(center, r, sides);
+	}
 
 	glEnd();
 }
 
-void ShapeRenderer::FillCircle(Color c, Vector2 center, float r, float sides)
+void ShapeRenderer::FillCircle(const Color& c, const Vector2& center, float r, float sides, bool convertToDisplayPos)
 {
 	Start(c);
 	glBegin(GL_POLYGON);
 
-	CircleHelper(center, r, sides);
+	if (convertToDisplayPos)
+	{
+		Vector2 centerDisplay = ConvertCoords(center);
+		float rDisplay = Camera::ToPixels(r);
+		CircleHelper(centerDisplay, rDisplay, sides);
+	}
+	else
+	{
+		CircleHelper(center, r, sides);
+	}
 
 	glEnd();
 }
 
-void ShapeRenderer::DrawCircle(Color fill, Color stroke, Vector2 center, float r, float sides, float linewidth)
+void ShapeRenderer::DrawCircle(const Color& fill, const Color& stroke, const Vector2& center, float r, float sides, float linewidth, bool convertToDisplayPos)
 {
-	FillCircle(fill, center, r, sides);
-	StrokeCircle(stroke, center, r, sides, linewidth);
+	if (convertToDisplayPos)
+	{
+		Vector2 centerDisplay = ConvertCoords(center);
+		float rDisplay = Camera::ToPixels(r);
+		FillCircle(fill, centerDisplay, rDisplay, sides, false);
+		StrokeCircle(stroke, centerDisplay, rDisplay, sides, linewidth, false);
+	}
+	else
+	{
+		FillCircle(fill, center, r, sides, false);
+		StrokeCircle(stroke, center, r, sides, linewidth, false);
+	}
 }
 
-void ShapeRenderer::CircleHelper(Vector2 center, float r, float sides)
+void ShapeRenderer::CircleHelper(const Vector2& center, float r, float sides)
 {
 	if (sides < 0)
 		sides = std::max((3.14159F * 2 * r) / CIRCLE_GRANULARITY, 8.0F);
@@ -142,4 +289,14 @@ void ShapeRenderer::CircleHelper(Vector2 center, float r, float sides)
 		glVertex2f(center.x + radius.x, center.y + radius.y);
 		radius = radius.Rotate(degs);
 	}
+}
+
+Vector2 ShapeRenderer::ConvertCoords(const Vector2& v)
+{
+	return Camera::ToDisplayCoords(v, Camera::F_METER_TO_PIXELS);
+}
+
+Vector4 ShapeRenderer::ConvertCoords(const Vector4& v)
+{
+	return Camera::ToDisplayCoords(v, Camera::F_METER_TO_PIXELS);
 }

@@ -140,6 +140,7 @@ void Engine::SetScale(float _scale)
 
 void Engine::SetScreen(Screen& _screen)
 {
+	delete screen;
 	screen = &_screen;
 }
 

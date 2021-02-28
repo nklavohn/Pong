@@ -4,9 +4,8 @@
 #include "Engine/Graphics/Color.h"
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
-#include <vector>
 
-using namespace std;
+#include <vector>
 
 class CollisionDetector
 {
@@ -15,7 +14,8 @@ public:
 	~CollisionDetector();
 
 	virtual bool IsPointInside(const Vector2& p) const = 0;
-	virtual bool AreAllPointsInside(const vector<Vector2>& ps) const = 0;
+	virtual bool IsAnyPointInside(const std::vector<Vector2>& ps) const = 0;
+	virtual bool AreAllPointsInside(const std::vector<Vector2>& ps) const = 0;
 	virtual bool DoesLineIntersect(const Vector4& line) const = 0;
 	virtual bool IsCollidingWith(CollisionDetector* cDetector) const = 0;
 

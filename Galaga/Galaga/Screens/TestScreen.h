@@ -4,8 +4,9 @@
 #include "Engine/Graphics/Screen.h"
 #include "Engine/Graphics/SpriteSheet.h"
 #include "Engine/Math/IVector2.h"
-#include "Engine/Physics/Hitbox.h"
-#include "Engine/Physics/Hitcircle.h"
+#include "Engine/Physics/RectHitbox.h"
+#include "Engine/Physics/CircHitbox.h"
+#include "Engine/Physics/PointHitbox.h"
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
 
@@ -21,10 +22,11 @@ public:
 	~TestScreen();
 
 private:
-	Hitbox box1 = Hitbox(Vector2(50, 50), Vector2(25, 25));
-	Hitbox box2 = Hitbox(Vector2(75, 75), Vector2(10, 20));
-	Hitcircle cir1 = Hitcircle(Vector2(25, 25), 10);
-
+	RectHitbox box1 = RectHitbox(Vector2(0, 00), Vector2(25, 25));
+	RectHitbox box2 = RectHitbox(Vector2(30, 30), Vector2(10, 20));
+	CircHitbox circ1 = CircHitbox(Vector2(0, 50), 10);
+	CircHitbox circ2 = CircHitbox(Vector2(-50, 0), 10);
+	PointHitbox point1 = PointHitbox(Vector2(-20, -20));
 };
 
 

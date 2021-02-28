@@ -2,7 +2,7 @@
 #define GALAGA_SMALLSHOT
 
 #include "Engine/Physics/Entity.h"
-#include "Engine/Physics/Hitpoint.h"
+#include "Engine/Physics/PointHitbox.h"
 
 class SmallShot : public Entity
 {

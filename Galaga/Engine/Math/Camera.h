@@ -8,6 +8,9 @@
 class Camera
 {
 public:
+	static float ToPixels(float v_meters);
+	static float ToMeters(float v_pixels);
+
 	static Vector2 ToPixels(const Vector2& v_meters);
 	static Vector2 ToMeters(const Vector2& v_pixels);
 	static Vector2 ToDisplayCoords(const Vector2& v_worldCoord, int unitConversion);

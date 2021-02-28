@@ -6,6 +6,11 @@ float Camera::pixelsPerMeter = 1;
 Vector2 Camera::dim = Vector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT) / Engine::SCALE / pixelsPerMeter;
 Vector2 Camera::pos = Camera::dim / 2;
 
+float Camera::ToPixels(float f)
+{
+	return f * pixelsPerMeter;
+}
+
 Vector2 Camera::ToPixels(const Vector2& v_meters)
 {
 	return v_meters * pixelsPerMeter;
@@ -14,6 +19,11 @@ Vector2 Camera::ToPixels(const Vector2& v_meters)
 Vector4 Camera::ToPixels(const Vector4& v_meters)
 {
 	return v_meters * pixelsPerMeter;
+}
+
+float Camera::ToMeters(float f)
+{
+	return f / pixelsPerMeter;
 }
 
 Vector2 Camera::ToMeters(const Vector2& v_pixels)

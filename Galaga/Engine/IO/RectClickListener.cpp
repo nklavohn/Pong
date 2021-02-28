@@ -5,10 +5,10 @@
 RectClickListener::RectClickListener()
 {
 	button = -1;
-	hitbox = Hitbox();
+	hitbox = RectHitbox();
 }
 
-RectClickListener::RectClickListener(int _button, Hitbox _hitbox)
+RectClickListener::RectClickListener(int _button, RectHitbox _hitbox)
 {
 	button = _button;
 	hitbox = _hitbox;

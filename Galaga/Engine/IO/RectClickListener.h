@@ -1,14 +1,14 @@
 #ifndef ENGINE_RECTCLICKLISTENER
 #define ENGINE_RECTCLICKLISTENER
 
-#include "Engine/Physics/Hitbox.h"
+#include "Engine/Physics/RectHitbox.h"
 #include "ClickListener.h"
 
 class RectClickListener : public ClickListener
 {
 public:
 	RectClickListener();
-	RectClickListener(int _button, Hitbox _hitbox);
+	RectClickListener(int _button, RectHitbox _hitbox);
 	~RectClickListener();
 
 	bool Listen() const override;
@@ -20,7 +20,7 @@ public:
 
 private:
 	int button;
-	Hitbox hitbox;
+	RectHitbox hitbox;
 };
 
 #endif

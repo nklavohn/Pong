@@ -2,14 +2,14 @@
 #define ENGINE_CIRCLECLICKLISTENER
 
 #include "ClickListener.h"
-#include "Engine/Physics/Hitcircle.h"
+#include "Engine/Physics/CircHitbox.h"
 #include "Engine/Math/Vector2.h";
 
 class CircleClickListener : public ClickListener
 {
 public:
 	CircleClickListener();
-	CircleClickListener(int _button, Hitcircle _hitcircle);
+	CircleClickListener(int _button, CircHitbox _hitcircle);
 	~CircleClickListener();
 
 	bool Listen() const override;
@@ -21,7 +21,7 @@ public:
 
 private:
 	int button;
-	Hitcircle hitcircle;
+	CircHitbox hitcircle;
 };
 
 #endif

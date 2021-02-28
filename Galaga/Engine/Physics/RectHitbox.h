@@ -1,23 +1,23 @@
-#ifndef ENGINE_HITBOX
-#define ENGINE_HITBOX
+#ifndef ENGINE_RECTHITBOX
+#define ENGINE_RECTHITBOX
 
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
 #include "Engine/Graphics/Color.h"
 #include "CollisionDetector.h"
-#include "Hitcircle.h"
 
-class Hitbox : public CollisionDetector
+class RectHitbox : public CollisionDetector
 {
 public:
-	Hitbox();
-	Hitbox(float cx, float cy, float width, float height);
-	Hitbox(Vector2 _center, Vector2 _dim);
-	Hitbox(Vector4 _box);
-	~Hitbox();
+	RectHitbox();
+	RectHitbox(float cx, float cy, float width, float height);
+	RectHitbox(Vector2 _center, Vector2 _dim);
+	RectHitbox(Vector4 _box);
+	~RectHitbox();
 
 	bool IsPointInside(const Vector2& p) const override;
-	bool AreAllPointsInside(const vector<Vector2>& ps) const override;
+	bool IsAnyPointInside(const std::vector<Vector2>& ps) const override;
+	bool AreAllPointsInside(const std::vector<Vector2>& ps) const override;
 	bool DoesLineIntersect(const Vector4& line) const override;
 	bool IsCollidingWith(CollisionDetector* cDetector) const override;
 
@@ -31,8 +31,8 @@ public:
 	Vector4 GetBox() const;
 	Vector2 GetDim() const;
 
-	vector<Vector4> GetSides() const;
-	vector<Vector2> GetVertices() const;
+	std::vector<Vector4> GetSides() const;
+	std::vector<Vector2> GetVertices() const;
 
 private:
 	Vector2 center;

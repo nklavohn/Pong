@@ -66,7 +66,7 @@ Color Color::Min(const Color& a, const Color& b, bool includeAlpha)
 	return Color(std::min(a.r, b.r), std::min(a.g, b.g), std::min(a.b, b.b), 1);
 }
 
-Color ToGrayscale(const Color& c, bool includeAlpha)
+Color Color::ToGrayscale(const Color& c, bool includeAlpha)
 {
 	float avg = (c.r + c.g + c.b) / 3;
 	if (includeAlpha)
@@ -75,6 +75,7 @@ Color ToGrayscale(const Color& c, bool includeAlpha)
 }
 
 const Color Color::RED = Color(1, 0, 0, 1);
+const Color Color::ORANGE = Color(1, 0.65, 0, 1);
 const Color Color::YELLOW = Color(1, 1, 0, 1);
 const Color Color::GREEN = Color(0, 1, 0, 1);
 const Color Color::CYAN = Color(0, 1, 1, 1);

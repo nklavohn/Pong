@@ -4,10 +4,10 @@
 CircleClickListener::CircleClickListener()
 {
 	button = -1;
-	hitcircle = Hitcircle();
+	hitcircle = CircHitbox();
 }
 
-CircleClickListener::CircleClickListener(int _button, Hitcircle _hitcircle)
+CircleClickListener::CircleClickListener(int _button, CircHitbox _hitcircle)
 {
 	button = _button;
 	hitcircle = _hitcircle;
