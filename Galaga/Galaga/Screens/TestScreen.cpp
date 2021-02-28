@@ -14,10 +14,9 @@ TestScreen::~TestScreen() {
 }
 
 void TestScreen::Update() {
-	box2.SetCenter(Mouse::GetWorldPos());
+	cir1.SetCenter(Mouse::GetWorldPos());
 
-
-	if (box1.IsCollidingWith(&box2))
+	if (box1.IsCollidingWith(&cir1))
 		//std::cout << box2.GetBox().ToString() << std::endl;
 		std::cout << "Colliding!" << std::endl;
 }
@@ -27,6 +26,7 @@ void TestScreen::Render() {
 	
 	box1.Render(Color::BLUE);
 	box2.Render(Color::RED);
+	cir1.Render(Color::MAGENTA);
 
 	EndRender();
 }

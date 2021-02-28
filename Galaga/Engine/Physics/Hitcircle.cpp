@@ -1,6 +1,7 @@
 #include "Hitcircle.h"
 #include "Hitbox.h"
 #include "Engine/Graphics/ShapeRenderer.h"
+#include "Engine/Math/Camera.h"
 
 Hitcircle::Hitcircle()
 {
@@ -22,7 +23,7 @@ Hitcircle::~Hitcircle()
 
 }
 
-void Hitcircle::Initialize(const float& cx, const float& cy, const float& _r)
+void Hitcircle::Initialize(float cx, float cy, float _r)
 {
 	center = Vector2(cx, cy);
 	r = _r;
@@ -104,7 +105,8 @@ void Hitcircle::AddToCenter(const Vector2& delta)
 
 void Hitcircle::Render(const Color& c) const
 {
-	ShapeRenderer::StrokeCircle(c, center, r);
+	Vector2 displayPos = Camera::ToDisplayCoords(center, Camera::F_METER_TO_PIXELS);
+	ShapeRenderer::StrokeCircle(c, displayPos, r);
 }
 
 Vector2 Hitcircle::GetCenter()

@@ -23,6 +23,7 @@ public:
 private:
 	Hitbox box1 = Hitbox(Vector2(50, 50), Vector2(25, 25));
 	Hitbox box2 = Hitbox(Vector2(75, 75), Vector2(10, 20));
+	Hitcircle cir1 = Hitcircle(Vector2(25, 25), 10);
 
 };
 

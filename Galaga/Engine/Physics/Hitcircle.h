@@ -32,7 +32,7 @@ private:
 	Vector2 center;
 	float r;
 
-	void Initialize(const float& cx, const float& cy, const float& _r);
+	void Initialize(float cx, float cy, float _r);
 };
 
 #endif

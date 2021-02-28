@@ -99,7 +99,7 @@ bool Hitbox::IsCollidingWith(CollisionDetector* cDetector) const
 
 void Hitbox::SetHitbox(const Vector4& _box)
 {
-	center = center = Vector2((_box.x + _box.z) / 2, (_box.y + _box.w) / 2);
+	center = Vector2((_box.x + _box.z) / 2, (_box.y + _box.w) / 2);
 	dim = Vector2(std::abs(_box.x - _box.z), std::abs(_box.y - _box.w));
 
 	Vector2 diagonal = dim / 2;
@@ -108,7 +108,7 @@ void Hitbox::SetHitbox(const Vector4& _box)
 
 void Hitbox::SetCenter(const Vector2& _center)
 {
-	center.SetTo(_center);
+	center = _center;
 	Vector2 diagonal = dim / 2;
 	box = Vector4(center - diagonal, center + diagonal);
 }

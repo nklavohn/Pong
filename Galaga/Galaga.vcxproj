@@ -162,8 +162,10 @@
     <ClCompile Include="Engine\Physics\Entity.cpp" />
     <ClCompile Include="Engine\Physics\Hitbox.cpp" />
     <ClCompile Include="Engine\Physics\Hitcircle.cpp" />
+    <ClCompile Include="Engine\Physics\Hitpoint.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
+    <ClCompile Include="Galaga\Entities\Projectiles\SmallShot.cpp" />
     <ClCompile Include="Galaga\Screens\GameScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TestScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TitleScreen.cpp" />
@@ -192,6 +194,8 @@
     <ClInclude Include="Engine\Physics\Entity.h" />
     <ClInclude Include="Engine\Physics\Hitbox.h" />
     <ClInclude Include="Engine\Physics\Hitcircle.h" />
+    <ClInclude Include="Engine\Physics\Hitpoint.h" />
+    <ClInclude Include="Galaga\Entities\Projectiles\SmallShot.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />
     <ClInclude Include="Galaga\Screens\TitleScreen.h" />
