@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "Engine/Graphics/ShapeRenderer.h"
 
 Entity::Entity()
 {
@@ -19,14 +20,14 @@ Entity::~Entity()
 
 }
 
-bool Entity::IsCollidingWith(Vector2 point)
+bool Entity::IsCollidingWith(const Vector2& point) const
 {
 	return cDetector->IsPointInside(point);
 }
 
-bool Entity::IsCollidingWith(CollisionDetector* _cDetector)
+bool Entity::IsCollidingWith(Entity* other) const
 {
-	return cDetector->IsCollidingWith(_cDetector);
+	return cDetector->IsCollidingWith(other->GetCollisionDetector());
 }
 
 CollisionDetector* Entity::GetCollisionDetector()
@@ -47,4 +48,26 @@ void Entity::SetPos(const Vector2& _pos)
 void Entity::SetVel(const Vector2& _vel)
 {
 	vel = _vel;
+}
+
+void Entity::SetAccel(const Vector2& _accel)
+{
+	accel = _accel;
+}
+
+bool Entity::NeedsToBeRemoved() const
+{
+	return isFlaggedForRemoval;
+}
+
+bool Entity::FlagForRemoval(const bool& flag)
+{
+	isFlaggedForRemoval = flag;
+}
+
+void Entity::DebugPhysicsDefault() const
+{
+	cDetector->Render(Color::WHITE);
+	ShapeRenderer::DrawVector(Color::BLUE, pos, pos + vel);
+	ShapeRenderer::DrawVector(Color::MAGENTA, pos, pos + accel);
 }

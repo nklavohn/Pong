@@ -4,19 +4,21 @@
 #include "Engine/Graphics/Spritesheet.h"
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/IVector2.h"
+#include "Engine/Physics/Entity.h"
 
-class Spaceship
+class Spaceship : public Entity
 {
 
 public:
 	Spaceship();
 	~Spaceship();
 
-	void Move();
+	void Move() override;
 	void Shoot();
 	bool IsHit();
 	void Respawn();
-	void Render();
+	void Render() const override;
+	void DebugPhysics() const override;
 
 private:
 	Vector2 pos = Vector2(30, 30);

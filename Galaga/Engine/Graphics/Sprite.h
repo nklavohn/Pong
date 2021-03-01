@@ -12,42 +12,41 @@ class Sprite {
 
 public:
 	Sprite();
-	Sprite(std::string imgPath);
-	Sprite(std::string imgPath, Vector2 _pos);
-	Sprite(std::string imgPath, Vector2 _pos, float _scale);
-	Sprite(int imgID);
-	Sprite(int imgID, Vector2 _pos);
-	Sprite(int imgID, Vector2 _pos, float _scale);
+	Sprite(const std::string& imgPath);
+	Sprite(const std::string& imgPath, const Vector2& _pos);
+	Sprite(const std::string& imgPath, const Vector2& _pos, const float& _scale);
+	Sprite(const int& imgID);
+	Sprite(const int& imgID, const Vector2& _pos);
+	Sprite(const int& imgID, const Vector2& _pos, const float& _scale);
 	~Sprite();
 
-	void Update();
-	void Render();
-	void RenderRelativeTo(Vector2 _pos);
+	void Render() const;
+	void RenderRelativeTo(Vector2 _pos) const;
 
-	void SetPos(float x, float y);
-	void SetPos(Vector2 v);
-	void SetRot(float _rot);
-	void AddRot(float _rot);
-	void SetScale(float xy);
-	void SetScale(float x, float y);
-	void SetScale(Vector2 v);
+	void SetPos(const float& x, const float& y);
+	void SetPos(const Vector2& v);
+	void SetRot(const float& _rot);
+	void AddRot(const float& _rot);
+	void SetScale(const float& xy);
+	void SetScale(const float& x, const float& y);
+	void SetScale(const Vector2& v);
 
-	void SetInterpolationFunction(int _interp);
+	void SetInterpolationFunction(const int& _interp);
 
-	float GetWidth(bool scaled = true);
-	float GetHeight(bool scaled = true);
-	int GetTextureID();
+	float GetWidth(bool scaled=true) const;
+	float GetHeight(bool scaled=true) const;
+	int GetTextureID() const;
 
 protected:
 	Texture texture;
 	Vector2 pos;
 	Vector2 scale;
-	float rot;	
+	float rot;
 	int interp = GL_NEAREST;
 
-	void Initialize(std::string imgPath, Vector2 _pos, Vector2 _scale, float _rot);
-	void Initialize(int imgID, Vector2 _pos, Vector2 _scale, float _rot);
-	void RenderHelper(Vector2 offset);
+	void Initialize(const std::string& imgPath, const Vector2& _pos, const Vector2& _scale, const float& _rot);
+	void Initialize(const int& imgID, const Vector2& _pos, const Vector2& _scale, const float& _rot);
+	void RenderHelper(const Vector2& offset) const;
 };
 
 #endif

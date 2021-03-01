@@ -5,15 +5,18 @@ Color::Color() {
 	Initialize(0, 0, 0, 1);
 }
 
-Color::Color(float gray, float _a) {
+Color::Color(const float& gray, const float& _a)
+{
 	Initialize(gray, gray, gray, _a);
 }
 
-Color::Color(float _r, float _g, float _b, float _a) {
+Color::Color(const float& _r, const float& _g, const float& _b, const float& _a)
+{
 	Initialize(_r, _g, _b, _a);
 }
 
-void Color::Initialize(float _r, float _g, float _b, float _a) {
+void Color::Initialize(const float& _r, const float& _g, const float& _b, const float& _a)
+{
 	r = _r;
 	g = _g;
 	b = _b;

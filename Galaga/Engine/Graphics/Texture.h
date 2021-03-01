@@ -11,12 +11,12 @@ class Texture {
 
 public:
 	Texture();
-	Texture(int _id);
-	Texture(std::string path);
+	Texture(const int& _id);
+	Texture(const std::string& path);
 
-	int GetID();
-	int GetWidth();
-	int GetHeight();
+	int GetID() const;
+	int GetWidth() const;
+	int GetHeight() const;
 
 private:
 	bool GetTextureParams();

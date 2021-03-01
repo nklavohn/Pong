@@ -1,65 +1,73 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite() {
+Sprite::Sprite()
+{
 	Initialize(-1, Vector2::ZERO, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(std::string imgPath) {
+Sprite::Sprite(const std::string& imgPath)
+{
 	Initialize(imgPath, Vector2::ZERO, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(int imgID) {
+Sprite::Sprite(const int& imgID)
+{
 	Initialize(imgID, Vector2::ZERO, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(std::string imgPath, Vector2 _pos) {
+Sprite::Sprite(const std::string& imgPath, const Vector2& _pos)
+{
 	Initialize(imgPath, _pos, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(int imgID, Vector2 _pos) {
+Sprite::Sprite(const int& imgID, const Vector2& _pos)
+{
 	Initialize(imgID, _pos, Vector2::ONE, 0);
 }
 
-Sprite::Sprite(std::string imgPath, Vector2 _pos, float _scale) {
+Sprite::Sprite(const std::string& imgPath, const Vector2& _pos, const float& _scale)
+{
 	Initialize(imgPath, _pos, Vector2(_scale), 0);
 }
 
-Sprite::Sprite(int imgID, Vector2 _pos, float _scale) {
+Sprite::Sprite(const int& imgID, const Vector2& _pos, const float& _scale)
+{
 	Initialize(imgID, _pos, Vector2(_scale), 0);
 }
 
-void Sprite::Initialize(std::string imgPath, Vector2 _pos, Vector2 _scale, float _rot) {
+void Sprite::Initialize(const std::string& imgPath, const Vector2& _pos, const Vector2& _scale, const float& _rot)
+{
 	texture = Texture(imgPath);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
 	rot = _rot;
 }
 
-void Sprite::Initialize(int imgID, Vector2 _pos, Vector2 _scale, float _rot) {
+void Sprite::Initialize(const int& imgID, const Vector2& _pos, const Vector2& _scale, const float& _rot)
+{
 	texture = Texture(imgID);
 	pos = _pos.GetCopy();
 	scale = _scale.GetCopy();
 	rot = _rot;
 }
 
-Sprite::~Sprite() {
+Sprite::~Sprite()
+{
 
 }
 
-void Sprite::Update() {
-
-}
-
-void Sprite::Render() {
+void Sprite::Render() const
+{
 	RenderHelper(pos);
 }
 
-void Sprite::RenderRelativeTo(Vector2 _Pos) {
+void Sprite::RenderRelativeTo(Vector2 _Pos) const
+{
 	RenderHelper(pos + _Pos);
 }
 
-void Sprite::RenderHelper(Vector2 offset)
+void Sprite::RenderHelper(const Vector2& offset) const
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first
@@ -109,53 +117,64 @@ void Sprite::RenderHelper(Vector2 offset)
 	glDisable(GL_TEXTURE_2D);
 }
 
-void Sprite::SetPos(float x, float y) {
+void Sprite::SetPos(const float& x, const float& y)
+{
 	pos.x = x;
 	pos.y = y;
 }
 
-void Sprite::SetPos(Vector2 v) {
+void Sprite::SetPos(const Vector2& v)
+{
 	pos.x = v.x;
 	pos.y = v.y;
 }
 
-void Sprite::SetRot(float _rot) {
+void Sprite::SetRot(const float& _rot)
+{
 	rot = _rot;
 }
 
-void Sprite::AddRot(float _rot) {
+void Sprite::AddRot(const float& _rot)
+{
 	rot += _rot;
 }
 
-void Sprite::SetScale(float xy) {
+void Sprite::SetScale(const float& xy)
+{
 	scale.x = xy;
 	scale.y = xy;
 }
 
-void Sprite::SetScale(float x, float y) {
+void Sprite::SetScale(const float& x, const float& y)
+{
 	scale.x = x;
 	scale.y = y;
 }
 
-void Sprite::SetScale(Vector2 v) {
+void Sprite::SetScale(const Vector2& v)
+{
 	pos.x = v.x;
 	pos.y = v.y;
 }
 
-void Sprite::SetInterpolationFunction(int _interp) {
+void Sprite::SetInterpolationFunction(const int& _interp)
+{
 	interp = _interp;
 }
 
-float Sprite::GetHeight(bool scaled) {
+float Sprite::GetHeight(bool scaled) const
+{
 	if (scaled) return texture.GetHeight() * scale.y;
 	return texture.GetHeight();
 }
 
-float Sprite::GetWidth(bool scaled) {
+float Sprite::GetWidth(bool scaled) const
+{
 	if (scaled) return texture.GetWidth() * scale.x;
 	return texture.GetWidth();
 }
 
-int Sprite::GetTextureID() {
+int Sprite::GetTextureID() const 
+{
 	return texture.GetID();
 }

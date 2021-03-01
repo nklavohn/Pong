@@ -5,53 +5,53 @@ SpriteSheet::SpriteSheet() : Sprite()
 	Initialize(IVector2::ONE);
 }
 
-SpriteSheet::SpriteSheet(std::string imgPath, IVector2 _dim) : Sprite(imgPath)
+SpriteSheet::SpriteSheet(const std::string& imgPath, const IVector2& _dim) : Sprite(imgPath)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos) : Sprite(imgPath, _pos)
+SpriteSheet::SpriteSheet(const std::string& imgPath, const IVector2& _dim, const Vector2& _pos) : Sprite(imgPath, _pos)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos, float _scale) : Sprite(imgPath, _pos, _scale)
+SpriteSheet::SpriteSheet(const std::string& imgPath, const IVector2& _dim, const Vector2& _pos, const float& _scale) : Sprite(imgPath, _pos, _scale)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(int imgID, IVector2 _dim) : Sprite(imgID)
+SpriteSheet::SpriteSheet(const int& imgID, const IVector2& _dim) : Sprite(imgID)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos) : Sprite(imgID, _pos)
+SpriteSheet::SpriteSheet(const int& imgID, const IVector2& _dim, const Vector2& _pos) : Sprite(imgID, _pos)
 {
 	Initialize(_dim);
 }
 
-SpriteSheet::SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos, float _scale) : Sprite(imgID, _pos, _scale)
+SpriteSheet::SpriteSheet(const int& imgID, const IVector2& _dim, const Vector2& _pos, const float& _scale) : Sprite(imgID, _pos, _scale)
 {
 	Initialize(_dim);
 }
 
-void SpriteSheet::Initialize(IVector2 _dim)
+void SpriteSheet::Initialize(const IVector2& _dim)
 {
 	dimPxl = _dim;
 	dimPercent = Vector2((float)dimPxl.x / texture.GetWidth(), (float)dimPxl.y / texture.GetHeight());
 }
 
-void SpriteSheet::RenderSprite(IVector2 sheetCoord)
+void SpriteSheet::RenderSprite(const IVector2& sheetCoord)
 {
 	RenderSpriteHelper(sheetCoord, pos);
 }
 
-void SpriteSheet::RenderSpriteRelativeTo(Vector2 _pos, IVector2 sheetCoord)
+void SpriteSheet::RenderSpriteRelativeTo(const Vector2& _pos, const IVector2& sheetCoord)
 {
 	RenderSpriteHelper(sheetCoord, pos + _pos);
 }
 
-void SpriteSheet::RenderSpriteHelper(IVector2 sheetCoord, Vector2 offset)
+void SpriteSheet::RenderSpriteHelper(const IVector2& sheetCoord, const Vector2& offset)
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first

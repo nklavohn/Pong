@@ -37,10 +37,15 @@ void Spaceship::Move()
 
 void Spaceship::Shoot()
 {
+	shotCooldown -= Engine::GetDeltaTime();
 
+	if (Mouse::IsButtonJustPressed(Mouse::LEFT) && shotCooldown <= 0)
+	{
+	
+	}
 }
 
-void Spaceship::Render()
+void Spaceship::Render() const
 {
 	if (dir.x == 0) sprite.RenderSpriteRelativeTo(pos, STRAIGHT);
 	else if (dir.x < 0) sprite.RenderSpriteRelativeTo(pos, LEFT);

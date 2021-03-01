@@ -9,14 +9,14 @@ class SpriteSheet : public Sprite
 {
 public:
 	SpriteSheet();
-	SpriteSheet(std::string imgPath, IVector2 _dim);
-	SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos);
-	SpriteSheet(std::string imgPath, IVector2 _dim, Vector2 _pos, float _scale);
-	SpriteSheet(int imgID, IVector2 _dim);
-	SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos);
-	void RenderSprite(IVector2 sheetCoord);
-	void RenderSpriteRelativeTo(Vector2 _pos, IVector2 sheetCoord);
-	SpriteSheet(int imgID, IVector2 _dim, Vector2 _pos, float _scale);
+	SpriteSheet(const std::string& imgPath, const IVector2& _dim);
+	SpriteSheet(const std::string& imgPath, const IVector2& _dim, const Vector2& _pos);
+	SpriteSheet(const std::string& imgPath, const IVector2& _dim, const Vector2& _pos, const float& _scale);
+	SpriteSheet(const int& imgID, const IVector2& _dim);
+	SpriteSheet(const int& imgID, const IVector2& _dim, const Vector2& _pos);
+	void RenderSprite(const IVector2& sheetCoord);
+	void RenderSpriteRelativeTo(const Vector2& _pos, const IVector2& sheetCoord);
+	SpriteSheet(const int& imgID, const IVector2& _dim, const Vector2& _pos, const float& _scale);
 
 
 
@@ -24,8 +24,8 @@ private:
 	IVector2 dimPxl;
 	Vector2 dimPercent;
 
-	void Initialize(IVector2 _dim);
-	void RenderSpriteHelper(IVector2 sheetCoord, Vector2 offset);
+	void Initialize(const IVector2& _dim);
+	void RenderSpriteHelper(const IVector2& sheetCoord, const Vector2& offset);
 };
 
 #endif

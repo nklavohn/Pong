@@ -5,8 +5,8 @@ class Color {
 
 public:
 	Color();
-	Color(float gray, float _a);
-	Color(float _r, float _g, float _b, float _a);
+	Color(const float& gray, const float& _a);
+	Color(const float& _r, const float& _g, const float& _b, const float& _a);
 	~Color();
 
 	static Color Average(const Color& a, const Color& b, bool includeAlpha = false);
@@ -35,7 +35,7 @@ public:
 	static const Color DARK_GRAY;
 
 private:
-	void Initialize(float _r, float _g, float _b, float _a);
+	void Initialize(const float& _r, const float& _g, const float& _b, const float& _a);
 };
 
 

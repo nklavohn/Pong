@@ -5,6 +5,7 @@
 
 #include <algorithm>
 constexpr float CIRCLE_GRANULARITY = 4;
+constexpr float CIRCLE_MIN_SIDES = 8;
 
 void ShapeRenderer::Start(const Color& c, float lineWidth)
 {
@@ -279,7 +280,7 @@ void ShapeRenderer::DrawCircle(const Color& fill, const Color& stroke, const Vec
 void ShapeRenderer::CircleHelper(const Vector2& center, float r, float sides)
 {
 	if (sides < 0)
-		sides = std::max((3.14159F * 2 * r) / CIRCLE_GRANULARITY, 8.0F);
+		sides = std::max((3.14159F * 2 * r) / CIRCLE_GRANULARITY, CIRCLE_MIN_SIDES);
 
 	float degs = 360 / sides;
 

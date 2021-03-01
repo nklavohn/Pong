@@ -1,39 +1,45 @@
 #include "Screen.h"
 #include "Engine/Engine.h"
 
-Screen::Screen() {
-	width = 0;
-	height = 0;
+Screen::Screen()
+{
+	dim = IVector2::ZERO;
 	color = Color::BLACK;
 }
 
-Screen::Screen(int w, int h) {
-	width = w;
-	height = h;
+Screen::Screen(const IVector2& _dim)
+{
+	dim = _dim;
 	color = Color(0.8, 0.8, 1, 1);
 }
 
-Screen::~Screen() {
+Screen::~Screen()
+{
 
 }
 
-void Screen::SetWidth(int w) {
-	width = w;
+void Screen::SetDim(const IVector2& _dim)
+{
+	dim = _dim;
 }
 
-void Screen::SetHeight(int h) {
-	height = h;
+int Screen::GetWidth() const 
+{
+	return dim.x;
 }
 
-int Screen::GetWidth() {
-	return width;
+int Screen::GetHeight() const 
+{
+	return dim.y;
 }
 
-int Screen::GetHeight() {
-	return height;
+IVector2 Screen::GetDim() const
+{
+	return dim;
 }
 
-void Screen::BeginRender() {
+void Screen::BeginRender() const 
+{
 	// clear background with a color
 	glClearColor(color.r, color.g, color.b, color.a);
 
@@ -41,6 +47,7 @@ void Screen::BeginRender() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Screen::EndRender() {
+void Screen::EndRender() const 
+{
 	glfwSwapBuffers(Engine::window);
 }

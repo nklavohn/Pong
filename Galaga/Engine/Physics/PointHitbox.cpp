@@ -5,6 +5,8 @@
 #include "RectHitbox.h"
 #include "CollisionDetectorHelper.h"
 
+constexpr float ERROR_THRESHOLD = 0.000001;
+
 PointHitbox::PointHitbox()
 {
 	center = Vector2::ZERO;
@@ -58,7 +60,7 @@ bool PointHitbox::DoesLineIntersect(const Vector4& line) const
 {
 	Vector4 line1 = Vector4(line.p1(), center);
 	Vector4 line2 = Vector4(center, line.p2());
-	return (line1.Len() + line2.Len()) == line.Len();
+	return abs(line1.Len() + line2.Len() - line.Len()) <= ERROR_THRESHOLD;
 }
 
 bool PointHitbox::IsCollidingWith(CollisionDetector* cDetector) const

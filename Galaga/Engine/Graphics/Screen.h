@@ -3,31 +3,31 @@
 
 #include "GLFW/glfw3.h"
 #include "Color.h"
+#include "Engine/Math/IVector2.h"
 
 class Screen {
 
 public:
 	virtual void Update() = 0;
-	virtual void Render() = 0;
-	virtual Screen* Clone() = 0;
+	virtual void Render() const = 0;
+	virtual Screen* Clone() const = 0;
 
-	int GetWidth();
-	int GetHeight();
-	void SetWidth(int w);
-	void SetHeight(int h);
+	int GetWidth() const;
+	int GetHeight() const;
+	IVector2 GetDim() const;
+	void SetDim(const IVector2& _dim);
 
 	Screen();
-	Screen(int w, int h);
+	Screen(const IVector2& _dim);
 	virtual ~Screen();
 
 protected:
-	int width;
-	int height;
+	IVector2 dim;
 
 	Color color;
 
-	void BeginRender();
-	void EndRender();
+	void BeginRender() const;
+	void EndRender() const;
 };
 
 #endif
