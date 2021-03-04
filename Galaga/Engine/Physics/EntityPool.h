@@ -2,6 +2,8 @@
 #define ENGINE_ENTITYPOOL
 #include <vector>
 #include "Entity.h"
+#include <set>
+#include <queue>
 
 class EntityPool
 {
@@ -13,6 +15,9 @@ public:
 
 	void Render() const;
 	void Update();
+
+private:
+	
 };
 
 #endif

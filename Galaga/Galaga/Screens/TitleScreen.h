@@ -8,10 +8,10 @@ class TitleScreen: public Screen {
 
 public:
 	void Update() override;
-	void Render() override;
-	Screen* Clone() override;
+	void Render() const override;
+	Screen* Clone() const override;
 
-	TitleScreen(int w, int h);
+	TitleScreen(const IVector2& _dim);
 	~TitleScreen();
 
 private:

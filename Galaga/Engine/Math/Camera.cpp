@@ -125,3 +125,8 @@ Vector4 Camera::ToWorldCoords(const Vector4& v_displayCoord, int unitConversion)
 		return v_displayCoord;
 	}
 }
+
+Vector4 Camera::GetVisibleBounds()
+{
+	return Vector4(pos - dim / 2, pos + dim / 2);
+}

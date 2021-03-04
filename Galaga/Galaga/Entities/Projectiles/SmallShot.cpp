@@ -26,7 +26,7 @@ void SmallShot::Render() const
 
 }
 
-void SmallShot::Debug() const
+void SmallShot::DebugPhysics() const
 {
 
 }

@@ -3,19 +3,22 @@
 #include "Engine/Engine.h"
 #include "Engine/IO/Keyboard.h"
 
-TitleScreen::TitleScreen(int w, int h) : Screen(w, h) {
+TitleScreen::TitleScreen(const IVector2& _dim) : Screen(_dim) 
+{
 	color = Color(0.114, 0.114, 0.227, 1);
 }
 
-TitleScreen::~TitleScreen() {
+TitleScreen::~TitleScreen() 
+{
 
 }
 
-void TitleScreen::Update() {
+void TitleScreen::Update() 
+{
 	if (Keyboard::IsKeyPressed(Keyboard::SPACE))
 	{
 		Screen* screen = nullptr;
-		GameScreen s = GameScreen(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT);
+		GameScreen s = GameScreen(IVector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT));
 		screen = s.Clone();
 		Engine::SetScreen(*screen);
 	}
@@ -25,12 +28,14 @@ void TitleScreen::Update() {
 	}
 }
 
-void TitleScreen::Render() {
+void TitleScreen::Render() const
+{
 	BeginRender();
 	title.RenderRelativeTo(Vector2((float)Engine::SCREEN_WIDTH / Engine::SCALE / 2, (float)Engine::SCREEN_HEIGHT / Engine::SCALE / 2));
 	EndRender();
 }
 
-Screen* TitleScreen::Clone() {
+Screen* TitleScreen::Clone() const
+{
 	return new TitleScreen(*this);
 }

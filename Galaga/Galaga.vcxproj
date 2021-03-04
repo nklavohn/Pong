@@ -161,11 +161,13 @@
     <ClCompile Include="Engine\Physics\CollisionDetector.cpp" />
     <ClCompile Include="Engine\Physics\CollisionDetectorHelper.cpp" />
     <ClCompile Include="Engine\Physics\Entity.cpp" />
+    <ClCompile Include="Engine\Physics\EntityPool.cpp" />
     <ClCompile Include="Engine\Physics\RectHitbox.cpp" />
     <ClCompile Include="Engine\Physics\CircHitbox.cpp" />
     <ClCompile Include="Engine\Physics\PointHitbox.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
+    <ClCompile Include="Galaga\Entities\Needler.cpp" />
     <ClCompile Include="Galaga\Entities\Projectiles\SmallShot.cpp" />
     <ClCompile Include="Galaga\Screens\GameScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TestScreen.cpp" />
@@ -194,9 +196,11 @@
     <ClInclude Include="Engine\Physics\CollisionDetector.h" />
     <ClInclude Include="Engine\Physics\CollisionDetectorHelper.h" />
     <ClInclude Include="Engine\Physics\Entity.h" />
+    <ClInclude Include="Engine\Physics\EntityPool.h" />
     <ClInclude Include="Engine\Physics\RectHitbox.h" />
     <ClInclude Include="Engine\Physics\CircHitbox.h" />
     <ClInclude Include="Engine\Physics\PointHitbox.h" />
+    <ClInclude Include="Galaga\Entities\Needler.h" />
     <ClInclude Include="Galaga\Entities\Projectiles\SmallShot.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />

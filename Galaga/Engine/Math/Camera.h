@@ -21,6 +21,8 @@ public:
 	static Vector4 ToDisplayCoords(const Vector4& v_worldCoord, int unitConversion);
 	static Vector4 ToWorldCoords(const Vector4& v_displayCoord, int unitConversion);
 
+	static Vector4 GetVisibleBounds();
+
 	static const int F_PIXEL_TO_PIXELS = 0;
 	static const int F_PIXEL_TO_METERS = 1;
 	static const int F_METER_TO_PIXELS = 2;

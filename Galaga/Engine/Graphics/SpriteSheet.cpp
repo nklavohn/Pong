@@ -41,17 +41,17 @@ void SpriteSheet::Initialize(const IVector2& _dim)
 	dimPercent = Vector2((float)dimPxl.x / texture.GetWidth(), (float)dimPxl.y / texture.GetHeight());
 }
 
-void SpriteSheet::RenderSprite(const IVector2& sheetCoord)
+void SpriteSheet::Render(const IVector2& sheetCoord) const
 {
-	RenderSpriteHelper(sheetCoord, pos);
+	RenderHelper(sheetCoord, pos);
 }
 
-void SpriteSheet::RenderSpriteRelativeTo(const Vector2& _pos, const IVector2& sheetCoord)
+void SpriteSheet::RenderRelativeTo(const Vector2& _pos, const IVector2& sheetCoord) const
 {
-	RenderSpriteHelper(sheetCoord, pos + _pos);
+	RenderHelper(sheetCoord, pos + _pos);
 }
 
-void SpriteSheet::RenderSpriteHelper(const IVector2& sheetCoord, const Vector2& offset)
+void SpriteSheet::RenderHelper(const IVector2& sheetCoord, const Vector2& offset) const
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first

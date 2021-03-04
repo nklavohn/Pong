@@ -132,12 +132,32 @@ Vector2 Vector2::DoLinesIntersect(const Vector2& v1, const Vector2& v2, const Ve
 	return DoLinesIntersect(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, v4.x, v4.y, status);
 }
 
-void Vector2::Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax)
+// none:-1, top-0, right-1, bottom-2, left-3
+int Vector2::Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax)
 {
-	if (v->x < xMin) v->x = xMin;
-	else if (v->x > xMax) v->x = xMax;
-	if (v->y < yMin) v->y = yMin;
-	else if (v->y > yMax) v->y = yMax;
+	int boundaryCode = -1;
+	if (v->x < xMin)
+	{
+		v->x = xMin;
+		boundaryCode = 3;
+	}
+	else if (v->x > xMax)
+	{
+		v->x = xMax;
+		boundaryCode = 1;
+	}
+	if (v->y < yMin)
+	{
+		v->y = yMin;
+		boundaryCode = 2;
+	}
+	else if (v->y > yMax)
+	{
+		v->y = yMax;
+		boundaryCode = 0;
+	}
+
+	return boundaryCode;
 }
 
 // -------- INSTANCE METHODS -------------

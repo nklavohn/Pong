@@ -2,18 +2,21 @@
 #include "Engine/IO/Mouse.h"
 #include "Engine/Graphics/ShapeRenderer.h"
 
-TestScreen::TestScreen(int w, int h) : Screen(w, h) {
+TestScreen::TestScreen(const IVector2& _dim) : Screen(_dim) 
+{
 	color = Color::LIGHT_GRAY;
 
 	std::cout << box1.GetBox().ToString() << std::endl;
 	std::cout << box2.GetBox().ToString() << std::endl;
 }
 
-TestScreen::~TestScreen() {
+TestScreen::~TestScreen() 
+{
 
 }
 
-void TestScreen::Update() {
+void TestScreen::Update() 
+{
 	std::cout << "-----------------" << std::endl;
 	point1.SetCenter(Mouse::GetWorldPos());
 
@@ -23,7 +26,8 @@ void TestScreen::Update() {
 		std::cout << "Colliding!" << std::endl;
 }
 
-void TestScreen::Render() {
+void TestScreen::Render() const
+{
 	BeginRender();
 	
 	box1.Render(Color::BLUE);
@@ -37,6 +41,7 @@ void TestScreen::Render() {
 	EndRender();
 }
 
-Screen* TestScreen::Clone() {
+Screen* TestScreen::Clone() const
+{
 	return new TestScreen(*this);
 }

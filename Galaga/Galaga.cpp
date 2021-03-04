@@ -43,19 +43,20 @@ int main() {
 
 void SetStartScreen(int mode) {
 	Screen* screen = nullptr;
+	IVector2 dim = IVector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT);
 	switch (mode) {
 	case (0): {
-		GameScreen s = GameScreen(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT);
+		GameScreen s = GameScreen(dim);
 		screen = s.Clone();
 		break;
 	}
 	case (1): {
-		TitleScreen s = TitleScreen(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT);
+		TitleScreen s = TitleScreen(dim);
 		screen = s.Clone();
 		break;
 	}
 	default: {
-		TestScreen s = TestScreen(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT);
+		TestScreen s = TestScreen(dim);
 		screen = s.Clone();
 		break;
 	}

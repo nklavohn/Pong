@@ -13,25 +13,30 @@ public:
 	bool IsCollidingWith(Entity* _cDetector) const;
 	
 	bool NeedsToBeRemoved() const;
-	bool FlagForRemoval(const bool& flag = true);
+	void FlagForRemoval(const bool& flag = true);
 
 	Entity();
-	Entity(Vector2 _pos);
+	Entity(const Vector2& _pos, const SpriteSheet& _spriteSheet);
 	~Entity();
 
 	virtual void Move() = 0;
 	virtual void Render() const = 0;
 	virtual void DebugPhysics() const = 0;
-
+	
 protected:
+	static int GetNextID();
+
 	//Organization
 	bool isFlaggedForRemoval = false;
 	int id;
 
 	//Physics
+	Vector2 prevPos;
 	Vector2 pos;
 	Vector2 vel;
 	Vector2 accel;
+	float speed;
+	float maxSpeed;
 	CollisionDetector* cDetector;
 	
 	//Graphics
@@ -44,8 +49,11 @@ protected:
 	void SetVel(const Vector2& _vel);
 	void SetAccel(const Vector2& _accel);
 	CollisionDetector* GetCollisionDetector();
-
 	void DebugPhysicsDefault() const;
+
+private:
+	static int NEXT_ID;
+	void Initialize();
 };
 
 #endif

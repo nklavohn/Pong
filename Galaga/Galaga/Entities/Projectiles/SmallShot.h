@@ -13,7 +13,7 @@ public:
 
 	void Move() override;
 	void Render() const override;
-	void Debug() const override;
+	void DebugPhysics() const override;
 
 private:
 	

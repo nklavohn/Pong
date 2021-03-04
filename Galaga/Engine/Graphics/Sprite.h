@@ -21,7 +21,7 @@ public:
 	~Sprite();
 
 	void Render() const;
-	void RenderRelativeTo(Vector2 _pos) const;
+	void RenderRelativeTo(const Vector2& _pos) const;
 
 	void SetPos(const float& x, const float& y);
 	void SetPos(const Vector2& v);

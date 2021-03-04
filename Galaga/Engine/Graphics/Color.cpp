@@ -1,7 +1,8 @@
 #include "Color.h"
 #include <algorithm>
 
-Color::Color() {
+Color::Color()
+{
 	Initialize(0, 0, 0, 1);
 }
 
@@ -23,7 +24,8 @@ void Color::Initialize(const float& _r, const float& _g, const float& _b, const 
 	a = _a;
 }
 
-Color::~Color() {
+Color::~Color()
+{
 
 }
 
@@ -85,6 +87,6 @@ const Color Color::CYAN = Color(0, 1, 1, 1);
 const Color Color::BLUE = Color(0, 0, 1, 1);
 const Color Color::MAGENTA = Color(1, 0, 1, 1);
 const Color Color::WHITE = Color(1, 1);
-const Color Color::BLACK = Color(0, 1);
 const Color Color::LIGHT_GRAY = Color(0.85, 1);
 const Color Color::DARK_GRAY = Color(0.25, 1);
+const Color Color::BLACK = Color(0, 1);

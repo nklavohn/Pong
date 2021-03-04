@@ -21,13 +21,8 @@ public:
 	void DebugPhysics() const override;
 
 private:
-	Vector2 pos = Vector2(30, 30);
 	Vector2 posMins = Vector2(15, 15);
 	Vector2 posMaxs = Vector2(15, 15);
-
-	float speed = 100;
-
-	SpriteSheet sprite = SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31));
 
 	int numOfLives = 3;
 

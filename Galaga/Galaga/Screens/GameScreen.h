@@ -3,20 +3,26 @@
 
 #include "Engine/Graphics/Screen.h"
 #include "Galaga/Entities/Spaceship.h"
+#include "Galaga/Entities/Needler.h"
+#include "Engine/Physics/EntityPool.h"
 
 class GameScreen: public Screen {
 
 public:
 	void Update() override;
-	void Render() override;
-	Screen* Clone() override;
+	void Render() const override;
+	Screen* Clone() const override;
 
-	GameScreen(int w, int h);
+	GameScreen(const IVector2& _dim);
 	~GameScreen();
 
 private:
-	Spaceship ship;
-
+	EntityPool enemies;
+	EntityPool enemyProjectiles;
+	EntityPool playProjectiles;
+	EntityPool particles;
+	Spaceship ship = Spaceship();
+	Needler needler = Needler(Vector2(0, 0));
 };
 
 #endif

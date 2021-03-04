@@ -15,10 +15,10 @@ class TestScreen : public Screen
 
 public:
 	void Update() override;
-	void Render() override;
-	Screen* Clone() override;
+	void Render() const override;
+	Screen* Clone() const override;
 
-	TestScreen(int w, int h);
+	TestScreen(const IVector2& _dim);
 	~TestScreen();
 
 private:

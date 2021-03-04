@@ -62,7 +62,7 @@ void Sprite::Render() const
 	RenderHelper(pos);
 }
 
-void Sprite::RenderRelativeTo(Vector2 _Pos) const
+void Sprite::RenderRelativeTo(const Vector2& _Pos) const
 {
 	RenderHelper(pos + _Pos);
 }

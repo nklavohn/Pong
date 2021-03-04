@@ -3,9 +3,9 @@
 #include "Engine/Engine.h"
 #include "Engine/IO/Mouse.h"
 
-Spaceship::Spaceship()
+Spaceship::Spaceship() : Entity(Vector2(30, 30), SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
 {
-	
+	speed = 100;
 }
 
 Spaceship::~Spaceship()
@@ -47,9 +47,9 @@ void Spaceship::Shoot()
 
 void Spaceship::Render() const
 {
-	if (dir.x == 0) sprite.RenderSpriteRelativeTo(pos, STRAIGHT);
-	else if (dir.x < 0) sprite.RenderSpriteRelativeTo(pos, LEFT);
-	else sprite.RenderSpriteRelativeTo(pos, RIGHT);
+	if (dir.x == 0) spriteSheet.RenderRelativeTo(pos, STRAIGHT);
+	else if (dir.x < 0) spriteSheet.RenderRelativeTo(pos, LEFT);
+	else spriteSheet.RenderRelativeTo(pos, RIGHT);
 }
 
 bool Spaceship::IsHit()
@@ -60,4 +60,9 @@ bool Spaceship::IsHit()
 void Spaceship::Respawn()
 {
 
+}
+
+void Spaceship::DebugPhysics() const
+{
+	DebugPhysicsDefault();
 }

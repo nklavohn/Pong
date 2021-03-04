@@ -25,7 +25,7 @@ public:
 	static float Dist2Between(const Vector2& v1, const Vector2& v2);
 	static Vector2 DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status);
 	static Vector2 DoLinesIntersect(const Vector2& v1, const Vector2& v2, const Vector2& v3, const Vector2& v4, int* status);
-	static void Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax);
+	static int Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax);
 
 	//static float AngleBetween(Vector v1, Vector v2);
 	//static float AngleBetweenRad(Vector v1, Vector v2);
