@@ -12,10 +12,10 @@ void SetStartScreen(int mode);
 
 int main() {
 	Engine engine;
-	engine.SetScale(4);
+	engine.SetScale(3);
 	engine.Initialize("Galaga");
 
-	int mode = 0;
+	int mode = -1;
 	SetStartScreen(mode);
 
 	double TARGET_FPS = 60;

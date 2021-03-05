@@ -294,10 +294,10 @@ void ShapeRenderer::CircleHelper(const Vector2& center, float r, float sides)
 
 Vector2 ShapeRenderer::ConvertCoords(const Vector2& v)
 {
-	return Camera::ToDisplayCoords(v, Camera::F_METER_TO_PIXELS);
+	return Camera::ToDisplayCoords(v, Camera::F_METERS_TO_PIXELS);
 }
 
 Vector4 ShapeRenderer::ConvertCoords(const Vector4& v)
 {
-	return Camera::ToDisplayCoords(v, Camera::F_METER_TO_PIXELS);
+	return Camera::ToDisplayCoords(v, Camera::F_METERS_TO_PIXELS);
 }

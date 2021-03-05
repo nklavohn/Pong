@@ -37,6 +37,8 @@ protected:
 	Vector2 accel;
 	float speed;
 	float maxSpeed;
+	float rot;
+	float rotSpeed;
 	CollisionDetector* cDetector;
 	
 	//Graphics

@@ -4,6 +4,7 @@
 #include "GLFW/glfw3.h"
 #include "Texture.h"
 #include "Engine/Math/Vector2.h"
+#include "Engine/Math/Camera.h"
 
 #include <iostream>
 #include <string>
@@ -22,6 +23,7 @@ public:
 
 	void Render() const;
 	void RenderRelativeTo(const Vector2& _pos) const;
+	void RenderRelativeTo(const Vector2& _pos, const float& _rot) const;
 
 	void SetPos(const float& x, const float& y);
 	void SetPos(const Vector2& v);
@@ -30,6 +32,7 @@ public:
 	void SetScale(const float& xy);
 	void SetScale(const float& x, const float& y);
 	void SetScale(const Vector2& v);
+	void SetRotCenter(const Vector2& _rotCenter);
 
 	void SetInterpolationFunction(const int& _interp);
 
@@ -41,12 +44,14 @@ protected:
 	Texture texture;
 	Vector2 pos;
 	Vector2 scale;
+	Vector2 rotCenter;
+	Vector2 rotCenterAdj;
 	float rot;
 	int interp = GL_NEAREST;
 
 	void Initialize(const std::string& imgPath, const Vector2& _pos, const Vector2& _scale, const float& _rot);
 	void Initialize(const int& imgID, const Vector2& _pos, const Vector2& _scale, const float& _rot);
-	void RenderHelper(const Vector2& offset) const;
+	void RenderHelper(const Vector2& posOffset, const float& rotOffset) const;	
 };
 
 #endif

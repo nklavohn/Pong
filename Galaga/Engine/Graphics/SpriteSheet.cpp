@@ -39,19 +39,26 @@ void SpriteSheet::Initialize(const IVector2& _dim)
 {
 	dimPxl = _dim;
 	dimPercent = Vector2((float)dimPxl.x / texture.GetWidth(), (float)dimPxl.y / texture.GetHeight());
+	rotCenter = dimPxl.ToVector() / 2;
+	rotCenterAdj = rotCenter * scale;
 }
 
 void SpriteSheet::Render(const IVector2& sheetCoord) const
 {
-	RenderHelper(sheetCoord, pos);
+	RenderHelper(sheetCoord, pos, rot);
 }
 
 void SpriteSheet::RenderRelativeTo(const Vector2& _pos, const IVector2& sheetCoord) const
 {
-	RenderHelper(sheetCoord, pos + _pos);
+	RenderHelper(sheetCoord, pos + _pos, rot);
 }
 
-void SpriteSheet::RenderHelper(const IVector2& sheetCoord, const Vector2& offset) const
+void SpriteSheet::RenderRelativeTo(const Vector2& _pos, const float& _rot, const IVector2& sheetCoord) const
+{
+	RenderHelper(sheetCoord, pos + _pos, rot + _rot);
+}
+
+void SpriteSheet::RenderHelper(const IVector2& sheetCoord, const Vector2& posOffset, const float& rotOffset) const
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first
@@ -69,12 +76,14 @@ void SpriteSheet::RenderHelper(const IVector2& sheetCoord, const Vector2& offset
 	glLoadIdentity();
 
 	// first execute locations
-	Vector2 center = Vector2((float)(dimPxl.x) / 2 * scale.x, (float)(dimPxl.y) / 2 * scale.y);
-	glTranslatef(offset.x - center.x, offset.y - center.y, 0);
+	Vector2 renderPos = Camera::ToDisplayCoords(posOffset, Camera::F_METERS_TO_PIXELS);
+	glTranslatef(renderPos.x, renderPos.y, 0);
 
 	// then execute rotations
 	// rotates around the z axis (perpendicular to screen) only, because it is a 2D game
-	glRotatef(rot, 0, 0, 1);
+	glRotatef(rotOffset, 0, 0, 1);
+
+	glTranslatef(-rotCenterAdj.x, -rotCenterAdj.y, 0);
 
 	// then execute scales
 	glScalef(scale.x, scale.y, 1);

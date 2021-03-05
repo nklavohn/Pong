@@ -6,6 +6,10 @@
 Spaceship::Spaceship() : Entity(Vector2(30, 30), SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
 {
 	speed = 100;
+	rotSpeed = 250;
+	currentSprite = IVector2(1, 0);
+	vel = Vector2::JHAT;
+	spriteSheet.SetRotCenter(Vector2(12, 7));
 }
 
 Spaceship::~Spaceship()
@@ -15,24 +19,35 @@ Spaceship::~Spaceship()
 
 void Spaceship::Move()
 {
-	dir = Vector2::ZERO;
-
-	if (Keyboard::IsKeyPressed(Keyboard::W)) dir += Vector2::JHAT;
-	if (Keyboard::IsKeyPressed(Keyboard::A)) dir -= Vector2::IHAT;
-	if (Keyboard::IsKeyPressed(Keyboard::S)) dir -= Vector2::JHAT;
-	if (Keyboard::IsKeyPressed(Keyboard::D)) dir += Vector2::IHAT;
-
-	if (dir != Vector2::ZERO)
+	
+	if (Keyboard::IsKeyPressed(Keyboard::W))
 	{
-		dir = dir.Unitize();
-		pos += dir * speed * Engine::GetDeltaTime();
+		pos += vel * Engine::GetDeltaTime() * speed;
 	}
+	if (Keyboard::IsKeyPressed(Keyboard::A))
+	{
+		float deltaRot = rotSpeed * Engine::GetDeltaTime();
+		rot += deltaRot;
+		vel.Rotate(deltaRot);
+	}
+	if (Keyboard::IsKeyPressed(Keyboard::S))
+	{
+		pos -= vel * Engine::GetDeltaTime() * speed;
+	}
+	if (Keyboard::IsKeyPressed(Keyboard::D))
+	{
+		float deltaRot = -rotSpeed * Engine::GetDeltaTime();
+		rot += deltaRot;
+		vel.Rotate(deltaRot);
+	}
+	if (Keyboard::IsKeyPressed(Keyboard::E))
+	{
+		
+	}
+	if (Keyboard::IsKeyPressed(Keyboard::Q))
+	{
 
-	Vector2::Constrain(&pos, 
-					  posMins.x, 
-					  Engine::SCREEN_WIDTH / Engine::SCALE - posMaxs.x, 
-					  posMaxs.y, 
-					  Engine::SCREEN_HEIGHT / Engine::SCALE - posMaxs.y);
+	}
 }
 
 void Spaceship::Shoot()
@@ -47,9 +62,7 @@ void Spaceship::Shoot()
 
 void Spaceship::Render() const
 {
-	if (dir.x == 0) spriteSheet.RenderRelativeTo(pos, STRAIGHT);
-	else if (dir.x < 0) spriteSheet.RenderRelativeTo(pos, LEFT);
-	else spriteSheet.RenderRelativeTo(pos, RIGHT);
+	spriteSheet.RenderRelativeTo(pos, rot, currentSprite);
 }
 
 bool Spaceship::IsHit()
@@ -65,4 +78,9 @@ void Spaceship::Respawn()
 void Spaceship::DebugPhysics() const
 {
 	DebugPhysicsDefault();
+}
+
+Vector2 Spaceship::GetPos() const
+{
+	return pos;
 }

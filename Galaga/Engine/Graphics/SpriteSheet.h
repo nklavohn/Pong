@@ -18,13 +18,14 @@ public:
 	
 	void Render(const IVector2& sheetCoord) const;
 	void RenderRelativeTo(const Vector2& _pos, const IVector2& sheetCoord) const;
+	void RenderRelativeTo(const Vector2& _pos, const float& _rot, const IVector2& sheetCoord) const;
 
 private:
 	IVector2 dimPxl;
 	Vector2 dimPercent;
 
 	void Initialize(const IVector2& _dim);
-	void RenderHelper(const IVector2& sheetCoord, const Vector2& offset) const;
+	void RenderHelper(const IVector2& sheetCoord, const Vector2& posOffset, const float& rotOffset) const;
 };
 
 #endif

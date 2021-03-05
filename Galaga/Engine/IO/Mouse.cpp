@@ -60,7 +60,7 @@ Vector2 Mouse::GetScaledDisplayPos()
 
 Vector2 Mouse::GetWorldPos()
 {
-	return Camera::ToWorldCoords(pos / Engine::GetScale(), Camera::F_PIXEL_TO_METERS);
+	return Camera::ToWorldCoords(pos / Engine::GetScale(), Camera::F_PIXELS_TO_METERS);
 }
 
 bool Mouse::IsButtonJustPressed(const int& button)

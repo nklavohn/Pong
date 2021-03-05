@@ -39,17 +39,21 @@ Sprite::Sprite(const int& imgID, const Vector2& _pos, const float& _scale)
 void Sprite::Initialize(const std::string& imgPath, const Vector2& _pos, const Vector2& _scale, const float& _rot)
 {
 	texture = Texture(imgPath);
-	pos = _pos.GetCopy();
-	scale = _scale.GetCopy();
+	pos = _pos;
+	scale = _scale;
 	rot = _rot;
+	rotCenter = Vector2(texture.GetWidth(), texture.GetHeight()) / 2;
+	rotCenterAdj = rotCenter * scale;
 }
 
 void Sprite::Initialize(const int& imgID, const Vector2& _pos, const Vector2& _scale, const float& _rot)
 {
 	texture = Texture(imgID);
-	pos = _pos.GetCopy();
-	scale = _scale.GetCopy();
+	pos = _pos;
+	scale = _scale;
 	rot = _rot;
+	rotCenter = Vector2(texture.GetWidth(), texture.GetHeight()) / 2;
+	rotCenterAdj = rotCenter * scale;
 }
 
 Sprite::~Sprite()
@@ -59,15 +63,20 @@ Sprite::~Sprite()
 
 void Sprite::Render() const
 {
-	RenderHelper(pos);
+	RenderHelper(pos, rot);
 }
 
-void Sprite::RenderRelativeTo(const Vector2& _Pos) const
+void Sprite::RenderRelativeTo(const Vector2& _pos) const
 {
-	RenderHelper(pos + _Pos);
+	RenderHelper(pos + _pos, rot);
 }
 
-void Sprite::RenderHelper(const Vector2& offset) const
+void Sprite::RenderRelativeTo(const Vector2& _pos, const float& _rot) const
+{
+	RenderHelper(pos + _pos, rot + _rot);
+}
+
+void Sprite::RenderHelper(const Vector2& posOffset, const float& rotOffset) const
 {
 	// ------------ Setup -------------
 	// because gl is a state machine, we do not know what state it may be when this code is run, so we need to do a few things first
@@ -85,12 +94,13 @@ void Sprite::RenderHelper(const Vector2& offset) const
 	glLoadIdentity();
 
 	// first execute locations
-	Vector2 center = Vector2((float)(texture.GetWidth()) / 2 * scale.x, (float)(texture.GetHeight()) / 2 * scale.y);
-	glTranslatef(offset.x - center.x, offset.y - center.y, 0);
+	glTranslatef(posOffset.x, posOffset.y, 0);
 
 	// then execute rotations
 	// rotates around the z axis (perpendicular to screen) only, because it is a 2D game
-	glRotatef(rot, 0, 0, 1);
+	glRotatef(rotOffset, 0, 0, 1);
+
+	glTranslatef(-rotCenter.x, -rotCenterAdj.y, 0);
 
 	// then execute scales
 	glScalef(scale.x, scale.y, 1);
@@ -143,18 +153,27 @@ void Sprite::SetScale(const float& xy)
 {
 	scale.x = xy;
 	scale.y = xy;
+	rotCenterAdj = rotCenter * scale;
 }
 
 void Sprite::SetScale(const float& x, const float& y)
 {
 	scale.x = x;
 	scale.y = y;
+	rotCenterAdj = rotCenter * scale;
 }
 
 void Sprite::SetScale(const Vector2& v)
 {
-	pos.x = v.x;
-	pos.y = v.y;
+	scale.x = v.x;
+	scale.y = v.y;
+	rotCenterAdj = rotCenter * scale;
+}
+
+void Sprite::SetRotCenter(const Vector2& _rotCenter)
+{
+	rotCenter = _rotCenter;
+	rotCenterAdj = rotCenter * scale;
 }
 
 void Sprite::SetInterpolationFunction(const int& _interp)
