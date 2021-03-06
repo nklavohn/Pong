@@ -1,6 +1,8 @@
 #include "Camera.h"
 
 #include "Engine/Engine.h"
+#include "Engine/Graphics/ShapeRenderer.h"
+#include "Engine/IO/Mouse.h"
 
 float Camera::pixelsPerMeter = 1;
 Vector2 Camera::dim = Vector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT) / Engine::SCALE / pixelsPerMeter;
@@ -36,7 +38,7 @@ Vector4 Camera::ToMeters(const Vector4& v_pixels)
 	return v_pixels / pixelsPerMeter;
 }
 
-Vector2 Camera::ToDisplayCoords(const Vector2& v_worldCoord, int unitConversion)
+Vector2 Camera::ToDisplayCoords(const Vector2& v_worldCoord, const int& unitConversion)
 {
 	switch (unitConversion)
 	{
@@ -58,7 +60,7 @@ Vector2 Camera::ToDisplayCoords(const Vector2& v_worldCoord, int unitConversion)
 	}
 }
 
-Vector4 Camera::ToDisplayCoords(const Vector4& v_worldCoord, int unitConversion)
+Vector4 Camera::ToDisplayCoords(const Vector4& v_worldCoord, const int& unitConversion)
 {
 	Vector4 pos2 = Vector4(pos, pos);  //copy pos twice into Vector4 to move both points inside input v
 	switch (unitConversion)
@@ -81,7 +83,7 @@ Vector4 Camera::ToDisplayCoords(const Vector4& v_worldCoord, int unitConversion)
 	}
 }
 
-Vector2 Camera::ToWorldCoords(const Vector2& v_displayCoord, int unitConversion)
+Vector2 Camera::ToWorldCoords(const Vector2& v_displayCoord, const int& unitConversion)
 {
 	switch (unitConversion)
 	{
@@ -103,7 +105,7 @@ Vector2 Camera::ToWorldCoords(const Vector2& v_displayCoord, int unitConversion)
 	}
 }
 
-Vector4 Camera::ToWorldCoords(const Vector4& v_displayCoord, int unitConversion)
+Vector4 Camera::ToWorldCoords(const Vector4& v_displayCoord, const int& unitConversion)
 {
 	Vector4 pos2 = Vector4(pos, pos);  //copy pos twice into Vector4 to move both points inside input v
 	switch (unitConversion)
@@ -126,9 +128,15 @@ Vector4 Camera::ToWorldCoords(const Vector4& v_displayCoord, int unitConversion)
 	}
 }
 
-Vector4 Camera::GetVisibleBounds()
+Vector4 Camera::GetVisibleBounds(const int& units)
 {
-	return Vector4(pos - dim / 2, pos + dim / 2);
+	Vector4 bounds(pos*-1, dim - pos);
+	if (units == METERS)
+		return bounds;
+	else if (units == PIXELS)
+		return bounds * pixelsPerMeter;
+	std::cout << "Incompatible unit passed to Camera::GetVisibleBounds(), assuming METERS" << std::endl;
+	return bounds;
 }
 
 void Camera::Ease(const Vector2& _pos, const float& easeDist)
@@ -140,4 +148,45 @@ void Camera::Ease(const Vector2& _pos, const float& easeDist)
 	{
 		pos -= diff * Engine::GetDeltaTime();
 	}
+}
+
+void Camera::RenderGrid(const Color& c, const float& spacing, const int& units)
+{
+	if (units == PIXELS)
+	{
+		RenderGridHelper(c, spacing / pixelsPerMeter);
+	}
+	else if (units == METERS)
+	{
+		RenderGridHelper(c, spacing);
+	}
+	else
+	{
+		std::cout << "Incompatible unit for Camera::RenderGrid()" << std::endl;
+	}
+}
+
+void Camera::RenderGridHelper(const Color& c, const float& spacing)
+{
+	Vector4 bounds = GetVisibleBounds(METERS) / spacing;
+	std::cout << "----------------------" << std::endl;
+	std::cout << pos.ToString() << std::endl;
+	std::cout << bounds.ToString() << std::endl;
+	std::cout << Mouse::GetWorldPos().ToString() << std::endl;
+	for (int f = floorf(bounds.x); f <= ceilf(bounds.z); f++)
+	{
+		float lineWidth = (f % 5 == 0) ? 3 : 1;
+		ShapeRenderer::DrawLine(c, Vector4(f, bounds.y, f, bounds.w) * spacing, lineWidth);
+	}
+	for (int f = floorf(bounds.y); f <= ceilf(bounds.w); f++)
+	{
+		float lineWidth = (f % 5 == 0) ? 3 : 1;
+		ShapeRenderer::DrawLine(c, Vector4(bounds.x, f, bounds.z, f) * spacing, lineWidth);
+	}
+	ShapeRenderer::FillCircle(Color::RED, Vector2(0, 0), 2, 4);
+}
+
+void Camera::SetDim(const Vector2& _dim)
+{
+	dim = _dim / pixelsPerMeter;
 }

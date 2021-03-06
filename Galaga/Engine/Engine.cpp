@@ -2,6 +2,7 @@
 #include "IO/Mouse.h"
 #include "IO/Keyboard.h"
 #include "Engine/Math/Vector2.h"
+#include "Engine/Math/Camera.h"
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
@@ -136,6 +137,7 @@ float Engine::GetScale()
 void Engine::SetScale(float _scale)
 {
 	SCALE = _scale;
+	Camera::SetDim(Vector2(SCREEN_WIDTH, SCREEN_HEIGHT) / SCALE);
 }
 
 void Engine::SetScreen(Screen& _screen)

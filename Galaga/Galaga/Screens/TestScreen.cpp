@@ -5,7 +5,7 @@
 
 TestScreen::TestScreen(const IVector2& _dim) : Screen(_dim) 
 {
-	color = Color::LIGHT_GRAY;
+	color = Color::DARK_GRAY;
 }
 
 TestScreen::~TestScreen() 
@@ -22,6 +22,7 @@ void TestScreen::Update()
 void TestScreen::Render() const
 {
 	BeginRender();
+	Camera::RenderGrid(Color::LIGHT_GRAY, 20);
 	ship.Render();
 	EndRender();
 }
