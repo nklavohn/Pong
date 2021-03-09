@@ -13,14 +13,14 @@ GameScreen::~GameScreen()
 void GameScreen::Update()
 {
 	ship.Move();
-	needler.Move();
+	Camera::Ease(ship.GetPos(), 20);
 }
 
 void GameScreen::Render() const
 {
 	BeginRender();
-	ship.Render();
-	needler.Render();
+	Camera::RenderGrid(Color::DARK_GRAY, 20);
+	//ship.Render();
 
 	ship.DebugPhysics();
 	EndRender();

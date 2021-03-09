@@ -88,5 +88,6 @@ const Color Color::BLUE = Color(0, 0, 1, 1);
 const Color Color::MAGENTA = Color(1, 0, 1, 1);
 const Color Color::WHITE = Color(1, 1);
 const Color Color::LIGHT_GRAY = Color(0.85, 1);
+const Color Color::GRAY = Color(0.5, 1);
 const Color Color::DARK_GRAY = Color(0.25, 1);
 const Color Color::BLACK = Color(0, 1);

@@ -76,6 +76,7 @@ public:
 	Vector2 RotateRad(float radians, bool inplace = true);
 	Vector2 Rotate90(bool clockwise, bool inplace = true);
 	Vector2 ProjOnto(const Vector2& v, bool inplace = true);
+	Vector2 Flip(bool inplace = true);
 
 	// object stuff
 	Vector2 GetCopy() const;

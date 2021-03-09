@@ -22,7 +22,7 @@ void TestScreen::Update()
 void TestScreen::Render() const
 {
 	BeginRender();
-	Camera::RenderGrid(Color::LIGHT_GRAY, 20);
+	Camera::RenderGrid(Color::GRAY, 20);
 	ship.Render();
 
 	ship.DebugPhysics();

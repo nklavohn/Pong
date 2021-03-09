@@ -17,7 +17,7 @@ public:
 	void FlagForRemoval(const bool& flag = true);
 
 	Entity();
-	Entity(const Vector2& _pos, const SpriteSheet& _spriteSheet);
+	Entity(const SpriteSheet& _spriteSheet);
 	~Entity();
 
 	virtual void Move() = 0;
@@ -33,7 +33,6 @@ protected:
 
 	//Physics
 	Vector2 prevPos;
-	Vector2 pos;
 	Vector2 vel;
 	Vector2 accel;
 	float speed;

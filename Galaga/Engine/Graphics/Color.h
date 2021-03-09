@@ -32,6 +32,7 @@ public:
 	static const Color WHITE;
 	static const Color BLACK;
 	static const Color LIGHT_GRAY;
+	static const Color GRAY;
 	static const Color DARK_GRAY;
 
 private:

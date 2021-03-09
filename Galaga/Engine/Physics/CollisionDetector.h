@@ -21,9 +21,9 @@ public:
 
 	virtual void SetCenter(const Vector2& _center) = 0;
 	virtual void AddToCenter(const Vector2& delta) = 0;
+	virtual Vector2 GetCenter() const = 0;
 
 	virtual void Render(const Color& c) const = 0;
-
 };
 
 #endif

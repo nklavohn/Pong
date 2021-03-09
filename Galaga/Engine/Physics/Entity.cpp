@@ -5,14 +5,12 @@ int Entity::NEXT_ID = 0;
 
 Entity::Entity()
 {
-	pos = Vector2::ZERO;
 	spriteSheet = SpriteSheet();
 	Initialize();
 }
 
-Entity::Entity(const Vector2& _pos, const SpriteSheet& _spriteSheet)
+Entity::Entity(const SpriteSheet& _spriteSheet)
 {
-	pos = _pos;
 	spriteSheet = _spriteSheet;
 	Initialize();
 }
@@ -24,9 +22,8 @@ Entity::~Entity()
 
 void Entity::Initialize()
 {
-	prevPos = pos;
-
 	id = Entity::GetNextID();
+	prevPos = Vector2::ZERO;
 	vel = Vector2::ZERO;
 	accel = Vector2::ZERO;
 	cDetector = nullptr;
@@ -54,13 +51,11 @@ CollisionDetector* Entity::GetCollisionDetector()
 void Entity::SetCollisionDetector(CollisionDetector* _cDetector)
 {
 	cDetector = _cDetector;
-	cDetector->Render(Color::WHITE);
-	std::cout << "It does run here" << std::endl;
 }
 
 void Entity::SetPos(const Vector2& _pos)
 {
-	pos = _pos;
+	cDetector->SetCenter(_pos);
 }
 
 void Entity::SetVel(const Vector2& _vel)
@@ -85,6 +80,7 @@ void Entity::FlagForRemoval(const bool& flag)
 
 void Entity::DebugPhysicsDefault() const
 {
+	Vector2 pos = cDetector->GetCenter();
 	if (cDetector) cDetector->Render(Color::WHITE);
 	ShapeRenderer::DrawVector(Color::BLUE, pos, pos + vel);
 	ShapeRenderer::DrawVector(Color::MAGENTA, pos, pos + accel);

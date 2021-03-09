@@ -4,11 +4,12 @@
 #include "Entity.h"
 #include <set>
 #include <queue>
+#include <memory>
 
 class EntityPool
 {
 public:
-	std::vector<Entity*> entities{};
+	std::vector<std::unique_ptr<Entity>> entities{};
 
 	EntityPool();
 	~EntityPool();

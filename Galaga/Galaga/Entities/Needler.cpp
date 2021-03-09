@@ -2,17 +2,19 @@
 #include "Engine/Math/IVector2.h"
 #include "Engine/Engine.h"
 #include "Engine/Math/Camera.h"
+#include "Engine/Physics/RectHitbox.h"
 
 Needler::Needler()
 {
 
 }
 
-Needler::Needler(const Vector2& _pos) : Entity(_pos, SpriteSheet("Galaga/Assets/needler.png", IVector2(19, 25)))
+Needler::Needler(const Vector2& _pos) : Entity(SpriteSheet("Galaga/Assets/needler.png", IVector2(19, 25)))
 {
-	maxSpeed = 100;
+	maxSpeed = 200;
 	speed = maxSpeed;
 	vel = Vector2(speed, 0);
+	cDetector = new RectHitbox(_pos, Vector2(19, 25));
 }
 
 Needler::~Needler()
@@ -22,6 +24,7 @@ Needler::~Needler()
 
 void Needler::Move()
 {
+	Vector2 pos = cDetector->GetCenter();
 	prevPos = pos;
 	pos += vel * Engine::GetDeltaTime();
 
@@ -32,11 +35,13 @@ void Needler::Move()
 	{
 		vel *= -1;
 	}
+
+	cDetector->SetCenter(pos);
 }
 
 void Needler::Render() const
 {
-	spriteSheet.RenderRelativeTo(pos, currentSprite);
+	spriteSheet.RenderRelativeTo(cDetector->GetCenter(), currentSprite);
 }
 
 void Needler::DebugPhysics() const

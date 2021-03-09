@@ -24,10 +24,10 @@ public:
 	void SetHitbox(const Vector4& _box);
 	void SetCenter(const Vector2& _center) override;
 	void AddToCenter(const Vector2& delta) override;
+	Vector2 GetCenter() const override;
 
 	void Render(const Color& c) const override;
 
-	Vector2 GetCenter() const;
 	Vector4 GetBox() const;
 	Vector2 GetDim() const;
 

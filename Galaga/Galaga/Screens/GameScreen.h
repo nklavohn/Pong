@@ -18,11 +18,9 @@ public:
 
 private:
 	EntityPool enemies;
-	EntityPool enemyProjectiles;
-	EntityPool playProjectiles;
+	EntityPool projectiles;
 	EntityPool particles;
-	Spaceship ship = Spaceship();
-	Needler needler = Needler(Vector2(0, 0));
+	Spaceship ship = Spaceship(Vector2::ZERO);
 };
 
 #endif

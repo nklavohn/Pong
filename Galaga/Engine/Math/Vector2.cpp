@@ -400,6 +400,16 @@ Vector2 Vector2::ProjOnto(const Vector2& v, bool inplace)
 	return proj;
 }
 
+Vector2 Vector2::Flip(bool inplace)
+{
+	Vector2 flip = Vector2(-x, -y);
+	
+	if (inplace)
+		Initialize(flip.x, flip.y);
+
+	return flip;
+}
+
 // object stuff
 Vector2 Vector2::GetCopy() const
 {

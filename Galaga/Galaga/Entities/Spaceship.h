@@ -10,7 +10,7 @@ class Spaceship : public Entity
 {
 
 public:
-	Spaceship();
+	Spaceship(const Vector2& pos);
 	~Spaceship();
 
 	void Move() override;
