@@ -11,16 +11,14 @@ using namespace std;
 class Engine {
 
 public:
-	static int SCREEN_WIDTH;
-	static int SCREEN_HEIGHT;
-	static float SCALE;
+	static IVector2 windowPixelDim;
 
 	static GLFWwindow* window;
 	static Screen* screen;
 
 	static double GetDeltaTime();
 	static float GetScale();
-	static void SetScale(float scale);
+	static void SetScale(const float& scale);
 	static void SetScreen(Screen& _screen);
 
 	Engine();
@@ -29,12 +27,13 @@ public:
 	bool Initialize(const char* windowTitle);
 	
 	void Update();
-	void Render();
-	void SetFrameRate(float fRate);
-	double GetPrevTime();
+	void Render() const;
+	void SetFrameRate(const float& fRate);
+	double GetPrevTime() const;
 
 private:
 	static double deltaTime;
+	static float displayScaling;
 
 	double prevTime;
 	float maxFrameRate;

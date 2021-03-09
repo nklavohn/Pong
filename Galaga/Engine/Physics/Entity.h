@@ -5,6 +5,7 @@
 #include "Engine/Math/Vector4.h"
 #include "CollisionDetector.h"
 #include "Engine/Graphics/SpriteSheet.h"
+#include <memory>
 
 class Entity
 {

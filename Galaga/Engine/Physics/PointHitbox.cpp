@@ -90,7 +90,7 @@ void PointHitbox::AddToCenter(const Vector2& delta)
 
 void PointHitbox::Render(const Color& c) const
 {
-	ShapeRenderer::FillCircle(c, center, 3 / Engine::SCALE, 6);
+	ShapeRenderer::FillCircle(c, center, 3 / Engine::GetScale(), 6);
 }
 
 Vector2 PointHitbox::GetCenter() const

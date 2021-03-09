@@ -24,6 +24,8 @@ void TestScreen::Render() const
 	BeginRender();
 	Camera::RenderGrid(Color::LIGHT_GRAY, 20);
 	ship.Render();
+
+	ship.DebugPhysics();
 	EndRender();
 }
 

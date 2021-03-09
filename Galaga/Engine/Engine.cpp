@@ -4,9 +4,8 @@
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Camera.h"
 
-int Engine::SCREEN_WIDTH = 1024;
-int Engine::SCREEN_HEIGHT = 768;
-float Engine::SCALE = 4;
+IVector2 Engine::windowPixelDim(1920, 1080);
+float Engine::displayScaling = 4;
 
 GLFWwindow* Engine::window = nullptr;
 Screen* Engine::screen = nullptr;
@@ -20,7 +19,7 @@ Engine::Engine()
 
 Engine::~Engine()
 {
-
+	
 }
 
 bool Engine::Initialize(const char* windowTitle)
@@ -32,7 +31,7 @@ bool Engine::Initialize(const char* windowTitle)
 	}
 
 	//Create the window based on defined paraments, return false if not created correctly
-	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, windowTitle, nullptr, nullptr);
+	window = glfwCreateWindow(windowPixelDim.x, windowPixelDim.y, windowTitle, nullptr, nullptr);
 	if (window == nullptr) {
 		cout << "Error creating window" << endl;
 		return false;
@@ -54,8 +53,8 @@ bool Engine::Initialize(const char* windowTitle)
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
 	// find position of window to center it on the screen, and then set it
-	int xPos = (mode->width - SCREEN_WIDTH) / 2;  // use -> instead of . because it is a pointer
-	int yPos = (mode->height - SCREEN_HEIGHT) / 2;
+	int xPos = (mode->width - windowPixelDim.x) / 2;  // use -> instead of . because it is a pointer
+	int yPos = (mode->height - windowPixelDim.y) / 2;
 	glfwSetWindowPos(window, xPos, yPos);
 
 
@@ -83,7 +82,7 @@ bool Engine::Initialize(const char* windowTitle)
 	// setup ortho view, width (0,0) in the bottom left corner and (width, height) in the top right corner, and define bounds for z (clipping range)
 	// this is basically making the world coordinate frame
 	// Here is where you can set properties like the zoom factor, aspect ratio, etc. (apparently)
-	glOrtho(0, width/SCALE, 0, height/SCALE, zNear, zFar);
+	glOrtho(0, width/displayScaling, 0, height/displayScaling, zNear, zFar);
 
 	// give GL the depth range again
 	glDepthRange(zNear, zFar);
@@ -119,7 +118,7 @@ void Engine::Update()
 	screen->Update();
 }
 
-void Engine::Render()
+void Engine::Render() const
 {
 	screen->Render();
 }
@@ -131,13 +130,13 @@ double Engine::GetDeltaTime()
 
 float Engine::GetScale()
 {
-	return SCALE;
+	return displayScaling;
 }
 
-void Engine::SetScale(float _scale)
+void Engine::SetScale(const float& _scale)
 {
-	SCALE = _scale;
-	Camera::SetDim(Vector2(SCREEN_WIDTH, SCREEN_HEIGHT) / SCALE);
+	displayScaling = _scale;
+	Camera::SetDim(windowPixelDim.ToVector() / displayScaling);
 }
 
 void Engine::SetScreen(Screen& _screen)
@@ -146,12 +145,12 @@ void Engine::SetScreen(Screen& _screen)
 	screen = &_screen;
 }
 
-void Engine::SetFrameRate(float fRate)
+void Engine::SetFrameRate(const float& fRate)
 {
 	maxFrameRate = fRate;
 }
 
-double Engine::GetPrevTime()
+double Engine::GetPrevTime() const
 {
 	return prevTime;
 }

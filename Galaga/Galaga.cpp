@@ -10,7 +10,8 @@ using namespace std;
 
 void SetStartScreen(int mode);
 
-int main() {
+int main()
+{
 	Engine engine;
 	engine.SetScale(3);
 	engine.Initialize("Galaga");
@@ -41,25 +42,23 @@ int main() {
 	return 0;
 }
 
-void SetStartScreen(int mode) {
+void SetStartScreen(int mode)
+{
 	Screen* screen = nullptr;
-	IVector2 dim = IVector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT);
 	switch (mode) {
 	case (0): {
-		GameScreen s = GameScreen(dim);
-		screen = s.Clone();
+		screen = new GameScreen(Engine::windowPixelDim);
 		break;
 	}
 	case (1): {
-		TitleScreen s = TitleScreen(dim);
-		screen = s.Clone();
+		screen = new TitleScreen(Engine::windowPixelDim);
 		break;
 	}
 	default: {
-		TestScreen s = TestScreen(dim);
-		screen = s.Clone();
+		screen = new TestScreen(Engine::windowPixelDim);
 		break;
 	}
 	}
+	
 	Engine::SetScreen(*screen);
 }

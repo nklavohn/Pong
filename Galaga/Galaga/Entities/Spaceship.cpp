@@ -2,6 +2,8 @@
 #include "Engine/IO/Keyboard.h"
 #include "Engine/Engine.h"
 #include "Engine/IO/Mouse.h"
+#include "Engine/Physics/RectHitbox.h"
+#include "Engine/Graphics/ShapeRenderer.h"
 
 Spaceship::Spaceship() : Entity(Vector2(30, 30), SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
 {
@@ -10,6 +12,7 @@ Spaceship::Spaceship() : Entity(Vector2(30, 30), SpriteSheet("Galaga/Assets/ship
 	currentSprite = IVector2(1, 0);
 	vel = Vector2::JHAT;
 	spriteSheet.SetRotCenter(Vector2(12, 7));
+	cDetector = new RectHitbox(Vector4(0, 0, 21, 25));
 }
 
 Spaceship::~Spaceship()
@@ -19,7 +22,6 @@ Spaceship::~Spaceship()
 
 void Spaceship::Move()
 {
-	
 	if (Keyboard::IsKeyPressed(Keyboard::W))
 	{
 		pos += vel * Engine::GetDeltaTime() * speed;

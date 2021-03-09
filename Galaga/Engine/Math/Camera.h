@@ -33,6 +33,7 @@ public:
 
 	//attributes
 	static Vector4 GetVisibleBounds(const int& units=METERS);
+	static Vector2 GetDim();
 	static void SetDim(const Vector2& _dim);
 
 	//camera movement

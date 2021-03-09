@@ -19,7 +19,7 @@ Entity::Entity(const Vector2& _pos, const SpriteSheet& _spriteSheet)
 
 Entity::~Entity()
 {
-	
+	delete cDetector;
 }
 
 void Entity::Initialize()
@@ -33,7 +33,7 @@ void Entity::Initialize()
 	currentSprite = IVector2::ZERO;
 
 	speed = 0;
-	maxSpeed = 0; 
+	maxSpeed = 0;
 }
 
 bool Entity::IsCollidingWith(const Vector2& point) const
@@ -54,6 +54,8 @@ CollisionDetector* Entity::GetCollisionDetector()
 void Entity::SetCollisionDetector(CollisionDetector* _cDetector)
 {
 	cDetector = _cDetector;
+	cDetector->Render(Color::WHITE);
+	std::cout << "It does run here" << std::endl;
 }
 
 void Entity::SetPos(const Vector2& _pos)
@@ -83,7 +85,7 @@ void Entity::FlagForRemoval(const bool& flag)
 
 void Entity::DebugPhysicsDefault() const
 {
-	cDetector->Render(Color::WHITE);
+	if (cDetector) cDetector->Render(Color::WHITE);
 	ShapeRenderer::DrawVector(Color::BLUE, pos, pos + vel);
 	ShapeRenderer::DrawVector(Color::MAGENTA, pos, pos + accel);
 }

@@ -95,7 +95,7 @@ void ShapeRenderer::VectorHelper(const Vector2& p1, const Vector2& p2)
 	glVertex2f(p1.x, p1.y);
 	glVertex2f(p2.x, p2.y);
 
-	Vector2 arrowHead = (p2 - p1).Resize(5 / Engine::SCALE).Rotate(150);
+	Vector2 arrowHead = (p2 - p1).Resize(5 / Engine::GetScale()).Rotate(150);
 
 	glVertex2f(p2.x, p2.y);
 	glVertex2f(p2.x + arrowHead.x, p2.y + arrowHead.y);

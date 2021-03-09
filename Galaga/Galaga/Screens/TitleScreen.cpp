@@ -18,7 +18,7 @@ void TitleScreen::Update()
 	if (Keyboard::IsKeyPressed(Keyboard::SPACE))
 	{
 		Screen* screen = nullptr;
-		GameScreen s = GameScreen(IVector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT));
+		GameScreen s = GameScreen(Engine::windowPixelDim);
 		screen = s.Clone();
 		Engine::SetScreen(*screen);
 	}
@@ -31,7 +31,7 @@ void TitleScreen::Update()
 void TitleScreen::Render() const
 {
 	BeginRender();
-	title.RenderRelativeTo(Vector2((float)Engine::SCREEN_WIDTH / Engine::SCALE / 2, (float)Engine::SCREEN_HEIGHT / Engine::SCALE / 2));
+	title.RenderRelativeTo(Camera::GetDim() / 2);
 	EndRender();
 }
 

@@ -21,6 +21,8 @@ void GameScreen::Render() const
 	BeginRender();
 	ship.Render();
 	needler.Render();
+
+	ship.DebugPhysics();
 	EndRender();
 }
 

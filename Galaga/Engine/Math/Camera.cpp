@@ -5,7 +5,7 @@
 #include "Engine/IO/Mouse.h"
 
 float Camera::pixelsPerMeter = 1;
-Vector2 Camera::dim = Vector2(Engine::SCREEN_WIDTH, Engine::SCREEN_HEIGHT) / Engine::SCALE / pixelsPerMeter;
+Vector2 Camera::dim = Engine::windowPixelDim.ToVector() / Engine::GetScale() / pixelsPerMeter;
 Vector2 Camera::pos = Camera::dim / 2;
 
 float Camera::ToPixels(float f)
@@ -141,9 +141,8 @@ Vector4 Camera::GetVisibleBounds(const int& units)
 
 void Camera::Ease(const Vector2& _pos, const float& easeDist)
 {
-	Vector2 screenCenter = ToWorldCoords(Vector2(Engine::SCREEN_WIDTH / Engine::SCALE, Engine::SCREEN_HEIGHT / Engine::SCALE) / 2, Camera::F_PIXELS_TO_METERS);
+	Vector2 screenCenter = ToWorldCoords(dim / 2, Camera::F_METERS_TO_METERS);
 	Vector2 diff = _pos - screenCenter;
-	std::cout << diff.ToString() << std::endl;
 	if (diff.Len2() > easeDist * easeDist)
 	{
 		pos -= diff * Engine::GetDeltaTime();
@@ -169,10 +168,6 @@ void Camera::RenderGrid(const Color& c, const float& spacing, const int& units)
 void Camera::RenderGridHelper(const Color& c, const float& spacing)
 {
 	Vector4 bounds = GetVisibleBounds(METERS) / spacing;
-	std::cout << "----------------------" << std::endl;
-	std::cout << pos.ToString() << std::endl;
-	std::cout << bounds.ToString() << std::endl;
-	std::cout << Mouse::GetWorldPos().ToString() << std::endl;
 	for (int f = floorf(bounds.x); f <= ceilf(bounds.z); f++)
 	{
 		float lineWidth = (f % 5 == 0) ? 3 : 1;
@@ -184,6 +179,11 @@ void Camera::RenderGridHelper(const Color& c, const float& spacing)
 		ShapeRenderer::DrawLine(c, Vector4(bounds.x, f, bounds.z, f) * spacing, lineWidth);
 	}
 	ShapeRenderer::FillCircle(Color::RED, Vector2(0, 0), 2, 4);
+}
+
+Vector2 Camera::GetDim()
+{
+	return dim;
 }
 
 void Camera::SetDim(const Vector2& _dim)
