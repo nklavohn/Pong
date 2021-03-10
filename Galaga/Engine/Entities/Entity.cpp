@@ -9,8 +9,15 @@ Entity::Entity()
 	Initialize();
 }
 
-Entity::Entity(const SpriteSheet& _spriteSheet)
+Entity::Entity(const enum Category _category)
 {
+	category = _category;
+	Initialize();
+}
+
+Entity::Entity(const enum Category _category, const SpriteSheet& _spriteSheet)
+{
+	category = _category;
 	spriteSheet = _spriteSheet;
 	Initialize();
 }
@@ -68,7 +75,7 @@ void Entity::SetAccel(const Vector2& _accel)
 	accel = _accel;
 }
 
-bool Entity::NeedsToBeRemoved() const
+bool Entity::IsFlaggedForRemoval() const
 {
 	return isFlaggedForRemoval;
 }

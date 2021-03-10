@@ -1,5 +1,5 @@
-#ifndef GALAGA_TESTSCREEN
-#define GALAGA_TESTSCREEN
+#ifndef SPACEGAME_TESTSCREEN
+#define SPACEGAME_TESTSCREEN
 
 #include "Engine/Graphics/Screen.h"
 #include "Engine/Graphics/SpriteSheet.h"

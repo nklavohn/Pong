@@ -9,7 +9,7 @@ float Engine::displayScaling = 4;
 
 GLFWwindow* Engine::window = nullptr;
 Screen* Engine::screen = nullptr;
-double Engine::deltaTime = 0;
+float Engine::deltaTime = 0;
 
 Engine::Engine()
 {
@@ -106,7 +106,7 @@ void Engine::Update()
 {
 	// calculate delta time from last frame
 	double now = glfwGetTime();
-	deltaTime = now - prevTime;
+	deltaTime = (float)(now - prevTime);
 	prevTime = now;
 
 	// allow glfw to handle all events stacking up in the queue (moving mouse, screen around, etc.)

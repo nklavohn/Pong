@@ -1,5 +1,5 @@
-#ifndef GALAGA_TITLESCREEN
-#define GALAGA_TITLESCREEN
+#ifndef SPACEGAME_TITLESCREEN
+#define SPACEGAME_TITLESCREEN
 
 #include "Engine/Graphics/Sprite.h"
 #include "Engine/Graphics/Screen.h"

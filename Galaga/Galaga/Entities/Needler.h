@@ -1,7 +1,7 @@
-#ifndef GALAGA_NEEDLER
-#define GALAGA_NEEDLER
+#ifndef SPACEGAME_NEEDLER
+#define SPACEGAME_NEEDLER
 
-#include "Engine/Physics/Entity.h"
+#include "Engine/Entities/Entity.h"
 #include "Engine/Math/Vector2.h"
 
 class Needler : public Entity

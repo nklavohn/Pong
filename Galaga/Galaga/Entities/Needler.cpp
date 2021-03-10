@@ -9,7 +9,7 @@ Needler::Needler()
 
 }
 
-Needler::Needler(const Vector2& _pos) : Entity(SpriteSheet("Galaga/Assets/needler.png", IVector2(19, 25)))
+Needler::Needler(const Vector2& _pos) : Entity(ENEMY, SpriteSheet("Galaga/Assets/needler.png", IVector2(19, 25)))
 {
 	maxSpeed = 200;
 	speed = maxSpeed;

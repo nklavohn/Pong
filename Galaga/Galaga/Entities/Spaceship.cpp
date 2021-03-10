@@ -5,7 +5,7 @@
 #include "Engine/Physics/CircHitbox.h"
 #include "Engine/Graphics/ShapeRenderer.h"
 
-Spaceship::Spaceship(const Vector2& pos) : Entity(SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
+Spaceship::Spaceship(const Vector2& pos) : Entity(PLAYER, SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
 {
 	speed = 200;
 	rotSpeed = 250;

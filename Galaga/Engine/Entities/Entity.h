@@ -3,32 +3,44 @@
 
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
-#include "CollisionDetector.h"
+#include "Engine/Physics/CollisionDetector.h"
 #include "Engine/Graphics/SpriteSheet.h"
 #include <memory>
 
 class Entity
 {
 public:
+	const enum Category {
+		PLAYER,
+		ENEMY,
+		ALLY,
+		PROJECTILE,
+		PARTICLE
+	};
+
 	bool IsCollidingWith(const Vector2& point) const;
 	bool IsCollidingWith(Entity* _cDetector) const;
 	
-	bool NeedsToBeRemoved() const;
+	bool IsFlaggedForRemoval() const;
 	void FlagForRemoval(const bool& flag = true);
 
 	Entity();
-	Entity(const SpriteSheet& _spriteSheet);
+	Entity(const enum Category _category);
+	Entity(const enum Category _category, const SpriteSheet& _spriteSheet);
 	~Entity();
 
 	virtual void Move() = 0;
 	virtual void Render() const = 0;
 	virtual void DebugPhysics() const = 0;
+
+	
 	
 protected:
 	static int GetNextID();
 
 	//Organization
 	bool isFlaggedForRemoval = false;
+	enum Category category;
 	int id;
 
 	//Physics

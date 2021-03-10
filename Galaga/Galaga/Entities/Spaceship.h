@@ -1,10 +1,10 @@
-#ifndef GALAGA_SPACESHIP
-#define GALAGA_SPACESHIP
+#ifndef SPACEGAME_SPACESHIP
+#define SPACEGAME_SPACESHIP
 
 #include "Engine/Graphics/Spritesheet.h"
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/IVector2.h"
-#include "Engine/Physics/Entity.h"
+#include "Engine/Entities/Entity.h"
 
 class Spaceship : public Entity
 {

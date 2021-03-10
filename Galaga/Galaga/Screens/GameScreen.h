@@ -1,10 +1,11 @@
-#ifndef GALAGA_GAMESCREEN
-#define GALAGA_GAMESCREEN
+#ifndef SPACEGAME_GAMESCREEN
+#define SPACEGAME_GAMESCREEN
 
 #include "Engine/Graphics/Screen.h"
 #include "Galaga/Entities/Spaceship.h"
 #include "Galaga/Entities/Needler.h"
-#include "Engine/Physics/EntityPool.h"
+#include "Engine/Entities/EntityPool.h"
+#include "Engine/Entities/Particle.h"
 
 class GameScreen: public Screen {
 
@@ -17,9 +18,9 @@ public:
 	~GameScreen();
 
 private:
-	EntityPool enemies;
-	EntityPool projectiles;
-	EntityPool particles;
+	//entity_pool<Enemy> enemies;
+	//entity_pool<Projectile> projectiles;
+	entity_pool<Particle> particles = entity_pool<Particle>();
 	Spaceship ship = Spaceship(Vector2::ZERO);
 };
 

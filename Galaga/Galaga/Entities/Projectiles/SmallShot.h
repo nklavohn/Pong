@@ -1,7 +1,7 @@
-#ifndef GALAGA_SMALLSHOT
-#define GALAGA_SMALLSHOT
+#ifndef SPACEGAME_SMALLSHOT
+#define SPACEGAME_SMALLSHOT
 
-#include "Engine/Physics/Entity.h"
+#include "Engine/Entities/Entity.h"
 #include "Engine/Physics/PointHitbox.h"
 
 class SmallShot : public Entity

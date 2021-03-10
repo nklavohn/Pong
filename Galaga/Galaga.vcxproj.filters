@@ -60,9 +60,6 @@
     <ClCompile Include="Engine\Graphics\SpriteSheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Physics\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Math\Vector3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,10 +102,19 @@
     <ClCompile Include="Engine\Physics\CollisionDetectorHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Physics\EntityPool.cpp">
+    <ClCompile Include="Galaga\Entities\Needler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Galaga\Entities\Needler.cpp">
+    <ClCompile Include="Engine\Entities\Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entities\EntityPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entities\Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Galaga\Entities\Particles\ExhaustParticle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,9 +161,6 @@
     <ClInclude Include="Engine\Graphics\SpriteSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Physics\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Math\Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -200,10 +203,19 @@
     <ClInclude Include="Engine\Physics\CollisionDetectorHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Physics\EntityPool.h">
+    <ClInclude Include="Galaga\Entities\Needler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Galaga\Entities\Needler.h">
+    <ClInclude Include="Engine\Entities\EntityPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Entities\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Entities\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Galaga\Entities\Particles\ExhaustParticle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

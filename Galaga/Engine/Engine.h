@@ -32,7 +32,7 @@ public:
 	double GetPrevTime() const;
 
 private:
-	static double deltaTime;
+	static float deltaTime;
 	static float displayScaling;
 
 	double prevTime;
