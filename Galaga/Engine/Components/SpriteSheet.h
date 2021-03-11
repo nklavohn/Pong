@@ -2,7 +2,7 @@
 #define ENGINE_SPRITESHEET
 
 #include "Engine/Math/IVector2.h"
-#include "Sprite.h"
+#include "Engine/Graphics/Sprite.h"
 #include <string>
 
 class SpriteSheet : public Sprite

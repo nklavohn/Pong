@@ -50,12 +50,12 @@ bool Entity::IsCollidingWith(Entity* other) const
 	return cDetector->IsCollidingWith(other->GetCollisionDetector());
 }
 
-CollisionDetector* Entity::GetCollisionDetector()
+Hitbox* Entity::GetCollisionDetector()
 {
 	return cDetector;
 }
 
-void Entity::SetCollisionDetector(CollisionDetector* _cDetector)
+void Entity::SetCollisionDetector(Hitbox* _cDetector)
 {
 	cDetector = _cDetector;
 }

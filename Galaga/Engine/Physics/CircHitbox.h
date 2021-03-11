@@ -6,7 +6,7 @@
 #include "Engine/Graphics/Color.h"
 #include "CollisionDetector.h"
 
-class CircHitbox : public CollisionDetector
+class CircHitbox : public Hitbox
 {
 public:
 	CircHitbox();
@@ -18,7 +18,7 @@ public:
 	bool IsAnyPointInside(const std::vector<Vector2>& ps) const override;
 	bool AreAllPointsInside(const std::vector<Vector2>& ps) const override;
 	bool DoesLineIntersect(const Vector4& line) const override;
-	bool IsCollidingWith(CollisionDetector* cDetector) const override;
+	bool IsCollidingWith(Hitbox* cDetector) const override;
 
 	void SetRadius(float _r);
 	void SetCenter(const Vector2& _center) override;

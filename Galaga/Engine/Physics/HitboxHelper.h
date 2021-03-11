@@ -5,7 +5,7 @@
 #include "CircHitbox.h"
 #include "PointHitbox.h"
 
-class CollisionDetectorHelper
+class HitboxHelper
 {
 
 public:

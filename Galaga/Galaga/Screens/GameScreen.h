@@ -18,10 +18,7 @@ public:
 	~GameScreen();
 
 private:
-	//entity_pool<Enemy> enemies;
-	//entity_pool<Projectile> projectiles;
-	entity_pool<Particle> particles = entity_pool<Particle>();
-	Spaceship ship = Spaceship(Vector2::ZERO);
+	
 };
 
 #endif
