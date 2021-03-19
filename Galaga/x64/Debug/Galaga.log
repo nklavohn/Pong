@@ -1,0 +1,5 @@
+﻿soil2-debug.lib(SOIL2.obj) : warning LNK4099: PDB '' was not found with 'soil2-debug.lib(SOIL2.obj)' or at ''; linking object as if no debug info
+soil2-debug.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(image_DXT.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
+soil2-debug.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(image_helper.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
+soil2-debug.lib(wfETC.obj) : warning LNK4099: PDB '' was not found with 'soil2-debug.lib(wfETC.obj)' or at ''; linking object as if no debug info
+  Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe

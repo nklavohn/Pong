@@ -108,13 +108,13 @@
     <ClCompile Include="Engine\Entities\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Entities\EntityPool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Entities\Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Galaga\Entities\Particles\ExhaustParticle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entities\EntityPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

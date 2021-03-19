@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\Entities\EntityPool.cpp" />
     <ClCompile Include="Engine\Entities\Particle.cpp" />
     <ClCompile Include="Engine\Graphics\Color.cpp" />
     <ClCompile Include="Engine\Graphics\ShapeRenderer.cpp" />
@@ -162,7 +163,6 @@
     <ClCompile Include="Engine\Physics\CollisionDetector.cpp" />
     <ClCompile Include="Engine\Physics\CollisionDetectorHelper.cpp" />
     <ClCompile Include="Engine\Entities\Entity.cpp" />
-    <ClCompile Include="Engine\Entities\EntityPool.cpp" />
     <ClCompile Include="Engine\Physics\RectHitbox.cpp" />
     <ClCompile Include="Engine\Physics\CircHitbox.cpp" />
     <ClCompile Include="Engine\Physics\PointHitbox.cpp" />
