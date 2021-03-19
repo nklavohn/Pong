@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\SOIL2.1.20.0.8\build\native\SOIL2.props" Condition="Exists('..\packages\SOIL2.1.20.0.8\build\native\SOIL2.props')" />
   <ItemGroup Label="ProjectConfigurations">
@@ -141,8 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Components\Physics.h" />
-    <ClCompile Include="Engine\Components\SpriteSheet.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Entities\Particle.cpp" />
     <ClCompile Include="Engine\Graphics\Color.cpp" />
@@ -161,9 +159,10 @@
     <ClCompile Include="Engine\Math\Vector2.cpp" />
     <ClCompile Include="Engine\Math\Vector3.cpp" />
     <ClCompile Include="Engine\Math\Vector4.cpp" />
-    <ClCompile Include="Engine\Physics\Hitbox.cpp" />
-    <ClCompile Include="Engine\Physics\HitboxHelper.cpp" />
+    <ClCompile Include="Engine\Physics\CollisionDetector.cpp" />
+    <ClCompile Include="Engine\Physics\CollisionDetectorHelper.cpp" />
     <ClCompile Include="Engine\Entities\Entity.cpp" />
+    <ClCompile Include="Engine\Entities\EntityPool.cpp" />
     <ClCompile Include="Engine\Physics\RectHitbox.cpp" />
     <ClCompile Include="Engine\Physics\CircHitbox.cpp" />
     <ClCompile Include="Engine\Physics\PointHitbox.cpp" />
@@ -178,10 +177,6 @@
     <ClCompile Include="Galaga\Entities\Spaceship.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Components\AIControl.h" />
-    <ClInclude Include="Engine\Components\CollisionBox.h" />
-    <ClInclude Include="Engine\Components\InputControl.h" />
-    <ClInclude Include="Engine\Components\SpriteSheet.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Entities\Particle.h" />
     <ClInclude Include="Engine\Graphics\Color.h" />
@@ -201,20 +196,14 @@
     <ClInclude Include="Engine\Graphics\Screen.h" />
     <ClInclude Include="Engine\Math\Vector3.h" />
     <ClInclude Include="Engine\Math\Vector4.h" />
-    <ClInclude Include="Engine\Physics\Hitbox.h" />
-    <ClInclude Include="Engine\Physics\HitboxHelper.h" />
+    <ClInclude Include="Engine\Physics\CollisionDetector.h" />
+    <ClInclude Include="Engine\Physics\CollisionDetectorHelper.h" />
     <ClInclude Include="Engine\Entities\Entity.h" />
     <ClInclude Include="Engine\Entities\EntityPool.h" />
     <ClInclude Include="Engine\Physics\RectHitbox.h" />
     <ClInclude Include="Engine\Physics\CircHitbox.h" />
     <ClInclude Include="Engine\Physics\PointHitbox.h" />
-    <ClInclude Include="Engine\Systems\EntityDestructor.h" />
-    <ClInclude Include="Engine\Systems\EnvironmentCollisionHandler.h" />
-    <ClInclude Include="Engine\Systems\HitboxCollisionDetector.h" />
-    <ClInclude Include="Engine\Systems\InputController.h" />
-    <ClInclude Include="Engine\Systems\PhysicsSimulator.h" />
-    <ClInclude Include="Engine\Systems\ProjectileCollisionHandler.h" />
-    <ClInclude Include="Engine\Systems\SpriteRenderer.h" />
+    <ClInclude Include="Galaga\Entities\Needler.h" />
     <ClInclude Include="Galaga\Entities\Particles\ExhaustParticle.h" />
     <ClInclude Include="Galaga\Entities\Projectiles\SmallShot.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />

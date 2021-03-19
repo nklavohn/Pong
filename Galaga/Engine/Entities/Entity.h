@@ -3,7 +3,7 @@
 
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
-#include "Engine/Physics/Hitbox.h"
+#include "Engine/Physics/CollisionDetector.h"
 #include "Engine/Graphics/SpriteSheet.h"
 #include <memory>
 
@@ -51,18 +51,18 @@ protected:
 	float maxSpeed;
 	float rot;
 	float rotSpeed;
-	Hitbox* cDetector;
+	CollisionDetector* cDetector;
 	
 	//Graphics
 	SpriteSheet spriteSheet;
 	IVector2 currentSprite;
 
 	//Private methods
-	void SetCollisionDetector(Hitbox* _cDetector);
+	void SetCollisionDetector(CollisionDetector* _cDetector);
 	void SetPos(const Vector2& _pos);
 	void SetVel(const Vector2& _vel);
 	void SetAccel(const Vector2& _accel);
-	Hitbox* GetCollisionDetector();
+	CollisionDetector* GetCollisionDetector();
 	void DebugPhysicsDefault() const;
 
 private:
