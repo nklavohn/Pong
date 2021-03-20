@@ -60,9 +60,6 @@
     <ClCompile Include="Engine\Graphics\SpriteSheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Math\Vector3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Math\Vector4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,7 +81,7 @@
     <ClCompile Include="Engine\IO\CircleClickListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Physics\CollisionDetector.cpp">
+    <ClCompile Include="Engine\Physics\Hitbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Galaga\Entities\Projectiles\SmallShot.cpp">
@@ -99,10 +96,10 @@
     <ClCompile Include="Engine\Physics\RectHitbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Physics\CollisionDetectorHelper.cpp">
+    <ClCompile Include="Engine\Physics\HitboxHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Galaga\Entities\Needler.cpp">
+    <ClCompile Include="Galaga\Entities\Enemies\Needler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Entities\Entity.cpp">
@@ -115,6 +112,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Entities\EntityPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Galaga\Entities\EntityRegistry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entities\Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entities\Projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,9 +167,6 @@
     <ClInclude Include="Engine\Graphics\SpriteSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Math\Vector3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Math\Vector4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -185,7 +188,7 @@
     <ClInclude Include="Engine\IO\CircleClickListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Physics\CollisionDetector.h">
+    <ClInclude Include="Engine\Physics\Hitbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Galaga\Entities\Projectiles\SmallShot.h">
@@ -200,10 +203,10 @@
     <ClInclude Include="Engine\Physics\RectHitbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Physics\CollisionDetectorHelper.h">
+    <ClInclude Include="Engine\Physics\HitboxHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Galaga\Entities\Needler.h">
+    <ClInclude Include="Galaga\Entities\Enemies\Needler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Entities\EntityPool.h">
@@ -216,6 +219,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Galaga\Entities\Particles\ExhaustParticle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Galaga\Entities\EntityRegistry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Entities\Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Entities\Projectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

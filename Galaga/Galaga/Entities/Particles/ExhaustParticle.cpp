@@ -10,7 +10,7 @@ ExhaustParticle::ExhaustParticle() : Particle(SpriteSheet("Galaga/Assets/exhaust
 
 ExhaustParticle::ExhaustParticle(const Vector2& _pos, const Vector2& _vel) : Particle(SpriteSheet("Galaga/Assets/exhaust.png", IVector2(10, 20)))
 {
-	cDetector = new RectHitbox(_pos, Vector2(10, 10));
+	hitbox = new RectHitbox(_pos, Vector2(10, 10));
 	vel = _vel;
 	Initialize();
 }
@@ -28,13 +28,13 @@ void ExhaustParticle::Initialize()
 
 void ExhaustParticle::Move()
 {
-	cDetector->AddToCenter(vel * Engine::GetDeltaTime());
+	hitbox->AddToCenter(vel * Engine::GetDeltaTime());
 	TickForwards();
 }
 
 void ExhaustParticle::Render() const
 {
-	spriteSheet.RenderRelativeTo(cDetector->GetCenter(), currentSprite);
+	spriteSheet.RenderRelativeTo(hitbox->GetCenter(), currentSprite);
 }
 
 void ExhaustParticle::DebugPhysics() const

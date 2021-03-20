@@ -12,7 +12,7 @@ Spaceship::Spaceship(const Vector2& pos) : Entity(PLAYER, SpriteSheet("Galaga/As
 	currentSprite = IVector2(1, 0);
 	vel = Vector2::JHAT;
 	spriteSheet.SetRotCenter(Vector2(10.5, 13));
-	cDetector = new CircHitbox(pos, 10);
+	hitbox = new CircHitbox(pos, 10);
 }
 
 Spaceship::~Spaceship()
@@ -24,7 +24,7 @@ void Spaceship::Move()
 {
 	if (Keyboard::IsKeyPressed(Keyboard::W))
 	{
-		cDetector->AddToCenter(vel * Engine::GetDeltaTime() * speed);
+		hitbox->AddToCenter(vel * Engine::GetDeltaTime() * speed);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::A))
 	{
@@ -34,7 +34,7 @@ void Spaceship::Move()
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::S))
 	{
-		cDetector->AddToCenter(vel.Flip(false) * Engine::GetDeltaTime() * speed);
+		hitbox->AddToCenter(vel.Flip(false) * Engine::GetDeltaTime() * speed);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::D))
 	{
@@ -64,7 +64,7 @@ void Spaceship::Shoot()
 
 void Spaceship::Render() const
 {
-	spriteSheet.RenderRelativeTo(cDetector->GetCenter(), rot, currentSprite);
+	spriteSheet.RenderRelativeTo(hitbox->GetCenter(), rot, currentSprite);
 }
 
 bool Spaceship::IsHit()
@@ -79,15 +79,15 @@ void Spaceship::Respawn()
 
 void Spaceship::DebugPhysics() const
 {
-	if (cDetector)
+	if (hitbox)
 	{
-		cDetector->Render(Color::WHITE);
-		Vector2 pos = cDetector->GetCenter();
+		hitbox->Render(Color::WHITE);
+		Vector2 pos = hitbox->GetCenter();
 		ShapeRenderer::DrawVector(Color::WHITE, pos, pos + vel * 10);
 	}
 }
 
 Vector2 Spaceship::GetPos() const
 {
-	return cDetector->GetCenter();
+	return hitbox->GetCenter();
 }

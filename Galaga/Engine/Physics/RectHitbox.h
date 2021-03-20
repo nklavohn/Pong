@@ -4,9 +4,9 @@
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
 #include "Engine/Graphics/Color.h"
-#include "CollisionDetector.h"
+#include "Hitbox.h"
 
-class RectHitbox : public CollisionDetector
+class RectHitbox : public Hitbox
 {
 public:
 	RectHitbox();
@@ -19,7 +19,7 @@ public:
 	bool IsAnyPointInside(const std::vector<Vector2>& ps) const override;
 	bool AreAllPointsInside(const std::vector<Vector2>& ps) const override;
 	bool DoesLineIntersect(const Vector4& line) const override;
-	bool IsCollidingWith(CollisionDetector* cDetector) const override;
+	bool IsCollidingWith(Hitbox* cDetector) const override;
 
 	void SetHitbox(const Vector4& _box);
 	void SetCenter(const Vector2& _center) override;

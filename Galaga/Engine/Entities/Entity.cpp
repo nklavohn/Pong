@@ -24,7 +24,7 @@ Entity::Entity(const enum Category _category, const SpriteSheet& _spriteSheet)
 
 Entity::~Entity()
 {
-	delete cDetector;
+	delete hitbox;
 }
 
 void Entity::Initialize()
@@ -33,7 +33,7 @@ void Entity::Initialize()
 	prevPos = Vector2::ZERO;
 	vel = Vector2::ZERO;
 	accel = Vector2::ZERO;
-	cDetector = nullptr;
+	hitbox = nullptr;
 	currentSprite = IVector2::ZERO;
 
 	speed = 0;
@@ -42,27 +42,27 @@ void Entity::Initialize()
 
 bool Entity::IsCollidingWith(const Vector2& point) const
 {
-	return cDetector->IsPointInside(point);
+	return hitbox->IsPointInside(point);
 }
 
 bool Entity::IsCollidingWith(Entity* other) const
 {
-	return cDetector->IsCollidingWith(other->GetCollisionDetector());
+	return hitbox->IsCollidingWith(other->GetHitbox());
 }
 
-CollisionDetector* Entity::GetCollisionDetector()
+Hitbox* Entity::GetHitbox()
 {
-	return cDetector;
+	return hitbox;
 }
 
-void Entity::SetCollisionDetector(CollisionDetector* _cDetector)
+void Entity::SetHitbox(Hitbox* _hitbox)
 {
-	cDetector = _cDetector;
+	hitbox = _hitbox;
 }
 
 void Entity::SetPos(const Vector2& _pos)
 {
-	cDetector->SetCenter(_pos);
+	hitbox->SetCenter(_pos);
 }
 
 void Entity::SetVel(const Vector2& _vel)
@@ -87,8 +87,8 @@ void Entity::FlagForRemoval(const bool& flag)
 
 void Entity::DebugPhysicsDefault() const
 {
-	Vector2 pos = cDetector->GetCenter();
-	if (cDetector) cDetector->Render(Color::WHITE);
+	Vector2 pos = hitbox->GetCenter();
+	if (hitbox) hitbox->Render(Color::WHITE);
 	ShapeRenderer::DrawVector(Color::BLUE, pos, pos + vel);
 	ShapeRenderer::DrawVector(Color::MAGENTA, pos, pos + accel);
 }

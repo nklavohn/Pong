@@ -3,7 +3,7 @@
 #include "Engine/Engine.h"
 #include "CircHitbox.h"
 #include "RectHitbox.h"
-#include "CollisionDetectorHelper.h"
+#include "HitboxHelper.h"
 
 constexpr float ERROR_THRESHOLD = 0.000001;
 
@@ -63,19 +63,19 @@ bool PointHitbox::DoesLineIntersect(const Vector4& line) const
 	return abs(line1.Len() + line2.Len() - line.Len()) <= ERROR_THRESHOLD;
 }
 
-bool PointHitbox::IsCollidingWith(CollisionDetector* cDetector) const
+bool PointHitbox::IsCollidingWith(Hitbox* cDetector) const
 {
 	CircHitbox* circ = dynamic_cast <CircHitbox*> (cDetector);
 	if (circ)
-		return CollisionDetectorHelper::CircWithPoint(circ, this);
+		return HitboxHelper::CircWithPoint(circ, this);
 
 	RectHitbox* rect = dynamic_cast <RectHitbox*> (cDetector);
 	if (rect)
-		return CollisionDetectorHelper::RectWithPoint(rect, this);
+		return HitboxHelper::RectWithPoint(rect, this);
 
 	PointHitbox* point = dynamic_cast <PointHitbox*> (cDetector);
 	if (point)
-		return CollisionDetectorHelper::PointWithPoint(this, point);
+		return HitboxHelper::PointWithPoint(this, point);
 }
 
 void PointHitbox::SetCenter(const Vector2& _center)

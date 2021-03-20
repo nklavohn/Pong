@@ -10,7 +10,7 @@ template <class T>
 class entity_pool
 {
 public:
-	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Base");
+	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity");
 	std::vector<std::shared_ptr<T>> entities{};
 
 	entity_pool();

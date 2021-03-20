@@ -2,7 +2,6 @@
 #define ENGINE_PARTICLE
 
 #include "Entity.h"
-#include "Engine/Physics/CollisionDetector.h"
 
 class Particle : public Entity
 {

@@ -3,9 +3,7 @@
 
 #include "Engine/Graphics/Screen.h"
 #include "Galaga/Entities/Spaceship.h"
-#include "Galaga/Entities/Needler.h"
-#include "Engine/Entities/EntityPool.h"
-#include "Engine/Entities/Particle.h"
+#include "Galaga/Entities/EntityRegistry.h"
 
 class GameScreen: public Screen {
 
@@ -18,9 +16,8 @@ public:
 	~GameScreen();
 
 private:
-	//entity_pool<Enemy> enemies;
-	//entity_pool<Projectile> projectiles;
-	entity_pool<Particle> particles = entity_pool<Particle>();
+	EntityRegistry registry = EntityRegistry();
+
 	Spaceship ship = Spaceship(Vector2::ZERO);
 };
 

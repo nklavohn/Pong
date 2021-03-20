@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Entities\Enemy.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Entities\EntityPool.cpp" />
     <ClCompile Include="Engine\Entities\Particle.cpp" />
@@ -158,25 +159,27 @@
     <ClCompile Include="Engine\Math\Camera.cpp" />
     <ClCompile Include="Engine\Math\IVector2.cpp" />
     <ClCompile Include="Engine\Math\Vector2.cpp" />
-    <ClCompile Include="Engine\Math\Vector3.cpp" />
     <ClCompile Include="Engine\Math\Vector4.cpp" />
-    <ClCompile Include="Engine\Physics\CollisionDetector.cpp" />
-    <ClCompile Include="Engine\Physics\CollisionDetectorHelper.cpp" />
+    <ClCompile Include="Engine\Physics\Hitbox.cpp" />
+    <ClCompile Include="Engine\Physics\HitboxHelper.cpp" />
     <ClCompile Include="Engine\Entities\Entity.cpp" />
     <ClCompile Include="Engine\Physics\RectHitbox.cpp" />
     <ClCompile Include="Engine\Physics\CircHitbox.cpp" />
     <ClCompile Include="Engine\Physics\PointHitbox.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
-    <ClCompile Include="Galaga\Entities\Needler.cpp" />
+    <ClCompile Include="Galaga\Entities\Enemies\Needler.cpp" />
+    <ClCompile Include="Galaga\Entities\EntityRegistry.cpp" />
     <ClCompile Include="Galaga\Entities\Particles\ExhaustParticle.cpp" />
     <ClCompile Include="Galaga\Entities\Projectiles\SmallShot.cpp" />
     <ClCompile Include="Galaga\Screens\GameScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TestScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TitleScreen.cpp" />
     <ClCompile Include="Galaga\Entities\Spaceship.cpp" />
+    <ClCompile Include="Engine\Entities\Projectile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Entities\Enemy.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Entities\Particle.h" />
     <ClInclude Include="Engine\Graphics\Color.h" />
@@ -194,22 +197,23 @@
     <ClInclude Include="Engine\Math\IVector2.h" />
     <ClInclude Include="Engine\Math\Vector2.h" />
     <ClInclude Include="Engine\Graphics\Screen.h" />
-    <ClInclude Include="Engine\Math\Vector3.h" />
     <ClInclude Include="Engine\Math\Vector4.h" />
-    <ClInclude Include="Engine\Physics\CollisionDetector.h" />
-    <ClInclude Include="Engine\Physics\CollisionDetectorHelper.h" />
+    <ClInclude Include="Engine\Physics\Hitbox.h" />
+    <ClInclude Include="Engine\Physics\HitboxHelper.h" />
     <ClInclude Include="Engine\Entities\Entity.h" />
     <ClInclude Include="Engine\Entities\EntityPool.h" />
     <ClInclude Include="Engine\Physics\RectHitbox.h" />
     <ClInclude Include="Engine\Physics\CircHitbox.h" />
     <ClInclude Include="Engine\Physics\PointHitbox.h" />
-    <ClInclude Include="Galaga\Entities\Needler.h" />
+    <ClInclude Include="Galaga\Entities\Enemies\Needler.h" />
+    <ClInclude Include="Galaga\Entities\EntityRegistry.h" />
     <ClInclude Include="Galaga\Entities\Particles\ExhaustParticle.h" />
     <ClInclude Include="Galaga\Entities\Projectiles\SmallShot.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />
     <ClInclude Include="Galaga\Screens\TitleScreen.h" />
     <ClInclude Include="Galaga\Entities\Spaceship.h" />
+    <ClInclude Include="Engine\Entities\Projectile.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -7,7 +7,7 @@ SmallShot::SmallShot()
 
 SmallShot::SmallShot(Vector2 _pos, Vector2 _vel)
 {
-	cDetector = new PointHitbox(_pos);
+	hitbox = new PointHitbox(_pos);
 }
 
 SmallShot::~SmallShot()

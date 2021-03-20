@@ -4,7 +4,7 @@
 #include "Engine/Math/Camera.h"
 #include "RectHitbox.h"
 #include "PointHitbox.h"
-#include "CollisionDetectorHelper.h"
+#include "HitboxHelper.h"
 
 CircHitbox::CircHitbox()
 {
@@ -80,19 +80,19 @@ bool CircHitbox::DoesLineIntersect(const Vector4& line) const
 }
 
 
-bool CircHitbox::IsCollidingWith(CollisionDetector* cDetector) const
+bool CircHitbox::IsCollidingWith(Hitbox* cDetector) const
 {
 	CircHitbox* circ = dynamic_cast <CircHitbox*> (cDetector);
 	if (circ)
-		return CollisionDetectorHelper::CircWithCirc(this, circ);
+		return HitboxHelper::CircWithCirc(this, circ);
 
 	RectHitbox* rect = dynamic_cast <RectHitbox*> (cDetector);
 	if (rect)
-		return CollisionDetectorHelper::RectWithCirc(rect, this);
+		return HitboxHelper::RectWithCirc(rect, this);
 
 	PointHitbox* point = dynamic_cast <PointHitbox*> (cDetector);
 	if (point)
-		return CollisionDetectorHelper::CircWithPoint(this, point);
+		return HitboxHelper::CircWithPoint(this, point);
 }
 
 void CircHitbox::SetRadius(float _r)

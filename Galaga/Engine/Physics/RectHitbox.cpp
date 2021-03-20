@@ -3,7 +3,7 @@
 #include "Engine/Graphics/ShapeRenderer.h"
 #include "Engine/Math/Camera.h"
 #include "CircHitbox.h"
-#include "CollisionDetectorHelper.h"
+#include "HitboxHelper.h"
 
 RectHitbox::RectHitbox()
 {
@@ -82,19 +82,19 @@ bool RectHitbox::DoesLineIntersect(const Vector4& line) const
 	return AreAllPointsInside(std::vector<Vector2> { line.p1(), line.p2() });
 }
 
-bool RectHitbox::IsCollidingWith(CollisionDetector* cDetector) const
+bool RectHitbox::IsCollidingWith(Hitbox* cDetector) const
 {
 	RectHitbox* rect = dynamic_cast <RectHitbox*> (cDetector);
 	if (rect)
-		return CollisionDetectorHelper::RectWithRect(this, rect);
+		return HitboxHelper::RectWithRect(this, rect);
 
 	CircHitbox* circ = dynamic_cast <CircHitbox*> (cDetector);
 	if (circ)
-		return CollisionDetectorHelper::RectWithCirc(this, circ);
+		return HitboxHelper::RectWithCirc(this, circ);
 
 	PointHitbox* point = dynamic_cast <PointHitbox*> (cDetector);
 	if (point)
-		return CollisionDetectorHelper::RectWithPoint(this, point);
+		return HitboxHelper::RectWithPoint(this, point);
 }
 
 void RectHitbox::SetHitbox(const Vector4& _box)

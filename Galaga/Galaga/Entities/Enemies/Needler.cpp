@@ -14,7 +14,7 @@ Needler::Needler(const Vector2& _pos) : Entity(ENEMY, SpriteSheet("Galaga/Assets
 	maxSpeed = 200;
 	speed = maxSpeed;
 	vel = Vector2(speed, 0);
-	cDetector = new RectHitbox(_pos, Vector2(19, 25));
+	hitbox = new RectHitbox(_pos, Vector2(19, 25));
 }
 
 Needler::~Needler()
@@ -24,7 +24,7 @@ Needler::~Needler()
 
 void Needler::Move()
 {
-	Vector2 pos = cDetector->GetCenter();
+	Vector2 pos = hitbox->GetCenter();
 	prevPos = pos;
 	pos += vel * Engine::GetDeltaTime();
 
@@ -36,12 +36,12 @@ void Needler::Move()
 		vel *= -1;
 	}
 
-	cDetector->SetCenter(pos);
+	hitbox->SetCenter(pos);
 }
 
 void Needler::Render() const
 {
-	spriteSheet.RenderRelativeTo(cDetector->GetCenter(), currentSprite);
+	spriteSheet.RenderRelativeTo(hitbox->GetCenter(), currentSprite);
 }
 
 void Needler::DebugPhysics() const
