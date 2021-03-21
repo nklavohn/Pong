@@ -3,21 +3,14 @@
 
 int Entity::NEXT_ID = 0;
 
-Entity::Entity()
+Entity::Entity(const enum Category _category) : id(GetNextID()), category(_category)
 {
 	spriteSheet = SpriteSheet();
 	Initialize();
 }
 
-Entity::Entity(const enum Category _category)
+Entity::Entity(const enum Category _category, const SpriteSheet& _spriteSheet) : id(GetNextID()), category(_category)
 {
-	category = _category;
-	Initialize();
-}
-
-Entity::Entity(const enum Category _category, const SpriteSheet& _spriteSheet)
-{
-	category = _category;
 	spriteSheet = _spriteSheet;
 	Initialize();
 }
@@ -29,7 +22,6 @@ Entity::~Entity()
 
 void Entity::Initialize()
 {
-	id = Entity::GetNextID();
 	prevPos = Vector2::ZERO;
 	vel = Vector2::ZERO;
 	accel = Vector2::ZERO;
@@ -38,6 +30,7 @@ void Entity::Initialize()
 
 	speed = 0;
 	maxSpeed = 0;
+	spawnQueue = defaultSpawnQueue;
 }
 
 bool Entity::IsCollidingWith(const Vector2& point) const
@@ -96,4 +89,14 @@ void Entity::DebugPhysicsDefault() const
 int Entity::GetNextID()
 {
 	return NEXT_ID++;
+}
+
+void Entity::SetDefaultSpawnQueue(const std::shared_ptr<entity_queue<Entity>> newDefault)
+{
+	defaultSpawnQueue = newDefault;
+}
+
+void Entity::SetSpawnQueue(const std::shared_ptr<entity_queue<Entity>> sQueue)
+{
+	spawnQueue = sQueue;
 }

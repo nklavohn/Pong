@@ -10,6 +10,11 @@ GameScreen::~GameScreen()
 
 }
 
+void GameScreen::Setup()
+{
+	Entity::SetDefaultSpawnQueue(registry.spawnQueue)
+}
+
 void GameScreen::Update()
 {
 	ship.Move();

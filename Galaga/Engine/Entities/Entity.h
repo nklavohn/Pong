@@ -5,17 +5,20 @@
 #include "Engine/Math/Vector4.h"
 #include "Engine/Physics/Hitbox.h"
 #include "Engine/Graphics/SpriteSheet.h"
+#include "EntityQueue.h"
 #include <memory>
 
 class Entity
 {
 public:
-	const enum Category {
+	static const enum Category {
 		PLAYER,
 		ENEMY,
 		PROJECTILE,
 		PARTICLE
 	};
+
+	static void SetDefaultSpawnQueue(const std::shared_ptr<entity_queue<Entity>> newDefault);
 
 	bool IsCollidingWith(const Vector2& point) const;
 	bool IsCollidingWith(Entity* _cDetector) const;
@@ -23,7 +26,8 @@ public:
 	bool IsFlaggedForRemoval() const;
 	void FlagForRemoval(const bool& flag = true);
 
-	Entity();
+	void SetSpawnQueue(const std::shared_ptr<entity_queue<Entity>> sQueue);
+
 	Entity(const enum Category _category);
 	Entity(const enum Category _category, const SpriteSheet& _spriteSheet);
 	~Entity();
@@ -32,15 +36,16 @@ public:
 	virtual void Render() const = 0;
 	virtual void DebugPhysics() const = 0;
 
-	
+	const int id;
+	const enum Category category;
 	
 protected:
 	static int GetNextID();
+	static std::shared_ptr<entity_queue<Entity>> defaultSpawnQueue;
 
-	//Organization
+	//Organization 
 	bool isFlaggedForRemoval = false;
-	enum Category category;
-	int id;
+	std::shared_ptr<entity_queue<Entity>> spawnQueue = nullptr;
 
 	//Physics
 	Vector2 prevPos;

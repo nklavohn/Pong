@@ -5,8 +5,11 @@
 #include "Engine/Entities/Particle.h"
 #include "Engine/Entities/Enemy.h"
 #include "Engine/Entities/Projectile.h"
+#include "Engine/Entities/EntityQueue.h"
+#include "Galaga/Entities/Spaceship.h"
 
 #include <memory>
+#include <queue>
 
 class EntityRegistry
 {
@@ -14,12 +17,18 @@ public:
 	EntityRegistry();
 	~EntityRegistry();
 
-	void SpawnEntity(std::shared_ptr<Entity> entity);
+	std::unordered_map<int, int> catalog;
 
-	entity_pool<Particle> particles = entity_pool<Particle>();
+	std::shared_ptr<Spaceship> ship = std::make_shared<Spaceship>();
 	entity_pool<Enemy> enemies = entity_pool<Enemy>();
 	entity_pool<Projectile> projectiles = entity_pool<Projectile>();
-	entity_pool<Entity> justSpawned = entity_pool<Entity>();
+	entity_pool<Particle> particles = entity_pool<Particle>();
+	
+	std::shared_ptr<entity_queue<Entity>> spawnQueue = std::shared_ptr<entity_queue<Entity>>();
+
+	void ProcessSpawnQueue();
+	void ProcessDeletions();
+	std::shared_ptr<Entity> GetEntity(const int& id) const;
 };
 
 #endif

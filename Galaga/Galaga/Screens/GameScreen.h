@@ -7,7 +7,7 @@
 
 class GameScreen: public Screen {
 
-public:
+public: 
 	void Update() override;
 	void Render() const override;
 	Screen* Clone() const override;
@@ -18,7 +18,7 @@ public:
 private:
 	EntityRegistry registry = EntityRegistry();
 
-	Spaceship ship = Spaceship(Vector2::ZERO);
+	void Setup();
 };
 
 #endif
