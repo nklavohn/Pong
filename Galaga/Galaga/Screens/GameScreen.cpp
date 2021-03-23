@@ -12,22 +12,23 @@ GameScreen::~GameScreen()
 
 void GameScreen::Setup()
 {
-	Entity::SetDefaultSpawnQueue(registry.spawnQueue)
+	Entity::SetDefaultSpawnQueue(registry.spawnQueue);
+	registry.DefinePlayer(ship);
 }
 
 void GameScreen::Update()
 {
-	ship.Move();
-	Camera::Ease(ship.GetPos(), 20);
+	ship->Move();
+	Camera::Ease(ship->GetPos(), 20);
 }
 
 void GameScreen::Render() const
 {
 	BeginRender();
 	Camera::RenderGrid(Color::DARK_GRAY, 20);
-	//ship.Render();
+	ship->Render();
 
-	ship.DebugPhysics();
+	ship->DebugPhysics();
 	EndRender();
 }
 

@@ -4,13 +4,13 @@
 #include "Engine/Graphics/Spritesheet.h"
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/IVector2.h"
-#include "Engine/Entities/Entity.h"
+#include "Engine/Entities/Player.h"
 
-class Spaceship : public Entity
+class Spaceship : public Player
 {
 
 public:
-	Spaceship(const Vector2& pos);
+	Spaceship();
 	~Spaceship();
 
 	void Move() override;

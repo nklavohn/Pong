@@ -1,11 +1,11 @@
 #include "SmallShot.h"
 
-SmallShot::SmallShot()
+SmallShot::SmallShot() : Entity(PROJECTILE)
 {
 
 }
 
-SmallShot::SmallShot(Vector2 _pos, Vector2 _vel)
+SmallShot::SmallShot(Vector2 _pos, Vector2 _vel) : Entity(PROJECTILE)
 {
 	hitbox = new PointHitbox(_pos);
 }

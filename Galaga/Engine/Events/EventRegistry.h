@@ -14,10 +14,10 @@ public:
 
 	void AddEvent(const Event& event);
 	std::unique_ptr<Event> GetNextEvent();
-	bool IsEmtpy() const;
+	bool IsEmpty() const;
 
 private:
 	std::queue<std::unique_ptr<Event>> events;
 };
 
-#endif
+#endif 

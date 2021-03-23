@@ -82,7 +82,7 @@ void entity_pool<T>::Add(int key, std::shared_ptr<Entity> entity)
 template <class T>
 std::shared_ptr<Entity> entity_pool<T>::GetEntity(const int& id) const
 {
-	return std::dynamic_point_cast<Entity>(Ts.at(id));
+	return std::dynamic_pointer_cast<Entity>(entities.at(id));
 }
 
 #endif

@@ -22,7 +22,7 @@ void Particle::Initialize()
 	currTime = 0;
 }
 
-void Particle::TickForwards()
+void Particle::Decay()
 {
 	currTime -= Engine::GetDeltaTime();
 	if (currTime < 0)

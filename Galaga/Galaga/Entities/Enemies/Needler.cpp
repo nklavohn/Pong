@@ -4,7 +4,7 @@
 #include "Engine/Math/Camera.h"
 #include "Engine/Physics/RectHitbox.h"
 
-Needler::Needler()
+Needler::Needler() : Entity(ENEMY)
 {
 
 }

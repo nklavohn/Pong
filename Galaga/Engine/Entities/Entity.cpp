@@ -2,6 +2,7 @@
 #include "Engine/Graphics/ShapeRenderer.h"
 
 int Entity::NEXT_ID = 0;
+std::shared_ptr<entity_queue<Entity>> Entity::defaultSpawnQueue = nullptr;
 
 Entity::Entity(const enum Category _category) : id(GetNextID()), category(_category)
 {
@@ -91,12 +92,7 @@ int Entity::GetNextID()
 	return NEXT_ID++;
 }
 
-void Entity::SetDefaultSpawnQueue(const std::shared_ptr<entity_queue<Entity>> newDefault)
+void Entity::SetDeleteQueue(const std::shared_ptr<std::queue<int>> dQueue)
 {
-	defaultSpawnQueue = newDefault;
-}
-
-void Entity::SetSpawnQueue(const std::shared_ptr<entity_queue<Entity>> sQueue)
-{
-	spawnQueue = sQueue;
+	deleteQueue = dQueue;
 }

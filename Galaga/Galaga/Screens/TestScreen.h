@@ -29,7 +29,7 @@ private:
 	CircHitbox circ2 = CircHitbox(Vector2(-50, 0), 10);
 	PointHitbox point1 = PointHitbox(Vector2(-20, -20));*/
 
-	Spaceship ship = Spaceship(Vector2::ZERO);
+	Spaceship ship = Spaceship();
 };
 
 

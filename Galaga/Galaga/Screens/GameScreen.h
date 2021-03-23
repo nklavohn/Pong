@@ -3,9 +3,10 @@
 
 #include "Engine/Graphics/Screen.h"
 #include "Galaga/Entities/Spaceship.h"
-#include "Galaga/Entities/EntityRegistry.h"
+#include "Engine/Entities/EntityRegistry.h"
 
-class GameScreen: public Screen {
+class GameScreen: public Screen
+{
 
 public: 
 	void Update() override;
@@ -17,6 +18,7 @@ public:
 
 private:
 	EntityRegistry registry = EntityRegistry();
+	std::shared_ptr<Spaceship> ship = std::make_shared<Spaceship>();
 
 	void Setup();
 };

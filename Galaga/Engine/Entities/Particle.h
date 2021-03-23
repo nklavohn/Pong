@@ -18,7 +18,7 @@ protected:
 	float lifeTime;
 	float currTime;
 
-	void TickForwards();
+	void Decay();
 
 private:
 	void Initialize();

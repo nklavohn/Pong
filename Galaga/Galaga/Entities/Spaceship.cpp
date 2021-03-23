@@ -5,14 +5,14 @@
 #include "Engine/Physics/CircHitbox.h"
 #include "Engine/Graphics/ShapeRenderer.h"
 
-Spaceship::Spaceship(const Vector2& pos) : Entity(PLAYER, SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
+Spaceship::Spaceship() : Player(SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
 {
 	speed = 200;
 	rotSpeed = 250;
 	currentSprite = IVector2(1, 0);
 	vel = Vector2::JHAT;
 	spriteSheet.SetRotCenter(Vector2(10.5, 13));
-	hitbox = new CircHitbox(pos, 10);
+	hitbox = new CircHitbox(Vector2::ZERO, 10);
 }
 
 Spaceship::~Spaceship()

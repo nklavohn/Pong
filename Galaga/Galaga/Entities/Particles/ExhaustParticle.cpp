@@ -22,14 +22,14 @@ ExhaustParticle::~ExhaustParticle()
 
 void ExhaustParticle::Initialize()
 {
-	lifeTime = 3;
+	lifeTime = 2;
 	currTime = lifeTime;
 }
 
 void ExhaustParticle::Move()
 {
 	hitbox->AddToCenter(vel * Engine::GetDeltaTime());
-	TickForwards();
+	Decay();
 }
 
 void ExhaustParticle::Render() const

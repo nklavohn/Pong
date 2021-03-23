@@ -18,15 +18,13 @@ public:
 		PARTICLE
 	};
 
-	static void SetDefaultSpawnQueue(const std::shared_ptr<entity_queue<Entity>> newDefault);
-
 	bool IsCollidingWith(const Vector2& point) const;
 	bool IsCollidingWith(Entity* _cDetector) const;
 	
 	bool IsFlaggedForRemoval() const;
 	void FlagForRemoval(const bool& flag = true);
 
-	void SetSpawnQueue(const std::shared_ptr<entity_queue<Entity>> sQueue);
+	void SetDeleteQueue(const std::shared_ptr<std::queue<int>> dQueue);
 
 	Entity(const enum Category _category);
 	Entity(const enum Category _category, const SpriteSheet& _spriteSheet);
@@ -40,12 +38,11 @@ public:
 	const enum Category category;
 	
 protected:
-	static int GetNextID();
-	static std::shared_ptr<entity_queue<Entity>> defaultSpawnQueue;
+	static int GetNextID();	
 
 	//Organization 
 	bool isFlaggedForRemoval = false;
-	std::shared_ptr<entity_queue<Entity>> spawnQueue = nullptr;
+	std::shared_ptr<std::queue<int>> deleteQueue = nullptr;
 
 	//Physics
 	Vector2 prevPos;
@@ -71,6 +68,8 @@ protected:
 
 private:
 	static int NEXT_ID;
+	
+
 	void Initialize();
 };
 
