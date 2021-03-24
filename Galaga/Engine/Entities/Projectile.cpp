@@ -1,11 +1,6 @@
 #include "Projectile.h"
 
-Projectile::Projectile() : Entity(PROJECTILE)
-{
-
-}
-
-Projectile::Projectile(const SpriteSheet sheet) : Entity(PROJECTILE, sheet)
+Projectile::Projectile(std::unique_ptr<Hitbox> _hitbox) : Entity(PROJECTILE), PhysicsObject(std::move(_hitbox))
 {
 
 }

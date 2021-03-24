@@ -1,5 +1,7 @@
 #include "Spawner.h"
 
+std::shared_ptr<entity_queue<Entity>> Spawner::defaultSpawnQueue = nullptr;
+
 Spawner::Spawner()
 {
 	spawnQueue = defaultSpawnQueue;

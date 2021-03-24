@@ -3,14 +3,14 @@
 #include "Engine/Physics/RectHitbox.h"
 #include "Engine/Engine.h"
 
-ExhaustParticle::ExhaustParticle() : Particle(SpriteSheet("Galaga/Assets/exhaust.png", IVector2(10, 20)))
+ExhaustParticle::ExhaustParticle() : Particle(std::unique_ptr<Hitbox>(new RectHitbox(Vector2::ZERO, Vector2(10, 10))))
 {
+	vel = Vector2::ZERO;
 	Initialize();
 }
 
-ExhaustParticle::ExhaustParticle(const Vector2& _pos, const Vector2& _vel) : Particle(SpriteSheet("Galaga/Assets/exhaust.png", IVector2(10, 20)))
+ExhaustParticle::ExhaustParticle(const Vector2& _pos, const Vector2& _vel) : Particle(std::unique_ptr<Hitbox>(new RectHitbox(_pos, Vector2(10, 10))))
 {
-	hitbox = new RectHitbox(_pos, Vector2(10, 10));
 	vel = _vel;
 	Initialize();
 }

@@ -1,12 +1,7 @@
 #include "Particle.h"
 #include "Engine/Engine.h"
 
-Particle::Particle() : Entity(PARTICLE)
-{
-	Initialize();
-}
-
-Particle::Particle(SpriteSheet sheet) : Entity(PARTICLE, sheet)
+Particle::Particle(std::unique_ptr<Hitbox> _hitbox) : Entity(PARTICLE), PhysicsObject(std::move(_hitbox))
 {
 	Initialize();
 }

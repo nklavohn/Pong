@@ -2,12 +2,13 @@
 #define ENGINE_PARTICLE
 
 #include "Entity.h"
+#include "Engine/Components/RegistryMember.h"
+#include "Engine/Components/PhysicsObject.h"
 
-class Particle : public Entity
+class Particle : public Entity, public PhysicsObject
 {
 public:
-	Particle();
-	Particle(const SpriteSheet sheet);
+	Particle(std::unique_ptr<Hitbox> _hitbox);
 	~Particle();
 
 	virtual void Move() override = 0;
@@ -19,6 +20,8 @@ protected:
 	float currTime;
 
 	void Decay();
+
+	virtual Particle* clone_impl() const = 0;
 
 private:
 	void Initialize();

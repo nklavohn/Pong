@@ -1,11 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy() : Entity(ENEMY)
-{
-
-}
-
-Enemy::Enemy(const SpriteSheet sheet) : Entity(ENEMY, sheet)
+Enemy::Enemy(std::unique_ptr<Hitbox> _hitbox) : Entity(ENEMY), PhysicsObject(std::move(_hitbox))
 {
 
 }

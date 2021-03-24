@@ -1,5 +1,7 @@
 #include "GameScreen.h"
 
+#include "Engine/Components/Spawner.h"
+
 GameScreen::GameScreen(const IVector2& _dim) : Screen(_dim)
 {
 	color = Color(0.114, 0.114, 0.227, 1);
@@ -12,7 +14,7 @@ GameScreen::~GameScreen()
 
 void GameScreen::Setup()
 {
-	Entity::SetDefaultSpawnQueue(registry.spawnQueue);
+	Spawner::SetDefaultSpawnQueue(registry.spawnQueue);
 	registry.DefinePlayer(ship);
 }
 
@@ -26,7 +28,7 @@ void GameScreen::Render() const
 {
 	BeginRender();
 	Camera::RenderGrid(Color::DARK_GRAY, 20);
-	ship->Render();
+	//ship->Render();
 
 	ship->DebugPhysics();
 	EndRender();

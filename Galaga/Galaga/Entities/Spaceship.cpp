@@ -5,14 +5,16 @@
 #include "Engine/Physics/CircHitbox.h"
 #include "Engine/Graphics/ShapeRenderer.h"
 
-Spaceship::Spaceship() : Player(SpriteSheet("Galaga/Assets/ship.png", IVector2(21, 31)))
+#include "Galaga/Entities/Particles/ExhaustParticle.h"
+
+Spaceship::Spaceship() : Player(std::unique_ptr<Hitbox>(new CircHitbox(Vector2::ZERO, 10))),
+	ConstantParticleEmitter(std::unique_ptr<Particle>(new ExhaustParticle()), 0.5)
 {
 	speed = 200;
 	rotSpeed = 250;
 	currentSprite = IVector2(1, 0);
 	vel = Vector2::JHAT;
 	spriteSheet.SetRotCenter(Vector2(10.5, 13));
-	hitbox = new CircHitbox(Vector2::ZERO, 10);
 }
 
 Spaceship::~Spaceship()

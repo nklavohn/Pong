@@ -2,12 +2,12 @@
 #define ENGINE_PROJECTILE
 
 #include "Entity.h"
+#include "Engine/Components/PhysicsObject.h"
 
-class Projectile : public Entity
+class Projectile : public Entity, public PhysicsObject
 {
 public:
-	Projectile();
-	Projectile(const SpriteSheet sheet);
+	Projectile(std::unique_ptr<Hitbox> _hitbox);
 	~Projectile();
 
 	virtual void Move() override = 0;

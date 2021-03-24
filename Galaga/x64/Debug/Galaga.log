@@ -1,4 +1,18 @@
-﻿  GameScreen.cpp
-D:\acrylicdigital\Galaga\Galaga\Engine\Entities\Entity.h(19): warning C4091: 'static ': ignored on left of 'const Entity::Category' when no variable is declared
-D:\acrylicdigital\Galaga\Galaga\Galaga\Screens\GameScreen.cpp(5,38): warning C4305: 'argument': truncation from 'double' to 'const float'
+﻿  ExhaustParticle.cpp
+D:\acrylicdigital\Galaga\Galaga\Engine\Entities\Entity.h(18): warning C4091: 'static ': ignored on left of 'const Entity::Category' when no variable is declared
+D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Particles\ExhaustParticle.cpp(31,48): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+  Spaceship.cpp
+D:\acrylicdigital\Galaga\Galaga\Engine\Entities\Entity.h(18): warning C4091: 'static ': ignored on left of 'const Entity::Category' when no variable is declared
+D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(29,49): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(33,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(39,61): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(43,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\acrylicdigital\Galaga\Galaga\Galaga\Entities\Spaceship.cpp(59,40): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  Projectile.cpp
+D:\acrylicdigital\Galaga\Galaga\Engine\Entities\Entity.h(18): warning C4091: 'static ': ignored on left of 'const Entity::Category' when no variable is declared
+  Generating Code...
+soil2-debug.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(SOIL2.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
+soil2-debug.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(image_DXT.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
+soil2-debug.lib(image_helper.obj) : warning LNK4099: PDB '' was not found with 'soil2-debug.lib(image_helper.obj)' or at ''; linking object as if no debug info
+soil2-debug.lib(wfETC.obj) : warning LNK4099: PDB 'soil2-static-lib.pdb' was not found with 'soil2-debug.lib(wfETC.obj)' or at 'D:\acrylicdigital\Galaga\x64\Debug\soil2-static-lib.pdb'; linking object as if no debug info
   Galaga.vcxproj -> D:\acrylicdigital\Galaga\x64\Debug\Galaga.exe
