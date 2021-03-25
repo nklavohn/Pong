@@ -9,9 +9,9 @@ class ConstantParticleEmitter : public ParticleEmitter
 public:
 	ConstantParticleEmitter(std::unique_ptr<Particle> _particle, const float& _cooldown);
 	ConstantParticleEmitter(std::unique_ptr<Particle> _particle, const float& _cooldown, const std::shared_ptr<entity_queue<Entity>> sQueue);
-	~ConstantParticleEmitter();
+	virtual ~ConstantParticleEmitter();
 
-	void EmitParticles() override;
+	void EmitParticles(const Vector2& pos, const Vector2& vel) override;
 
 private:
 	float cooldown;

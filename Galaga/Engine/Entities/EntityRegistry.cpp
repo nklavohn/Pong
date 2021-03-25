@@ -47,6 +47,37 @@ void EntityRegistry::ApplySpawnQueue()
 	}
 }
 
+void EntityRegistry::ApplyDeleteQueue()
+{
+	while (!deleteQueue->empty())
+	{
+		int id = deleteQueue->front();
+		int category = catalog.at(id);
+
+		switch (category)
+		{
+		case (Entity::PROJECTILE):
+			projectiles.Remove(id);
+			break;
+		case (Entity::PARTICLE):
+			particles.Remove(id);
+			break;
+		case (Entity::ENEMY):
+			enemies.Remove(id);
+			break;
+		case (Entity::PLAYER):
+			std::cout << "Player just got deleted from EntityRegistry::ApplyDeleteQueue()" << std::endl;
+			break;
+		default:
+			std::cout << "Hit default in EntityRegistry::ApplyDeleteQueue()" << std::endl;
+			break;
+		}
+
+		catalog.erase(id);
+		deleteQueue->pop();
+	}
+}
+
 std::shared_ptr<Entity> EntityRegistry::GetEntity(const int& id) const
 {
 	int pool = catalog.at(id);
@@ -60,8 +91,8 @@ std::shared_ptr<Entity> EntityRegistry::GetEntity(const int& id) const
 	case (Entity::ENEMY):
 		return enemies.GetEntity(id);
 	case (Entity::PLAYER):
-		return nullptr;
-		//return std::dynamic_pointer_cast<Entity>(player);
+		std::cout << "Make sure this works correctly! (EntityRegistry)" << std::endl;
+		return player;
 	default:
 		std::cout << "tha fuk is happenin' in EntityRegistry?" << std::endl;
 		return nullptr;

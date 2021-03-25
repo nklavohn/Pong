@@ -22,13 +22,16 @@ ConstantParticleEmitter::~ConstantParticleEmitter()
 
 }
 
-void ConstantParticleEmitter::EmitParticles()
+void ConstantParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& vel)
 {
 	timeRemaining -= Engine::GetDeltaTime();
 
 	if (timeRemaining < 0)
 	{
-		spawnQueue->Add(particle->cloneToShared());
+		std::shared_ptr<Particle> newPart = particle->CloneParticle();
+		newPart->SetPos(pos);
+		newPart->SetVel(vel);
+		spawnQueue->Add(newPart);
 		timeRemaining += cooldown;
 	}
 }

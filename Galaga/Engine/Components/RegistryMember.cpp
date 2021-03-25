@@ -18,6 +18,7 @@ bool RegistryMember::IsFlaggedForRemoval() const
 void RegistryMember::FlagForRemoval(const bool& flag)
 {
 	isFlaggedForRemoval = flag;
+	AddSelfToDeleteQueue();
 }
 
 void RegistryMember::SetDeleteQueue(const std::shared_ptr<std::queue<int>> dQueue)

@@ -12,7 +12,10 @@ class Spaceship : public Player, public ConstantParticleEmitter
 {
 
 public:
+	//constructors
 	Spaceship();
+
+	//rule of three
 	~Spaceship();
 	Spaceship(const Spaceship& other) : Spaceship() {};
 	Spaceship& operator=(const Spaceship& other) { return *this; };
@@ -24,6 +27,9 @@ public:
 	void Render() const override;
 	void DebugPhysics() const override;
 	Vector2 GetPos() const;
+
+	std::shared_ptr<Entity> CloneEntity() const override { std::cout << "Should not be cloning the Spaceship!!" << std::endl; return std::make_shared<Spaceship>(*this); }
+	std::shared_ptr<Player> ClonePlayer() const override { std::cout << "Should not be cloning the Spaceship!!" << std::endl; return std::make_shared<Spaceship>(*this); }
 	
 private:
 	int numOfLives = 3;
@@ -36,11 +42,6 @@ private:
 	const IVector2 LEFT = IVector2(0, 0);
 	const IVector2 STRAIGHT = IVector2(1, 0);
 	const IVector2 RIGHT = IVector2(2, 0);
-
-	Spaceship* clone_impl() const override {
-		std::cout << "Should not be cloning the Spaceship!!" << std::endl;
-		return new Spaceship(*this);
-	}
 };
 
 #endif

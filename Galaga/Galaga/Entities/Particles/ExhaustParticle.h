@@ -18,8 +18,8 @@ public:
 	void Render() const override;
 	void DebugPhysics() const override;
 
-protected:
-	ExhaustParticle* clone_impl() const override { return new ExhaustParticle(*this); }
+	std::shared_ptr<Entity> CloneEntity() const override { return std::make_shared<ExhaustParticle>(*this); }
+	std::shared_ptr<Particle> CloneParticle() const override { return std::make_shared<ExhaustParticle>(*this); }
 
 private:
 	void Initialize();

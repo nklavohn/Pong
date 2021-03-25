@@ -29,7 +29,6 @@ void ExhaustParticle::Initialize()
 void ExhaustParticle::Move()
 {
 	hitbox->AddToCenter(vel * Engine::GetDeltaTime());
-	Decay();
 }
 
 void ExhaustParticle::Render() const

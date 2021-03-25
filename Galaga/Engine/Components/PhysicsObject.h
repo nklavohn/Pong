@@ -8,9 +8,13 @@ class PhysicsObject : public HitboxedObject
 {
 public:
 	PhysicsObject(std::unique_ptr<Hitbox> _hitbox);
-	~PhysicsObject();
+	virtual ~PhysicsObject();
 
 	virtual void DebugPhysics() const = 0;
+
+	void SetPos(const Vector2& _pos);
+	void SetVel(const Vector2& _vel);
+	void SetAccel(const Vector2& _accel);
 
 protected:
 	Vector2 prevPos;
@@ -21,9 +25,6 @@ protected:
 	float rot;
 	float rotSpeed;
 
-	void SetPos(const Vector2& _pos);
-	void SetVel(const Vector2& _vel);
-	void SetAccel(const Vector2& _accel);
 	void ApplyPhysics();
 	void DebugPhysicsDefault() const;
 };

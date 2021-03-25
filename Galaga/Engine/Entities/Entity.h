@@ -10,7 +10,7 @@
 class Entity : public RegistryMember
 {
 public:
-	static const enum Category {
+	const enum Category {
 		PLAYER,
 		ENEMY,
 		PROJECTILE,
@@ -19,13 +19,11 @@ public:
 
 	Entity(const enum Category _category);
 	Entity(const enum Category _category, const SpriteSheet& _spriteSheet);
-	~Entity();
+	virtual ~Entity();
 
 	virtual void Move() = 0;
 	virtual void Render() const = 0;
-	
-	auto clone() const { return std::unique_ptr<Entity>(clone_impl()); }
-	auto cloneToShared() const { return std::shared_ptr<Entity>(clone_impl()); }
+	virtual std::shared_ptr<Entity> CloneEntity() const = 0;
 
 	const int id;
 	const enum Category category;
@@ -37,7 +35,7 @@ protected:
 	SpriteSheet spriteSheet;
 	IVector2 currentSprite;
 
-	virtual Entity* clone_impl() const = 0;
+	void AddSelfToDeleteQueue() override;
 
 private:
 	static int NEXT_ID;

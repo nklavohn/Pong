@@ -12,7 +12,7 @@ class Spawner
 public:
 	Spawner();
 	Spawner(const std::shared_ptr<entity_queue<Entity>> sQueue);
-	~Spawner();
+	virtual ~Spawner();
 
 	void Spawn(const std::shared_ptr<Entity> entity);
 

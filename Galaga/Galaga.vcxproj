@@ -147,6 +147,7 @@
     <ClCompile Include="Engine\Components\PhysicsObject.cpp" />
     <ClCompile Include="Engine\Components\RegistryMember.cpp" />
     <ClCompile Include="Engine\Components\Spawner.cpp" />
+    <ClCompile Include="Engine\Components\SpritedObject.cpp" />
     <ClCompile Include="Engine\Entities\Enemy.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Entities\EntityPool.cpp" />
@@ -179,6 +180,8 @@
     <ClCompile Include="Engine\Physics\CircHitbox.cpp" />
     <ClCompile Include="Engine\Physics\PointHitbox.cpp" />
     <ClCompile Include="Engine\Systems\CollisionDetector.cpp" />
+    <ClCompile Include="Engine\Systems\ParticleDecayer.cpp" />
+    <ClCompile Include="Engine\Systems\System.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
     <ClCompile Include="Engine\Entities\EntityRegistry.cpp" />
@@ -196,6 +199,7 @@
     <ClInclude Include="Engine\Components\PhysicsObject.h" />
     <ClInclude Include="Engine\Components\RegistryMember.h" />
     <ClInclude Include="Engine\Components\Spawner.h" />
+    <ClInclude Include="Engine\Components\SpritedObject.h" />
     <ClInclude Include="Engine\Entities\Enemy.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Entities\EntityQueue.h" />
@@ -230,6 +234,8 @@
     <ClInclude Include="Engine\Physics\PointHitbox.h" />
     <ClInclude Include="Engine\Systems\CollisionDetector.h" />
     <ClInclude Include="Engine\Entities\EntityRegistry.h" />
+    <ClInclude Include="Engine\Systems\ParticleDecayer.h" />
+    <ClInclude Include="Engine\Systems\System.h" />
     <ClInclude Include="Galaga\Entities\Particles\ExhaustParticle.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />

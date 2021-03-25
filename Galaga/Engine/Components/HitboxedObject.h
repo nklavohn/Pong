@@ -9,7 +9,7 @@ class HitboxedObject
 {
 public:
 	HitboxedObject(std::unique_ptr<Hitbox> _hitbox);
-	~HitboxedObject();
+	virtual ~HitboxedObject();
 
 protected:
 	std::unique_ptr<Hitbox> hitbox;

@@ -5,7 +5,7 @@ class Event
 {
 public:
 	Event();
-	~Event();
+	virtual ~Event();
 
 	int GetNextID();
 

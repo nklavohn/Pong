@@ -11,6 +11,8 @@ class entity_pool
 public:
 	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity");
 
+	std::unordered_map<int, std::shared_ptr<T>> entities{};
+
 	entity_pool();
 	~entity_pool();
 
@@ -18,13 +20,9 @@ public:
 	void Render() const;
 	void DebugPhysics() const;
 	void Add(int key, std::shared_ptr<Entity> entity);
+	void Remove(int key);
 	std::shared_ptr<Entity> GetEntity(const int& id) const;
 	int Size() const;
-
-
-
-private:
-	std::unordered_map<int, std::shared_ptr<T>> entities{};
 };
 
 template <class T>
@@ -77,6 +75,12 @@ template <class T>
 void entity_pool<T>::Add(int key, std::shared_ptr<Entity> entity)
 {
 	entities.emplace(key, std::dynamic_pointer_cast<T>(entity));
+}
+
+template <class T>
+void entity_pool<T>::Remove(int key)
+{
+	entities.erase(key);
 }
 
 template <class T>

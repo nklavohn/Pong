@@ -8,9 +8,9 @@ class ParticleEmitter : public Spawner
 public:
 	ParticleEmitter();
 	ParticleEmitter(const std::shared_ptr<entity_queue<Entity>> sQueue);
-	~ParticleEmitter();
+	virtual ~ParticleEmitter();
 
-	virtual void EmitParticles() = 0;
+	virtual void EmitParticles(const Vector2& pos, const Vector2& vel) = 0;
 };
 
 #endif

@@ -22,13 +22,15 @@ Entity::~Entity()
 
 void Entity::Initialize()
 {
-	
 	currentSprite = IVector2::ZERO;
-
-	
 }
 
 int Entity::GetNextID()
 {
 	return NEXT_ID++;
+}
+
+void Entity::AddSelfToDeleteQueue()
+{
+	deleteQueue->push(id);
 }

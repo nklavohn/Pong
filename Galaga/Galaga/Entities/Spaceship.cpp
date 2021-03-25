@@ -27,6 +27,7 @@ void Spaceship::Move()
 	if (Keyboard::IsKeyPressed(Keyboard::W))
 	{
 		hitbox->AddToCenter(vel * Engine::GetDeltaTime() * speed);
+		EmitParticles(hitbox->GetCenter(), vel * -1);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::A))
 	{

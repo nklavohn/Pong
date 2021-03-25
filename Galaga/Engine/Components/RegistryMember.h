@@ -8,7 +8,7 @@ class RegistryMember
 {
 public:
 	RegistryMember();
-	~RegistryMember();
+	virtual ~RegistryMember();
 
 	bool IsFlaggedForRemoval() const;
 	void FlagForRemoval(const bool& flag = true);
@@ -17,6 +17,8 @@ public:
 protected:
 	bool isFlaggedForRemoval = false;
 	std::shared_ptr<std::queue<int>> deleteQueue = nullptr;
+
+	virtual void AddSelfToDeleteQueue() = 0;
 };
 
 #endif
