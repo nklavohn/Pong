@@ -18,7 +18,7 @@ public:
 
 private:
 	EntityRegistry registry = EntityRegistry();
-	std::shared_ptr<Spaceship> ship = std::make_shared<Spaceship>();
+	std::shared_ptr<Spaceship> ship = nullptr;
 
 	void Setup();
 };

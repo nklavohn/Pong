@@ -10,7 +10,7 @@ ConstantParticleEmitter::ConstantParticleEmitter(std::unique_ptr<Particle> _part
 
 ConstantParticleEmitter::ConstantParticleEmitter(std::unique_ptr<Particle> _particle, 
 												 const float& _cooldown, 
-												 const std::shared_ptr<entity_queue<Entity>> sQueue) 
+												 const std::shared_ptr<EntityQueue<Entity>> sQueue) 
 	: particle(std::move(_particle)), ParticleEmitter(sQueue)
 {
 	cooldown = _cooldown;

@@ -18,21 +18,25 @@ public:
 	~EntityRegistry();
 
 	//bureaucratic shit
-	std::unordered_map<int, int> catalog;
-	std::shared_ptr<entity_queue<Entity>> spawnQueue;
-	std::shared_ptr<std::queue<int>> deleteQueue;
+	std::unordered_map<int, int> catalog = std::unordered_map<int, int>();
+	std::shared_ptr<EntityQueue<Entity>> spawnQueue = std::make_shared<EntityQueue<Entity>>();
+	std::shared_ptr<std::queue<int>> deleteQueue = std::make_shared<std::queue<int>>();
 
 	//collections to hold all the entities
 	std::shared_ptr<Player> player;
-	entity_pool<Enemy> enemies;
-	entity_pool<Projectile> projectiles;
-	entity_pool<Particle> particles;
+	EntityPool<Enemy> enemies;
+	EntityPool<Projectile> projectiles;
+	EntityPool<Particle> particles;
 
 	//functions
 	void DefinePlayer(const std::shared_ptr<Player> _player);
 	void ApplySpawnQueue();
 	void ApplyDeleteQueue();
 	std::shared_ptr<Entity> GetEntity(const int& id) const;
+
+	void UpdateEntities();
+	void RenderEntities() const;
+	void DebugEntityPhysics() const;
 };
 
 #endif

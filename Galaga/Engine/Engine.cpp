@@ -106,7 +106,8 @@ void Engine::Update()
 {
 	// calculate delta time from last frame
 	double now = glfwGetTime();
-	deltaTime = (float)(now - prevTime);
+	//TODO might want to devise a better solution than limiting the dt to 0.5s
+	deltaTime = std::min(0.5F, (float)(now - prevTime));
 	prevTime = now;
 
 	// allow glfw to handle all events stacking up in the queue (moving mouse, screen around, etc.)

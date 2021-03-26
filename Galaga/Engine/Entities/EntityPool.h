@@ -6,15 +6,15 @@
 #include <memory>
 
 template <class T>
-class entity_pool
+class EntityPool
 {
 public:
 	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity");
 
 	std::unordered_map<int, std::shared_ptr<T>> entities{};
 
-	entity_pool();
-	~entity_pool();
+	EntityPool();
+	~EntityPool();
 
 	void Update();
 	void Render() const;
@@ -26,65 +26,65 @@ public:
 };
 
 template <class T>
-entity_pool<T>::entity_pool()
+EntityPool<T>::EntityPool()
 {
 
 }
 
 template <class T>
-entity_pool<T>::~entity_pool()
+EntityPool<T>::~EntityPool()
 {
 
 }
 
 template <class T>
-void entity_pool<T>::Update()
+void EntityPool<T>::Update()
 {
 	for (auto& itr : entities)
 	{
-		itr->Update();
+		itr.second->Update();
 	}
 }
 
 template <class T>
-void entity_pool<T>::Render() const
+void EntityPool<T>::Render() const
 {
 	for (auto& itr : entities)
 	{
-		itr->Render();
+		itr.second->Render();
 	}
 }
 
 
 template <class T>
-void entity_pool<T>::DebugPhysics() const
+void EntityPool<T>::DebugPhysics() const
 {
 	for (auto& itr : entities)
 	{
-		itr->DebugPhysics();
+		itr.second->DebugPhysics();
 	}
 }
 
 template <class T>
-int entity_pool<T>::Size() const
+int EntityPool<T>::Size() const
 {
 	return entities.size();
 }
 
 template <class T>
-void entity_pool<T>::Add(int key, std::shared_ptr<Entity> entity)
+void EntityPool<T>::Add(int key, std::shared_ptr<Entity> entity)
 {
 	entities.emplace(key, std::dynamic_pointer_cast<T>(entity));
 }
 
 template <class T>
-void entity_pool<T>::Remove(int key)
+void EntityPool<T>::Remove(int key)
 {
 	entities.erase(key);
 }
 
 template <class T>
-std::shared_ptr<Entity> entity_pool<T>::GetEntity(const int& id) const
+std::shared_ptr<Entity> EntityPool<T>::GetEntity(const int& id) const
 {
 	return std::dynamic_pointer_cast<Entity>(entities.at(id));
 }

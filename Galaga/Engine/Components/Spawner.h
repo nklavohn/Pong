@@ -11,19 +11,19 @@ class Spawner
 {
 public:
 	Spawner();
-	Spawner(const std::shared_ptr<entity_queue<Entity>> sQueue);
+	Spawner(const std::shared_ptr<EntityQueue<Entity>> sQueue);
 	virtual ~Spawner();
 
 	void Spawn(const std::shared_ptr<Entity> entity);
 
-	static void SetDefaultSpawnQueue(const std::shared_ptr<entity_queue<Entity>> newDefault);
-	void SetSpawnQueue(const std::shared_ptr<entity_queue<Entity>> sQueue);
+	static void SetDefaultSpawnQueue(const std::shared_ptr<EntityQueue<Entity>> newDefault);
+	void SetSpawnQueue(const std::shared_ptr<EntityQueue<Entity>> sQueue);
 
 protected:
-	std::shared_ptr<entity_queue<Entity>> spawnQueue = nullptr;
+	std::shared_ptr<EntityQueue<Entity>> spawnQueue = nullptr;
 
 private:
-	static std::shared_ptr<entity_queue<Entity>> defaultSpawnQueue;
+	static std::shared_ptr<EntityQueue<Entity>> defaultSpawnQueue;
 };
 
 #endif

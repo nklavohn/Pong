@@ -5,6 +5,7 @@
 GameScreen::GameScreen(const IVector2& _dim) : Screen(_dim)
 {
 	color = Color(0.114, 0.114, 0.227, 1);
+	Setup();
 }
 
 GameScreen::~GameScreen()
@@ -15,12 +16,19 @@ GameScreen::~GameScreen()
 void GameScreen::Setup()
 {
 	Spawner::SetDefaultSpawnQueue(registry.spawnQueue);
+	ship = std::make_shared<Spaceship>();
 	registry.DefinePlayer(ship);
+
 }
 
 void GameScreen::Update()
 {
 	ship->Move();
+
+	registry.ApplySpawnQueue();
+	registry.ApplyDeleteQueue();
+
+
 	Camera::Ease(ship->GetPos(), 20);
 }
 
@@ -31,6 +39,7 @@ void GameScreen::Render() const
 	//ship->Render();
 
 	ship->DebugPhysics();
+	registry.particles.DebugPhysics();
 	EndRender();
 }
 
