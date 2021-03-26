@@ -3,9 +3,12 @@
 
 #include "System.h"
 
-class ParticleDecayer : public System
+class ParticleDecayer : public SystemID<ParticleDecayer>
 {
 public:
+	ParticleDecayer();
+	~ParticleDecayer();
+
 	void Work(EntityRegistry& registry) override;
 };
 

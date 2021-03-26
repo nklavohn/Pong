@@ -1,6 +1,8 @@
 #include "GameScreen.h"
 
 #include "Engine/Components/Spawner.h"
+#include "Engine/Systems/ParticleDecayer.h"
+#include "Engine/Systems/Updater.h"
 
 GameScreen::GameScreen(const IVector2& _dim) : Screen(_dim)
 {
@@ -15,15 +17,21 @@ GameScreen::~GameScreen()
 
 void GameScreen::Setup()
 {
+	//Entities
 	Spawner::SetDefaultSpawnQueue(registry.spawnQueue);
 	ship = std::make_shared<Spaceship>();
 	registry.DefinePlayer(ship);
 
+	//Systems
+	systemManager.AddSystem(std::make_shared<ParticleDecayer>());
+	systemManager.AddSystem(std::make_shared<Updater>());
 }
 
 void GameScreen::Update()
 {
-	ship->Move();
+	ship->Update();
+
+	systemManager.Update(registry);
 
 	registry.ApplySpawnQueue();
 	registry.ApplyDeleteQueue();
@@ -36,7 +44,6 @@ void GameScreen::Render() const
 {
 	BeginRender();
 	Camera::RenderGrid(Color::DARK_GRAY, 20);
-	//ship->Render();
 
 	ship->DebugPhysics();
 	registry.particles.DebugPhysics();

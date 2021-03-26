@@ -20,7 +20,7 @@ public:
 	Spaceship(const Spaceship& other) : Spaceship() {};
 	Spaceship& operator=(const Spaceship& other) { return *this; };
 
-	void Move() override;
+	void Update() override;
 	void Shoot();
 	bool IsHit();
 	void Respawn();

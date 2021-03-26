@@ -8,13 +8,13 @@
 #include "Galaga/Entities/Particles/ExhaustParticle.h"
 
 Spaceship::Spaceship() : Player(std::unique_ptr<Hitbox>(new CircHitbox(Vector2::ZERO, 10))),
-	ConstantParticleEmitter(std::unique_ptr<Particle>(new ExhaustParticle()), 0.5)
+	ConstantParticleEmitter(std::unique_ptr<Particle>(new ExhaustParticle()), 0.05F)
 {
 	speed = 200;
 	rotSpeed = 250;
 	currentSprite = IVector2(1, 0);
 	vel = Vector2::JHAT;
-	spriteSheet.SetRotCenter(Vector2(10.5, 13));
+	spriteSheet.SetRotCenter(Vector2(10.5F, 13));
 }
 
 Spaceship::~Spaceship()
@@ -22,12 +22,12 @@ Spaceship::~Spaceship()
 
 }
 
-void Spaceship::Move()
+void Spaceship::Update()
 {
 	if (Keyboard::IsKeyPressed(Keyboard::W))
 	{
 		hitbox->AddToCenter(vel * Engine::GetDeltaTime() * speed);
-		EmitParticles(hitbox->GetCenter(), vel * -1);
+		EmitParticles(hitbox->GetCenter(), vel * -0.5F);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::A))
 	{

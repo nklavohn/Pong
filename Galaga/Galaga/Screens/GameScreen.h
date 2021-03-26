@@ -4,6 +4,7 @@
 #include "Engine/Graphics/Screen.h"
 #include "Galaga/Entities/Spaceship.h"
 #include "Engine/Entities/EntityRegistry.h"
+#include "Engine/Systems/SystemManager.h"
 
 class GameScreen: public Screen
 {
@@ -18,6 +19,7 @@ public:
 
 private:
 	EntityRegistry registry = EntityRegistry();
+	SystemManager systemManager = SystemManager();
 	std::shared_ptr<Spaceship> ship = nullptr;
 
 	void Setup();

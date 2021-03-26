@@ -15,7 +15,7 @@ TestScreen::~TestScreen()
 
 void TestScreen::Update() 
 {
-	ship.Move();
+	ship.Update();
 	Camera::Ease(ship.GetPos(), 20);
 }
 

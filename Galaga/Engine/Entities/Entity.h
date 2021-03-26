@@ -21,7 +21,7 @@ public:
 	Entity(const enum Category _category, const SpriteSheet& _spriteSheet);
 	virtual ~Entity();
 
-	virtual void Move() = 0;
+	virtual void Update() = 0;
 	virtual void Render() const = 0;
 	virtual std::shared_ptr<Entity> CloneEntity() const = 0;
 

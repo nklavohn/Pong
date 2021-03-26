@@ -14,7 +14,7 @@ public:
 	ExhaustParticle(const ExhaustParticle& other) : ExhaustParticle(other.hitbox->GetCenter(), other.vel) {}
 	ExhaustParticle& operator=(const ExhaustParticle& other) { return *this;  }
 
-	void Move() override;
+	void Update() override;
 	void Render() const override;
 	void DebugPhysics() const override;
 

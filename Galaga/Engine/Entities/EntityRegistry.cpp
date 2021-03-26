@@ -98,3 +98,27 @@ std::shared_ptr<Entity> EntityRegistry::GetEntity(const int& id) const
 		return nullptr;
 	}
 }
+
+void EntityRegistry::UpdateEntities()
+{
+	player->Update();
+	enemies.Update();
+	projectiles.Update();
+	particles.Update();
+}
+
+void EntityRegistry::RenderEntities() const
+{
+	player->Render();
+	enemies.Render();
+	projectiles.Render();
+	particles.Render();
+}
+
+void EntityRegistry::DebugEntityPhysics() const
+{
+	player->DebugPhysics();
+	enemies.DebugPhysics();
+	projectiles.DebugPhysics();
+	particles.DebugPhysics();
+}

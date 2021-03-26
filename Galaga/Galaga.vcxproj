@@ -182,6 +182,8 @@
     <ClCompile Include="Engine\Systems\CollisionDetector.cpp" />
     <ClCompile Include="Engine\Systems\ParticleDecayer.cpp" />
     <ClCompile Include="Engine\Systems\System.cpp" />
+    <ClCompile Include="Engine\Systems\SystemManager.cpp" />
+    <ClCompile Include="Engine\Systems\Updater.cpp" />
     <ClCompile Include="Galaga.cpp" />
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
     <ClCompile Include="Engine\Entities\EntityRegistry.cpp" />
@@ -236,6 +238,8 @@
     <ClInclude Include="Engine\Entities\EntityRegistry.h" />
     <ClInclude Include="Engine\Systems\ParticleDecayer.h" />
     <ClInclude Include="Engine\Systems\System.h" />
+    <ClInclude Include="Engine\Systems\SystemManager.h" />
+    <ClInclude Include="Engine\Systems\Updater.h" />
     <ClInclude Include="Galaga\Entities\Particles\ExhaustParticle.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />
