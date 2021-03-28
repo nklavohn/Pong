@@ -26,24 +26,25 @@ void Spaceship::Update()
 {
 	if (Keyboard::IsKeyPressed(Keyboard::W))
 	{
-		hitbox->AddToCenter(velDir * Engine::GetDeltaTime() * speed);
+		tState.pos += velDir * Engine::GetDeltaTime() * speed;
+		hitbox->SetCenter(tState.pos);
 		EmitParticles(hitbox->GetCenter(), velDir * -speed);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::A))
 	{
 		float deltaRot = rotSpeed * Engine::GetDeltaTime();
 		rState.angle += deltaRot;
-		vel.Rotate(deltaRot);
+		velDir.Rotate(deltaRot);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::S))
 	{
-		hitbox->AddToCenter(vel.Flip(false) * Engine::GetDeltaTime() * speed);
+		
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::D))
 	{
 		float deltaRot = -rotSpeed * Engine::GetDeltaTime();
-		rot += deltaRot;
-		vel.Rotate(deltaRot);
+		rState.angle += deltaRot;
+		velDir.Rotate(deltaRot);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::E))
 	{
@@ -67,7 +68,7 @@ void Spaceship::Shoot()
 
 void Spaceship::Render() const
 {
-	spriteSheet.RenderRelativeTo(hitbox->GetCenter(), rot, currentSprite);
+	spriteSheet.RenderRelativeTo(tState.pos, rState.angle, currentSprite);
 }
 
 bool Spaceship::IsHit()
@@ -82,12 +83,8 @@ void Spaceship::Respawn()
 
 void Spaceship::DebugPhysics() const
 {
-	if (hitbox)
-	{
-		hitbox->Render(Color::WHITE);
-		Vector2 pos = hitbox->GetCenter();
-		ShapeRenderer::DrawVector(Color::WHITE, pos, pos + vel * 10);
-	}
+	hitbox->Render(Color::WHITE);
+	ShapeRenderer::DrawVector(Color::WHITE, tState.pos, tState.pos + velDir * 10);
 }
 
 Vector2 Spaceship::GetPos() const

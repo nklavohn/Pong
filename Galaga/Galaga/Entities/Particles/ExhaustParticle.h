@@ -11,7 +11,7 @@ public:
 	
 	//rule of three
 	~ExhaustParticle();
-	ExhaustParticle(const ExhaustParticle& other) : ExhaustParticle(other.hitbox->GetCenter(), other.tState.Vel()) {}
+	ExhaustParticle(const ExhaustParticle& other) : ExhaustParticle(other.tState.pos, other.tState.vel) {}
 	ExhaustParticle& operator=(const ExhaustParticle& other) { return *this;  }
 
 	void Update() override;

@@ -4,19 +4,22 @@
 
 RotationalState2::RotationalState2(const float& _rotInertia, const bool _hasDrag, const float& _dragCoeff)
 {
-	angle = 0;
-	vel = 0;
-	prevAngle = 0;
-	prevVel = 0;
-	rotInertia = _rotInertia;
-	hasDrag = _hasDrag;
-	dragCoefficient = _dragCoeff;
-
-	moments = std::queue<float>();
+	Initialize(0, 0, _rotInertia, _hasDrag, _dragCoeff);
 }
 
 RotationalState2::RotationalState2(const float& _angle, const float& _vel, const float& _rotInertia,
 								   const bool _hasDrag, const float& _dragCoeff)
+{
+	Initialize(_angle, _vel, _rotInertia, _hasDrag, _dragCoeff);
+}
+
+RotationalState2::~RotationalState2()
+{
+
+}
+
+void RotationalState2::Initialize(const float& _angle, const float& _vel, const float& _rotInertia,
+								  const bool _hasDrag, const float& _dragCoeff)
 {
 	angle = _angle;
 	vel = _vel;
@@ -27,11 +30,6 @@ RotationalState2::RotationalState2(const float& _angle, const float& _vel, const
 	dragCoefficient = _dragCoeff;
 
 	moments = std::queue<float>();
-}
-
-RotationalState2::~RotationalState2()
-{
-
 }
 
 void RotationalState2::AddMoment(const float& moment)
@@ -57,6 +55,7 @@ void RotationalState2::Move()
 	vel += accel * dt;
 }
 
+/*
 bool RotationalState2::HasDrag() const
 {
 	return hasDrag;
@@ -70,4 +69,4 @@ void RotationalState2::SetDragTo(const bool state)
 void RotationalState2::SetDragCoefficient(const float& dragCoeff)
 {
 	dragCoefficient = dragCoeff;
-}
+}*/

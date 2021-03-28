@@ -14,15 +14,6 @@ public:
 					 const bool _hasDrag, const float& _dragCoeff);
 	~RotationalState2();
 
-	void AddMoment(const float& moment);
-	void Move();
-
-	bool HasDrag() const;
-
-	void SetDragTo(const bool state);
-	void SetDragCoefficient(const float& dragCoeff);
-
-private:
 	float prevAngle;
 	float prevVel;
 	float angle;
@@ -33,6 +24,18 @@ private:
 	float dragCoefficient;
 
 	std::queue<float> moments;
+
+	void AddMoment(const float& moment);
+	void Move();
+
+	/*bool HasDrag() const;
+
+	void SetDragTo(const bool state);
+	void SetDragCoefficient(const float& dragCoeff);*/
+
+private:
+	void Initialize(const float& _angle, const float& _vel, const float& _rotInertia,
+					const bool _hasDrag, const float& _dragCoeff);
 };
 
 #endif

@@ -10,8 +10,8 @@ ExhaustParticle::ExhaustParticle() : Particle(std::unique_ptr<Hitbox>(new RectHi
 
 ExhaustParticle::ExhaustParticle(const Vector2& _pos, const Vector2& _vel) : Particle(std::unique_ptr<Hitbox>(new RectHitbox(_pos, Vector2(10, 10))))
 {
-	tState.SetPos(_pos);
-	tState.SetVel(_vel);
+	tState.pos = _pos;
+	tState.vel = _vel;
 	Initialize();
 }
 
