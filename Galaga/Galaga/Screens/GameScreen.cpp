@@ -2,7 +2,7 @@
 
 #include "Engine/Components/Spawner.h"
 #include "Engine/Systems/ParticleDecayer.h"
-#include "Engine/Systems/Updater.h"
+#include "Engine/Systems/EntityUpdater.h"
 
 GameScreen::GameScreen(const IVector2& _dim) : Screen(_dim)
 {
@@ -24,7 +24,7 @@ void GameScreen::Setup()
 
 	//Systems
 	systemManager.AddSystem(std::make_shared<ParticleDecayer>());
-	systemManager.AddSystem(std::make_shared<Updater>());
+	systemManager.AddSystem(std::make_shared<EntityUpdater>());
 }
 
 void GameScreen::Update()

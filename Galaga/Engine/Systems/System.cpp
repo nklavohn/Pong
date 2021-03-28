@@ -1,33 +1,33 @@
 #include "System.h"
 
-unsigned short System::nextID = 0;
+unsigned short SystemBase::nextID = 0;
 
-System::System()
+SystemBase::SystemBase()
 {
 	isActive = true;
 }
 
-System::~System()
+SystemBase::~SystemBase()
 {
 
 }
 
-bool System::IsActive() const
+bool SystemBase::IsActive() const
 {
 	return isActive;
 }
 
-void System::Deactivate()
+void SystemBase::Deactivate()
 {
 	isActive = false;
 }
 
-void System::Activate()
+void SystemBase::Activate()
 {
 	isActive = true;
 }
 
-unsigned short System::GetNextID()
+unsigned short SystemBase::GetNextID()
 {
 	return ++nextID;
 }

@@ -5,13 +5,13 @@
 
 ExhaustParticle::ExhaustParticle() : Particle(std::unique_ptr<Hitbox>(new RectHitbox(Vector2::ZERO, Vector2(10, 10))))
 {
-	vel = Vector2::ZERO;
 	Initialize();
 }
 
 ExhaustParticle::ExhaustParticle(const Vector2& _pos, const Vector2& _vel) : Particle(std::unique_ptr<Hitbox>(new RectHitbox(_pos, Vector2(10, 10))))
 {
-	vel = _vel;
+	tState.SetPos(_pos);
+	tState.SetVel(_vel);
 	Initialize();
 }
 
@@ -28,7 +28,7 @@ void ExhaustParticle::Initialize()
 
 void ExhaustParticle::Update()
 {
-	hitbox->AddToCenter(vel * Engine::GetDeltaTime());
+	ApplyPhysics();
 }
 
 void ExhaustParticle::Render() const
@@ -38,5 +38,6 @@ void ExhaustParticle::Render() const
 
 void ExhaustParticle::DebugPhysics() const
 {
-	DebugPhysicsDefault();
+	//DebugPhysicsDefault();
+	hitbox->Render(Color::WHITE);
 }

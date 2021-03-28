@@ -3,7 +3,7 @@
 
 #include "System.h"
 
-class ParticleDecayer : public SystemID<ParticleDecayer>
+class ParticleDecayer : public System<ParticleDecayer>
 {
 public:
 	ParticleDecayer();

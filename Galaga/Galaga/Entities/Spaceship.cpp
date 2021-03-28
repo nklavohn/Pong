@@ -13,7 +13,7 @@ Spaceship::Spaceship() : Player(std::unique_ptr<Hitbox>(new CircHitbox(Vector2::
 	speed = 200;
 	rotSpeed = 250;
 	currentSprite = IVector2(1, 0);
-	vel = Vector2::JHAT;
+	velDir = Vector2::JHAT;
 	spriteSheet.SetRotCenter(Vector2(10.5F, 13));
 }
 
@@ -26,13 +26,13 @@ void Spaceship::Update()
 {
 	if (Keyboard::IsKeyPressed(Keyboard::W))
 	{
-		hitbox->AddToCenter(vel * Engine::GetDeltaTime() * speed);
-		EmitParticles(hitbox->GetCenter(), vel * -0.5F);
+		hitbox->AddToCenter(velDir * Engine::GetDeltaTime() * speed);
+		EmitParticles(hitbox->GetCenter(), velDir * -speed);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::A))
 	{
 		float deltaRot = rotSpeed * Engine::GetDeltaTime();
-		rot += deltaRot;
+		rState.angle += deltaRot;
 		vel.Rotate(deltaRot);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::S))

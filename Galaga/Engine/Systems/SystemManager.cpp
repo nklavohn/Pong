@@ -10,7 +10,7 @@ SystemManager::~SystemManager()
 
 }
 
-void SystemManager::AddSystem(const std::shared_ptr<System> system)
+void SystemManager::AddSystem(const std::shared_ptr<SystemBase> system)
 {
 	systems.push_back(system);
 }

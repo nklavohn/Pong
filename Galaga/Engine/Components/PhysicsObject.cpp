@@ -4,11 +4,12 @@
 
 PhysicsObject::PhysicsObject(std::unique_ptr<Hitbox> _hitbox) : HitboxedObject(std::move(_hitbox))
 {
-	prevPos = Vector2::ZERO;
-	vel = Vector2::ZERO;
-	accel = Vector2::ZERO;
-	speed = 0;
-	maxSpeed = 0;
+	tState = TranslationalState2();
+}
+
+PhysicsObject::PhysicsObject(std::unique_ptr<Hitbox> _hitbox, const TranslationalState2& _tState) : HitboxedObject(std::move(_hitbox))
+{
+	tState = _tState;
 }
 
 PhysicsObject::~PhysicsObject()
@@ -18,23 +19,23 @@ PhysicsObject::~PhysicsObject()
 
 void PhysicsObject::SetPos(const Vector2& _pos)
 {
-	hitbox->SetCenter(_pos);
+	tState.pos = _pos;
 }
 
 void PhysicsObject::SetVel(const Vector2& _vel)
 {
-	vel = _vel;
+	tState.vel = _vel;
 }
 
-void PhysicsObject::SetAccel(const Vector2& _accel)
+void PhysicsObject::ApplyPhysics()
 {
-	accel = _accel;
+	tState.Move();
+	hitbox->SetCenter(tState.pos);
 }
 
 void PhysicsObject::DebugPhysicsDefault() const
 {
-	Vector2 pos = hitbox->GetCenter();
 	if (hitbox) hitbox->Render(Color::WHITE);
-	ShapeRenderer::DrawVector(Color::BLUE, pos, pos + vel);
-	ShapeRenderer::DrawVector(Color::MAGENTA, pos, pos + accel);
+	ShapeRenderer::DrawVector(Color::BLUE, tState.pos, tState.pos + tState.vel);
+	ShapeRenderer::DrawVector(Color::MAGENTA, tState.pos, tState.pos + tState.accel);
 }

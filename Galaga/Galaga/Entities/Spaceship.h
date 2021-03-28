@@ -7,6 +7,7 @@
 #include "Engine/Entities/Player.h"
 #include "Engine/Components/ConstantParticleEmitter.h"
 #include "Engine/Components/HitboxedObject.h"
+#include "Engine/Physics/RotationalState2.h"
 
 class Spaceship : public Player, public ConstantParticleEmitter
 {
@@ -37,7 +38,11 @@ private:
 	float shotCooldownMax = 0.5;
 	float shotCooldown = 0;
 
-	Vector2 vel = Vector2::ZERO;
+	RotationalState2 rState = RotationalState2(0, 0, 1, false, 0);
+
+	float speed;
+	float rotSpeed;
+	Vector2 velDir;
 
 	const IVector2 LEFT = IVector2(0, 0);
 	const IVector2 STRAIGHT = IVector2(1, 0);

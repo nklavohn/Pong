@@ -4,11 +4,11 @@
 #include "Engine/Entities/EntityRegistry.h"
 #include "Engine/Engine.h"
 
-class System
+class SystemBase
 {
 public:
-	System();
-	virtual ~System();
+	SystemBase();
+	virtual ~SystemBase();
 
 	bool IsActive() const;
 	void Activate();
@@ -27,32 +27,32 @@ private:
 };
 
 template <typename T>
-class SystemID : public System
+class System : public SystemBase
 {
 public:
-	SystemID();
-	~SystemID();
+	System();
+	~System();
 
 	static unsigned short ID;
 	unsigned short GetID() const override;
 	virtual void Work(EntityRegistry& registry) = 0;
 };
 
-template <typename T> unsigned short SystemID<T>::ID = 0;
+template <typename T> unsigned short System<T>::ID = 0;
 
 template <typename T>
-SystemID<T>::SystemID()
+System<T>::System()
 {
-	ID = (ID == 0) ? System::GetNextID() : ID;
+	ID = (ID == 0) ? SystemBase::GetNextID() : ID;
 }
 
 template <typename T>
-SystemID<T>::~SystemID() {};
+System<T>::~System() {};
 
 template <typename T>
-unsigned short SystemID<T>::GetID() const
+unsigned short System<T>::GetID() const
 {
-	return SystemID<T>::ID;
+	return System<T>::ID;
 }
 
 #endif

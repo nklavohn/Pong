@@ -3,11 +3,11 @@
 
 #include "System.h"
 
-class Updater : public SystemID<Updater>
+class EntityUpdater : public System<EntityUpdater>
 {
 public:
-	Updater();
-	~Updater();
+	EntityUpdater();
+	~EntityUpdater();
 
 	void Work(EntityRegistry& registry) override;
 };

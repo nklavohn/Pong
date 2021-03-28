@@ -30,7 +30,7 @@ void ConstantParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& v
 	{
 		std::shared_ptr<Particle> newPart = particle->CloneParticle();
 		newPart->SetPos(pos);
-		newPart->SetVel(vel);
+		newPart->SetVel(RandomizeDir(vel, 10));
 		spawnQueue->Add(newPart);
 		timeRemaining += cooldown;
 	}
