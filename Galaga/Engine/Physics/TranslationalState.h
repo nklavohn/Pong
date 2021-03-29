@@ -5,14 +5,14 @@
 
 #include <queue>
 
-class TranslationalState2
+class TranslationalState
 {
 public:
-	TranslationalState2();
-	TranslationalState2(const float& _mass, const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag);
-	TranslationalState2(const Vector2& _pos, const Vector2& _vel, const float& _mass, 
-					    const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag);
-	~TranslationalState2();
+	TranslationalState();
+	TranslationalState(const float& _mass, const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag);
+	TranslationalState(const Vector2& _pos, const Vector2& _vel, const float& _mass, 
+					   const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag);
+	~TranslationalState();
 
 	float mass;
 	float dragCoefficient;

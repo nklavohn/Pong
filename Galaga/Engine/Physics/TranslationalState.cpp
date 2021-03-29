@@ -1,30 +1,30 @@
-#include "TranslationalState2.h"
+#include "TranslationalState.h"
 
 #include "Engine/Engine.h"
 
-TranslationalState2::TranslationalState2()
+TranslationalState::TranslationalState()
 {
 	Initialize(Vector2::ZERO, Vector2::ZERO, 1, false, 0, false);
 }
 
-TranslationalState2::TranslationalState2(const float& _mass, const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag)
+TranslationalState::TranslationalState(const float& _mass, const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag)
 {
 	Initialize(Vector2::ZERO, Vector2::ZERO, _mass, _hasGravity, _dragCoeff, _hasDrag);
 }
 
-TranslationalState2::TranslationalState2(const Vector2& _pos, const Vector2& _vel, const float& _mass, 
+TranslationalState::TranslationalState(const Vector2& _pos, const Vector2& _vel, const float& _mass, 
 									   const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag)
 {
 	Initialize(_pos, _vel, _mass, _hasGravity, _dragCoeff, _hasDrag);
 }
 
-TranslationalState2::~TranslationalState2()
+TranslationalState::~TranslationalState()
 {
 
 }
 
-void TranslationalState2::Initialize(const Vector2& _pos, const Vector2& _vel, const float& _mass,
-									 const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag)
+void TranslationalState::Initialize(const Vector2& _pos, const Vector2& _vel, const float& _mass,
+									const bool _hasGravity, const float& _dragCoeff, const bool _hasDrag)
 {
 	pos = _pos;
 	vel = _vel;
@@ -39,12 +39,12 @@ void TranslationalState2::Initialize(const Vector2& _pos, const Vector2& _vel, c
 	forces = std::queue<Vector2>();
 }
 
-void TranslationalState2::AddForce(const Vector2& force)
+void TranslationalState::AddForce(const Vector2& force)
 {
 	forces.push(force);
 }
 
-void TranslationalState2::Move()
+void TranslationalState::Move()
 {
 	Vector2 netForce = Vector2::ZERO;
 	while (!forces.empty())

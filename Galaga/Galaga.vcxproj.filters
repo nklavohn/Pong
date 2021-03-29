@@ -177,10 +177,16 @@
     <ClCompile Include="Engine\Systems\EntityPhysicsDebugger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Physics\TranslationalState2.cpp">
+    <ClCompile Include="Engine\Physics\TranslationalState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Physics\RotationalState2.cpp">
+    <ClCompile Include="Engine\Physics\RotationalState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Systems\ConstSystemManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Systems\ConstSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -344,10 +350,16 @@
     <ClInclude Include="Engine\Systems\EntityPhysicsDebugger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Physics\TranslationalState2.h">
+    <ClInclude Include="Engine\Physics\TranslationalState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Physics\RotationalState2.h">
+    <ClInclude Include="Engine\Physics\RotationalState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Systems\ConstSystemManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Systems\ConstSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

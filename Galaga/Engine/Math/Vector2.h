@@ -42,6 +42,7 @@ public:
 	Vector2 Mult(float _x, float _y);
 	Vector2 Div(float _x, float _y);
 
+	//operators
 	Vector2& operator=(const Vector2& v);
 	Vector2& operator+=(const Vector2& v);
 	Vector2& operator-=(const Vector2& v);

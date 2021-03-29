@@ -4,10 +4,10 @@
 
 PhysicsObject::PhysicsObject(std::unique_ptr<Hitbox> _hitbox) : HitboxedObject(std::move(_hitbox))
 {
-	tState = TranslationalState2();
+	tState = TranslationalState();
 }
 
-PhysicsObject::PhysicsObject(std::unique_ptr<Hitbox> _hitbox, const TranslationalState2& _tState) : HitboxedObject(std::move(_hitbox))
+PhysicsObject::PhysicsObject(std::unique_ptr<Hitbox> _hitbox, const TranslationalState& _tState) : HitboxedObject(std::move(_hitbox))
 {
 	tState = _tState;
 }
@@ -35,7 +35,7 @@ void PhysicsObject::ApplyPhysics()
 
 void PhysicsObject::DebugPhysicsDefault() const
 {
-	if (hitbox) hitbox->Render(Color::WHITE);
+	hitbox->Render(Color::WHITE);
 	ShapeRenderer::DrawVector(Color::BLUE, tState.pos, tState.pos + tState.vel);
 	ShapeRenderer::DrawVector(Color::MAGENTA, tState.pos, tState.pos + tState.accel);
 }

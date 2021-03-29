@@ -1,14 +1,14 @@
 #ifndef ENGINE_ENTITYPHYSICSDEBUGGER
 #define ENGINE_ENTITYPHYSICSDEBUGGER
 
-#include "System.h"
+#include "ConstSystem.h"
 
-class EntityPhysicsDebugger : public System<EntityPhysicsDebugger>
+class EntityPhysicsDebugger : public ConstSystem<EntityPhysicsDebugger>
 {
 	EntityPhysicsDebugger();
 	~EntityPhysicsDebugger();
 
-	void Work(EntityRegistry& registry) override;
+	void Work(const EntityRegistry& registry) const override;
 };
 
 #endif

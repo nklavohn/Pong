@@ -39,7 +39,7 @@ void SystemManager::ActivateSystem(const int& id)
 	}
 }
 
-void SystemManager::Update(EntityRegistry& registry)
+void SystemManager::Manage(EntityRegistry& registry)
 {
 	for (auto& itr : systems)
 	{

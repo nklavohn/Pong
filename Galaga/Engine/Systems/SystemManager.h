@@ -11,7 +11,7 @@ public:
 	SystemManager();
 	~SystemManager();
 
-	void Update(EntityRegistry& registry);
+	void Manage(EntityRegistry& registry);
 	void AddSystem(const std::shared_ptr<SystemBase> system);
 	void DeactivateSystem(const int& system);
 	void ActivateSystem(const int& system);

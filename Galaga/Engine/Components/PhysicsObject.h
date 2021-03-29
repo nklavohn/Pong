@@ -3,13 +3,13 @@
 
 #include "Engine/Math/Vector2.h"
 #include "HitboxedObject.h"
-#include "Engine/Physics/TranslationalState2.h"
+#include "Engine/Physics/TranslationalState.h"
 
 class PhysicsObject : public HitboxedObject
 {
 public:
 	PhysicsObject(std::unique_ptr<Hitbox> _hitbox);
-	PhysicsObject(std::unique_ptr<Hitbox> _hitbox, const TranslationalState2& _tState);
+	PhysicsObject(std::unique_ptr<Hitbox> _hitbox, const TranslationalState& _tState);
 	virtual ~PhysicsObject();
 
 	virtual void DebugPhysics() const = 0;
@@ -18,7 +18,7 @@ public:
 	void SetVel(const Vector2& _vel);
 
 protected:
-	TranslationalState2 tState;
+	TranslationalState tState;
 
 	void ApplyPhysics();
 	void DebugPhysicsDefault() const;

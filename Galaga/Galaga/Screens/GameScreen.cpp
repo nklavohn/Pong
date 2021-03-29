@@ -3,6 +3,7 @@
 #include "Engine/Components/Spawner.h"
 #include "Engine/Systems/ParticleDecayer.h"
 #include "Engine/Systems/EntityUpdater.h"
+#include "Engine/Systems/EntityPhysicsDebugger.h"
 
 GameScreen::GameScreen(const IVector2& _dim) : Screen(_dim)
 {
@@ -23,19 +24,20 @@ void GameScreen::Setup()
 	registry.DefinePlayer(ship);
 
 	//Systems
-	systemManager.AddSystem(std::make_shared<ParticleDecayer>());
-	systemManager.AddSystem(std::make_shared<EntityUpdater>());
+	updateSystemManager.AddSystem(std::make_shared<ParticleDecayer>());
+	updateSystemManager.AddSystem(std::make_shared<EntityUpdater>());
+
+	renderSystemManager.AddSystem(std::make_shared<EntityPhysicsDebugger>());
 }
 
 void GameScreen::Update()
 {
 	ship->Update();
 
-	systemManager.Update(registry);
+	updateSystemManager.Manage(registry);
 
 	registry.ApplySpawnQueue();
 	registry.ApplyDeleteQueue();
-
 
 	Camera::Ease(ship->GetPos(), 20);
 }
@@ -45,8 +47,8 @@ void GameScreen::Render() const
 	BeginRender();
 	Camera::RenderGrid(Color::DARK_GRAY, 20);
 
-	ship->DebugPhysics();
-	registry.particles.DebugPhysics();
+	renderSystemManager.Manage(registry);
+
 	EndRender();
 }
 

@@ -10,7 +10,7 @@ EntityRenderer::~EntityRenderer()
 
 }
 
-void EntityRenderer::Work(EntityRegistry& registry)
+void EntityRenderer::Work(const EntityRegistry& registry) const
 {
 	registry.RenderEntities();
 }

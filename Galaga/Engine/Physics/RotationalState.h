@@ -5,14 +5,14 @@
 
 #include <queue>
 
-class RotationalState2
+class RotationalState
 {
 public:
-	RotationalState2();
-	RotationalState2(const float& _rotInertia, const bool _hasDrag, const float& _dragCoeff);
-	RotationalState2(const float& _angle, const float& _vel, const float& _rotInertia, 
-					 const bool _hasDrag, const float& _dragCoeff);
-	~RotationalState2();
+	RotationalState();
+	RotationalState(const float& _rotInertia, const bool _hasDrag, const float& _dragCoeff);
+	RotationalState(const float& _angle, const float& _vel, const float& _rotInertia, 
+					const bool _hasDrag, const float& _dragCoeff);
+	~RotationalState();
 
 	float prevAngle;
 	float prevVel;

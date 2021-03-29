@@ -10,7 +10,7 @@ EntityPhysicsDebugger::~EntityPhysicsDebugger()
 
 }
 
-void EntityPhysicsDebugger::Work(EntityRegistry& registry)
+void EntityPhysicsDebugger::Work(const EntityRegistry& registry) const
 {
 	registry.DebugEntityPhysics();
 }

@@ -1,15 +1,15 @@
 #ifndef ENGINE_ENTITYRENDERER
 #define ENGINE_ENTITYRENDERER
 
-#include "System.h"
+#include "ConstSystem.h"
 
-class EntityRenderer : public System<EntityRenderer>
+class EntityRenderer : public ConstSystem<EntityRenderer>
 {
 public:
 	EntityRenderer();
 	~EntityRenderer();
 
-	void Work(EntityRegistry& registry) override;
+	void Work(const EntityRegistry& registry) const override;
 };
 
 #endif

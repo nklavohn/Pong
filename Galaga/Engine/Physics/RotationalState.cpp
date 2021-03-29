@@ -1,25 +1,30 @@
-#include "RotationalState2.h"
+#include "RotationalState.h"
 
 #include "Engine/Engine.h"
 
-RotationalState2::RotationalState2(const float& _rotInertia, const bool _hasDrag, const float& _dragCoeff)
+RotationalState::RotationalState()
+{
+	Initialize(0, 0, 1, false, 0);
+}
+
+RotationalState::RotationalState(const float& _rotInertia, const bool _hasDrag, const float& _dragCoeff)
 {
 	Initialize(0, 0, _rotInertia, _hasDrag, _dragCoeff);
 }
 
-RotationalState2::RotationalState2(const float& _angle, const float& _vel, const float& _rotInertia,
-								   const bool _hasDrag, const float& _dragCoeff)
+RotationalState::RotationalState(const float& _angle, const float& _vel, const float& _rotInertia,
+								 const bool _hasDrag, const float& _dragCoeff)
 {
 	Initialize(_angle, _vel, _rotInertia, _hasDrag, _dragCoeff);
 }
 
-RotationalState2::~RotationalState2()
+RotationalState::~RotationalState()
 {
 
 }
 
-void RotationalState2::Initialize(const float& _angle, const float& _vel, const float& _rotInertia,
-								  const bool _hasDrag, const float& _dragCoeff)
+void RotationalState::Initialize(const float& _angle, const float& _vel, const float& _rotInertia,
+								 const bool _hasDrag, const float& _dragCoeff)
 {
 	angle = _angle;
 	vel = _vel;
@@ -32,12 +37,12 @@ void RotationalState2::Initialize(const float& _angle, const float& _vel, const 
 	moments = std::queue<float>();
 }
 
-void RotationalState2::AddMoment(const float& moment)
+void RotationalState::AddMoment(const float& moment)
 {
 	moments.push(moment);
 }
 
-void RotationalState2::Move()
+void RotationalState::Move()
 {
 	float netMoment = 0;
 	while (!moments.empty())
