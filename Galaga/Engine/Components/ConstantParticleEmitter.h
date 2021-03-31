@@ -13,10 +13,6 @@ public:
 
 	void EmitParticles(const Vector2& pos, const Vector2& vel) override;
 
-private:
-	float cooldown;
-	float timeRemaining;
-	std::unique_ptr<Particle> particle;
 };
 
 #endif

@@ -20,6 +20,7 @@ PhysicsObject::~PhysicsObject()
 void PhysicsObject::SetPos(const Vector2& _pos)
 {
 	tState.pos = _pos;
+	hitbox->SetCenter(tState.pos);
 }
 
 void PhysicsObject::SetVel(const Vector2& _vel)

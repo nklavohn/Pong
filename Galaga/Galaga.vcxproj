@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="Engine\Components\ConstantParticleEmitter.cpp" />
     <ClCompile Include="Engine\Components\HitboxedObject.cpp" />
+    <ClCompile Include="Engine\Components\InputParticleEmitter.cpp" />
     <ClCompile Include="Engine\Components\ParticleEmitter.cpp" />
     <ClCompile Include="Engine\Components\PhysicsObject.cpp" />
     <ClCompile Include="Engine\Components\RegistryMember.cpp" />
@@ -203,6 +204,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\Components\ConstantParticleEmitter.h" />
     <ClInclude Include="Engine\Components\HitboxedObject.h" />
+    <ClInclude Include="Engine\Components\InputParticleEmitter.h" />
     <ClInclude Include="Engine\Components\ParticleEmitter.h" />
     <ClInclude Include="Engine\Components\PhysicsObject.h" />
     <ClInclude Include="Engine\Components\RegistryMember.h" />

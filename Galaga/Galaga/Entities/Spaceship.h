@@ -8,6 +8,7 @@
 #include "Engine/Components/ConstantParticleEmitter.h"
 #include "Engine/Components/HitboxedObject.h"
 #include "Engine/Physics/RotationalState.h"
+#include "Engine/Components/InputParticleEmitter.h"
 
 class Spaceship : public Player, public ConstantParticleEmitter
 {
@@ -44,9 +45,7 @@ private:
 	float rotSpeed;
 	Vector2 velDir;
 
-	const IVector2 LEFT = IVector2(0, 0);
-	const IVector2 STRAIGHT = IVector2(1, 0);
-	const IVector2 RIGHT = IVector2(2, 0);
+	std::unique_ptr<InputParticleEmitter> photonCannon = nullptr;
 };
 
 #endif

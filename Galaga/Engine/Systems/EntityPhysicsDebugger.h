@@ -5,6 +5,7 @@
 
 class EntityPhysicsDebugger : public ConstSystem<EntityPhysicsDebugger>
 {
+public:
 	EntityPhysicsDebugger();
 	~EntityPhysicsDebugger();
 

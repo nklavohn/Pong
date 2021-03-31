@@ -15,6 +15,17 @@ Spaceship::Spaceship() : Player(std::unique_ptr<Hitbox>(new CircHitbox(Vector2::
 	currentSprite = IVector2(1, 0);
 	velDir = Vector2::JHAT;
 	spriteSheet.SetRotCenter(Vector2(10.5F, 13));
+
+	class PhotoCannon : public InputParticleEmitter
+	{
+	public:
+		PhotoCannon(std::unique_ptr<Particle> _particle, const float& _cooldown) : InputParticleEmitter(std::move(_particle), _cooldown) {};
+		bool Input() const override
+		{
+			return Keyboard::IsKeyPressed(Keyboard::SPACE);
+		}
+	};
+	photonCannon = std::unique_ptr<InputParticleEmitter>(new PhotoCannon(std::unique_ptr<Particle>(new ExhaustParticle()), 0.5F));
 }
 
 Spaceship::~Spaceship()
@@ -28,7 +39,7 @@ void Spaceship::Update()
 	{
 		tState.pos += velDir * Engine::GetDeltaTime() * speed;
 		hitbox->SetCenter(tState.pos);
-		EmitParticles(hitbox->GetCenter(), velDir * -speed);
+		EmitParticles(tState.pos, velDir * -speed);
 	}
 	if (Keyboard::IsKeyPressed(Keyboard::A))
 	{
@@ -54,6 +65,8 @@ void Spaceship::Update()
 	{
 
 	}
+
+	photonCannon->EmitParticles(tState.pos, velDir * speed * 5);
 }
 
 void Spaceship::Shoot()

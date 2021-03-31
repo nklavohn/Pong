@@ -2,19 +2,17 @@
 
 #include "Engine/Engine.h"
 
-ConstantParticleEmitter::ConstantParticleEmitter(std::unique_ptr<Particle> _particle, const float& _cooldown) : particle(std::move(_particle))
+ConstantParticleEmitter::ConstantParticleEmitter(std::unique_ptr<Particle> _particle, const float& _cooldown) 
+	: ParticleEmitter(std::move(_particle), _cooldown)
 {
-	cooldown = _cooldown;
-	timeRemaining = cooldown;
+	
 }
 
-ConstantParticleEmitter::ConstantParticleEmitter(std::unique_ptr<Particle> _particle, 
-												 const float& _cooldown, 
-												 const std::shared_ptr<EntityQueue<Entity>> sQueue) 
-	: particle(std::move(_particle)), ParticleEmitter(sQueue)
+ConstantParticleEmitter::ConstantParticleEmitter(std::unique_ptr<Particle> _particle, const float& _cooldown, 
+	const std::shared_ptr<EntityQueue<Entity>> sQueue) 
+		: ParticleEmitter(std::move(_particle), _cooldown, sQueue)
 {
-	cooldown = _cooldown;
-	timeRemaining = cooldown;
+
 }
 
 ConstantParticleEmitter::~ConstantParticleEmitter()
@@ -24,14 +22,14 @@ ConstantParticleEmitter::~ConstantParticleEmitter()
 
 void ConstantParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& vel)
 {
-	timeRemaining -= Engine::GetDeltaTime();
+	remainingTime -= Engine::GetDeltaTime();
 
-	if (timeRemaining < 0)
+	if (remainingTime < 0)
 	{
 		std::shared_ptr<Particle> newPart = particle->CloneParticle();
 		newPart->SetPos(pos);
 		newPart->SetVel(RandomizeDir(vel, 10));
 		spawnQueue->Add(newPart);
-		timeRemaining += cooldown;
+		remainingTime += cooldown;
 	}
 }
