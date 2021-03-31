@@ -9,7 +9,7 @@ template <class T>
 class EntityPool
 {
 public:
-	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity");
+	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity... EntityPool");
 
 	std::unordered_map<int, std::shared_ptr<T>> entities{};
 

@@ -17,6 +17,7 @@ void EntityRegistry::DefinePlayer(const std::shared_ptr<Player> _player)
 
 void EntityRegistry::ApplySpawnQueue()
 {
+	//TODO replace with loop over enum so this doesn't need to be updated every time a new entity type is added
 	while (!spawnQueue->IsEmpty())
 	{
 		std::shared_ptr<Entity> entity = spawnQueue->Pop();

@@ -24,7 +24,7 @@ void InputParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& vel)
 {
 	remainingTime -= Engine::GetDeltaTime();
 
-	if (remainingTime < 0 && Input())
+	if (Input() && remainingTime < 0)
 	{
 		std::shared_ptr<Particle> newPart = particle->CloneParticle();
 		newPart->SetPos(pos);

@@ -23,6 +23,7 @@ public:
 	std::shared_ptr<std::queue<int>> deleteQueue = std::make_shared<std::queue<int>>();
 
 	//collections to hold all the entities
+	//TODO generate these as pointers, pointed to by the EntityEnum, created dynamically so no additional upkeep needs to occur here
 	std::shared_ptr<Player> player;
 	EntityPool<Enemy> enemies;
 	EntityPool<Projectile> projectiles;

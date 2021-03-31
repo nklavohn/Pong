@@ -8,7 +8,7 @@ template <typename T>
 class EntityQueue
 {
 public:
-	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity");
+	static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity... EntityQueue");
 	
 	std::queue<std::shared_ptr<T>> entities = std::queue<std::shared_ptr<T>>();
 

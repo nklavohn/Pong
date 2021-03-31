@@ -192,6 +192,15 @@
     <ClCompile Include="Engine\Components\InputParticleEmitter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Components\InputEmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Emitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\ConstantEmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
@@ -366,6 +375,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Components\InputParticleEmitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\InputEmitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Emitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\ConstantEmitter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

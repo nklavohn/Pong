@@ -14,7 +14,8 @@ public:
 		PLAYER,
 		ENEMY,
 		PROJECTILE,
-		PARTICLE
+		PARTICLE,
+		MAX
 	};
 
 	Entity(const enum Category _category);
