@@ -1,16 +1,16 @@
 #ifndef SPACEGAME_SPACESHIP
 #define SPACEGAME_SPACESHIP
 
-#include "Engine/Graphics/Spritesheet.h"
-#include "Engine/Math/Vector2.h"
-#include "Engine/Math/IVector2.h"
 #include "Engine/Entities/Player.h"
 #include "Engine/Components/ConstantParticleEmitter.h"
-#include "Engine/Components/HitboxedObject.h"
 #include "Engine/Physics/RotationalState.h"
 #include "Engine/Components/InputParticleEmitter.h"
+#include "Galaga/Entities/Particles/ExhaustParticle.h"
+#include "Engine/IO/Keyboard.h"
 
-class Spaceship : public Player, public ConstantParticleEmitter
+#include <memory>
+
+class Spaceship : public Player
 {
 
 public:
@@ -23,9 +23,6 @@ public:
 	Spaceship& operator=(const Spaceship& other) { return *this; };
 
 	void Update() override;
-	void Shoot();
-	bool IsHit();
-	void Respawn();
 	void Render() const override;
 	void DebugPhysics() const override;
 	Vector2 GetPos() const;
@@ -36,16 +33,28 @@ public:
 private:
 	int numOfLives = 3;
 
-	float shotCooldownMax = 0.5;
-	float shotCooldown = 0;
-
-	RotationalState rState = RotationalState(0, 0, 1, false, 0);
-
+	//physics and movement things
 	float speed;
 	float rotSpeed;
 	Vector2 velDir;
+	RotationalState rState = RotationalState(0, 0, 1, false, 0);
 
-	std::unique_ptr<InputParticleEmitter> photonCannon = nullptr;
+	//emitters
+	ConstantParticleEmitter exhaust;
+	std::unique_ptr<InputParticleEmitter> weapon;
+
+	void Move();
+	void Shoot();
+};
+
+class PhotoCannon : public InputParticleEmitter
+{
+public:
+	PhotoCannon(std::unique_ptr<Particle> _particle, const float& _cooldown) : InputParticleEmitter(std::move(_particle), _cooldown) {};
+	bool Input() const override
+	{
+		return Keyboard::IsKeyPressed(Keyboard::SPACE);
+	}
 };
 
 #endif

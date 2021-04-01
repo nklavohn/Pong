@@ -20,7 +20,7 @@ ConstantParticleEmitter::~ConstantParticleEmitter()
 
 }
 
-void ConstantParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& vel)
+void ConstantParticleEmitter::Emit(const Vector2& pos, const Vector2& vel, const float& angleRange)
 {
 	remainingTime -= Engine::GetDeltaTime();
 
@@ -28,7 +28,7 @@ void ConstantParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& v
 	{
 		std::shared_ptr<Particle> newPart = particle->CloneParticle();
 		newPart->SetPos(pos);
-		newPart->SetVel(RandomizeDir(vel, 10));
+		newPart->SetVel((angleRange > 0) ? RandomizeDir(vel, angleRange) : vel);
 		spawnQueue->Add(newPart);
 		remainingTime += cooldown;
 	}

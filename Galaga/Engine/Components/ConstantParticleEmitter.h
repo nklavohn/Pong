@@ -11,7 +11,7 @@ public:
 	ConstantParticleEmitter(std::unique_ptr<Particle> _particle, const float& _cooldown, const std::shared_ptr<EntityQueue<Entity>> sQueue);
 	virtual ~ConstantParticleEmitter();
 
-	void EmitParticles(const Vector2& pos, const Vector2& vel) override;
+	void Emit(const Vector2& pos, const Vector2& vel, const float& angleRange) override;
 
 };
 

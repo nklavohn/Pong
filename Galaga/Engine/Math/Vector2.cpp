@@ -85,20 +85,6 @@ float Vector2::Dist2Between(const Vector2& v1, const Vector2& v2)
 	return Dist2Between(v1.x, v1.y, v2.x, v2.y);
 }
 
-/**
- * finds the intersection of the two line segments, if there is one
- * 
- * @param x1
- * @param y1
- * @param x2
- * @param y2
- * @param x3
- * @param y3
- * @param x4
- * @param y4
- * @param status 1 -> parallel, 0 -> found intersection, -1 -> no intersection
- * @return Vector, represent the point of intersection, or null if there is no intersection
- */
 Vector2 Vector2::DoLinesIntersect(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int* status)
 {
 	const float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);

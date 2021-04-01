@@ -20,7 +20,7 @@ InputParticleEmitter::~InputParticleEmitter()
 
 }
 
-void InputParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& vel)
+void InputParticleEmitter::Emit(const Vector2& pos, const Vector2& vel, const float& angleRange)
 {
 	remainingTime -= Engine::GetDeltaTime();
 
@@ -28,7 +28,7 @@ void InputParticleEmitter::EmitParticles(const Vector2& pos, const Vector2& vel)
 	{
 		std::shared_ptr<Particle> newPart = particle->CloneParticle();
 		newPart->SetPos(pos);
-		newPart->SetVel(RandomizeDir(vel, 10));
+		newPart->SetVel((angleRange > 0) ? RandomizeDir(vel, 10) : vel);
 		spawnQueue->Add(newPart);
 		remainingTime = cooldown;
 	}

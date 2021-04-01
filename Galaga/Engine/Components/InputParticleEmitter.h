@@ -14,7 +14,7 @@ public:
 	virtual ~InputParticleEmitter();
 
 	virtual bool Input() const = 0;
-	void EmitParticles(const Vector2& pos, const Vector2& vel) override;
+	void Emit(const Vector2& pos, const Vector2& vel, const float& angleRange) override;
 };
 
 #endif
