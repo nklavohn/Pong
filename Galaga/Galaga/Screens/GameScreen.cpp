@@ -39,7 +39,7 @@ void GameScreen::Update()
 	registry.ApplySpawnQueue();
 	registry.ApplyDeleteQueue();
 
-	Camera::Ease(ship->GetPos(), 20);
+	Camera::Ease(ship->GetPos(), 0, Engine::GetScale());
 }
 
 void GameScreen::Render() const

@@ -16,7 +16,7 @@ TestScreen::~TestScreen()
 void TestScreen::Update() 
 {
 	ship.Update();
-	Camera::Ease(ship.GetPos(), 20);
+	Camera::Ease(ship.GetPos(), 20, 1);
 }
 
 void TestScreen::Render() const

@@ -4,7 +4,6 @@
 #include "Engine/Graphics/ShapeRenderer.h"
 #include "Engine/Physics/CircHitbox.h"
 
-
 constexpr float exhaust_angle = 20;
 constexpr float weapon_angle = 5;
 
@@ -28,7 +27,6 @@ void Spaceship::Update()
 {
 	Move();
 	Shoot();
-	Vector2::DoLinesIntersect
 }
 
 void Spaceship::Move()

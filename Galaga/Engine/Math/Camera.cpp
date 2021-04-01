@@ -139,13 +139,13 @@ Vector4 Camera::GetVisibleBounds(const int& units)
 	return bounds;
 }
 
-void Camera::Ease(const Vector2& _pos, const float& easeDist)
+void Camera::Ease(const Vector2& _pos, const float& easeDist, const float& speed)
 {
 	Vector2 screenCenter = ToWorldCoords(dim / 2, Camera::F_METERS_TO_METERS);
 	Vector2 diff = _pos - screenCenter;
 	if (diff.Len2() > easeDist * easeDist)
 	{
-		pos -= diff * Engine::GetDeltaTime();
+		pos -= diff * Engine::GetDeltaTime() * speed;
 	}
 }
 

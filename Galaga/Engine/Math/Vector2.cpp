@@ -21,7 +21,7 @@ Vector2::Vector2(float _x, float _y)
 	Initialize(_x, _y);
 }
 
-void Vector2::Initialize(float _x, float _y)
+void Vector2::Initialize(const float& _x, const float& _y)
 {
 	x = _x;
 	y = _y;
@@ -103,22 +103,11 @@ Vector2 Vector2::DoLinesIntersect(float x1, float y1, float x2, float y2, float 
 	return nullptr;
 }
 
-/**
- * finds the intersection of the two line segments, if there is one
- *
- * @param v1
- * @param v2
- * @param v3
- * @param v4
- * @param status 1 -> parallel, 0 -> found intersection, -1 -> no intersection
- * @return Vector, represent the point of intersection, or null if there is no intersection
- */
 Vector2 Vector2::DoLinesIntersect(const Vector2& v1, const Vector2& v2, const Vector2& v3, const Vector2& v4, int* status)
 {
 	return DoLinesIntersect(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, v4.x, v4.y, status);
 }
 
-// none:-1, top-0, right-1, bottom-2, left-3
 int Vector2::Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMax)
 {
 	int boundaryCode = -1;
@@ -146,7 +135,6 @@ int Vector2::Constrain(Vector2* v, float xMin, float xMax, float yMin, float yMa
 	return boundaryCode;
 }
 
-// -------- INSTANCE METHODS -------------
 Vector2 Vector2::Add(float _x, float _y)
 {
 	return Vector2(x + _x, y + _y);
@@ -298,14 +286,15 @@ Vector2 Vector2::Resize(float len, bool inplace)
 {
 	const float curLen = Len();
 	if (curLen == 0) return nullptr;
-
 	const float sclFctr = len / curLen;
-	Vector2 resized = Vector2(x * sclFctr, y * sclFctr);
 
 	if (inplace)
-		Initialize(resized.x, resized.y);
+	{
+		Initialize(x * sclFctr, y * sclFctr);
+		return *this;
+	}
 
-	return resized;
+	return Vector2(x * sclFctr, y * sclFctr);
 	
 }
 
@@ -321,7 +310,7 @@ Vector2 Vector2::Limit(float minLen, float maxLen, bool inplace)
 	if (curLen > maxLen) return Resize(maxLen, inplace);
 	if (curLen < minLen) return Resize(minLen, inplace);
 
-	return GetCopy();
+	return *this;
 }
 
 Vector2 Vector2::LimitMax(float maxLen, bool inplace)
@@ -330,7 +319,7 @@ Vector2 Vector2::LimitMax(float maxLen, bool inplace)
 	if (curLen == 0) return nullptr;
 	if (curLen > maxLen) return Resize(maxLen, inplace);
 
-	return GetCopy();
+	return *this;
 }
 
 Vector2 Vector2::LimitMin(float minLen, bool inplace)
@@ -339,7 +328,7 @@ Vector2 Vector2::LimitMin(float minLen, bool inplace)
 	if (curLen == 0) return nullptr;
 	if (curLen < minLen) return Resize(minLen, inplace);
 
-	return GetCopy();
+	return *this;
 }
 
 Vector2 Vector2::Rotate(float degrees, bool inplace)
@@ -352,12 +341,13 @@ Vector2 Vector2::RotateRad(float radians, bool inplace)
 	const float _cos = (float)cos(radians);
 	const float _sin = (float)sin(radians);
 
-	Vector2 rotated = Vector2(x * _cos - y * _sin, x * _sin + y * _cos);
-
 	if (inplace)
-		Initialize(rotated.x, rotated.y);
+	{
+		Initialize(x * _cos - y * _sin, x * _sin + y * _cos);
+		return *this;
+	}
 
-	return rotated;
+	return Vector2(x * _cos - y * _sin, x * _sin + y * _cos);
 }
 
 Vector2 Vector2::Rotate90(bool clockwise, bool inplace)
@@ -365,13 +355,19 @@ Vector2 Vector2::Rotate90(bool clockwise, bool inplace)
 	if (clockwise)
 	{
 		if (inplace)
+		{
 			Initialize(y, -x);
+			return *this;
+		}
 		return Vector2(y, -x);
 	}
 	else
 	{
 		if (inplace)
+		{
 			Initialize(-y, x);
+			return *this;
+		}
 		return Vector2(-y, x);
 	}
 }
@@ -388,18 +384,13 @@ Vector2 Vector2::ProjOnto(const Vector2& v, bool inplace)
 
 Vector2 Vector2::Flip(bool inplace)
 {
-	Vector2 flip = Vector2(-x, -y);
-	
 	if (inplace)
-		Initialize(flip.x, flip.y);
+	{
+		Initialize(-x, -y);
+		return *this;
+	}
 
-	return flip;
-}
-
-// object stuff
-Vector2 Vector2::GetCopy() const
-{
-	return Vector2(x, y);
+	return Vector2(-x, -y);
 }
 
 std::string Vector2::ToString() const
@@ -412,7 +403,7 @@ void Vector2::SetTo(const Vector2& v)
 	Initialize(v.x, v.y);
 }
 
-void Vector2::SetTo(float _x, float _y)
+void Vector2::SetTo(const float& _x, const float& _y)
 {
 	Initialize(_x, _y);
 }
