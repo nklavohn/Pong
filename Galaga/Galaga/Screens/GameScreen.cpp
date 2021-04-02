@@ -45,8 +45,8 @@ void GameScreen::Update()
 void GameScreen::Render() const
 {
 	BeginRender();
-	Camera::RenderGrid(Color::DARK_GRAY, 20);
 
+	Camera::RenderGrid(Color::DARK_GRAY, 20);
 	renderSystemManager.Manage(registry);
 
 	EndRender();

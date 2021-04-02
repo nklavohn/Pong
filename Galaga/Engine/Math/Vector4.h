@@ -4,6 +4,9 @@
 #include <string>
 #include "Vector2.h"
 
+/// <summary>
+/// Holds four floats in the form of a four dimensional vector, equipped with functions for vector arithmetic and linear algebra.
+/// </summary>
 class Vector4
 {
 public:

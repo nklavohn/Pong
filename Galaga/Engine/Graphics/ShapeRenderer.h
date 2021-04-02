@@ -5,6 +5,9 @@
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector4.h"
 
+/// <summary>
+/// Renders shapes from primatives (lines and triangles).
+/// </summary>
 class ShapeRenderer
 {
 public:

@@ -71,10 +71,10 @@ Color Color::Min(const Color& a, const Color& b, bool includeAlpha)
 	return Color(std::min(a.r, b.r), std::min(a.g, b.g), std::min(a.b, b.b), 1);
 }
 
-Color Color::ToGrayscale(const Color& c, bool includeAlpha)
+Color Color::ToGrayscale(const Color& c, bool retainAlpha)
 {
 	float avg = (c.r + c.g + c.b) / 3;
-	if (includeAlpha)
+	if (retainAlpha)
 		return Color(avg, avg, avg, c.a);
 	return Color(avg, avg, avg, 1);
 }

@@ -4,6 +4,9 @@
 #include "Vector2.h"
 #include <string>
 
+/// <summary>
+/// A class to hold two ints in the form of a two dimensional vector, intended for uses like storing two-dimensional indices
+/// </summary>
 class IVector2
 {
 public:

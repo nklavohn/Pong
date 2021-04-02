@@ -3,6 +3,9 @@
 
 #include <string>
 
+/// <summary>
+/// A class to hold two floats in the form of a two dimensional vector, equipped with functions for vector arithmetic and linear algebra.
+/// </summary>
 class Vector2 {
 
 public:
