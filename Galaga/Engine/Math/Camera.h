@@ -6,6 +6,10 @@
 #include <iostream>
 #include "Engine/Graphics/Color.h"
 
+/// <summary>
+/// Responsible for all conversions between world coordinates and display coordinates for seamless scaling and translation
+/// of the view of the world. Also responsible for all unit conversions between meters and pixels.
+/// </summary>
 class Camera
 {
 public:

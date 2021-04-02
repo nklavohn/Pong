@@ -201,6 +201,9 @@
     <ClCompile Include="Engine\Components\Emitter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Galaga\Entities\Projectiles\Photon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
@@ -384,6 +387,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Components\Emitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Galaga\Entities\Projectiles\Photon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

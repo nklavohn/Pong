@@ -198,6 +198,7 @@
     <ClCompile Include="Engine\Graphics\Screen.cpp" />
     <ClCompile Include="Engine\Entities\EntityRegistry.cpp" />
     <ClCompile Include="Galaga\Entities\Particles\ExhaustParticle.cpp" />
+    <ClCompile Include="Galaga\Entities\Projectiles\Photon.cpp" />
     <ClCompile Include="Galaga\Screens\GameScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TestScreen.cpp" />
     <ClCompile Include="Galaga\Screens\TitleScreen.cpp" />
@@ -261,6 +262,7 @@
     <ClInclude Include="Engine\Systems\SystemManager.h" />
     <ClInclude Include="Engine\Systems\EntityUpdater.h" />
     <ClInclude Include="Galaga\Entities\Particles\ExhaustParticle.h" />
+    <ClInclude Include="Galaga\Entities\Projectiles\Photon.h" />
     <ClInclude Include="Galaga\Screens\GameScreen.h" />
     <ClInclude Include="Galaga\Screens\TestScreen.h" />
     <ClInclude Include="Galaga\Screens\TitleScreen.h" />

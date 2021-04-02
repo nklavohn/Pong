@@ -12,7 +12,7 @@ public:
 	//rule of three
 	~ExhaustParticle();
 	ExhaustParticle(const ExhaustParticle& other) : ExhaustParticle(other.tState.pos, other.tState.vel) {}
-	ExhaustParticle& operator=(const ExhaustParticle& other) { return *this;  }
+	ExhaustParticle& operator=(const ExhaustParticle& other) { return *this; }
 
 	void Update() override;
 	void Render() const override;

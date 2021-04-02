@@ -9,9 +9,6 @@ constexpr float CIRCLE_MIN_SIDES = 8;
 
 void ShapeRenderer::Start(const Color& c, float lineWidth)
 {
-	if (lineWidth < 0)
-		lineWidth = 2;
-
 	glLoadIdentity();
 	glColor4f(c.r, c.g, c.b, c.a);
 	glLineWidth(lineWidth);

@@ -4,7 +4,7 @@
 #include "GLFW/glfw3.h"
 
 /// <summary>
-/// A class for handling all input through a keyboard, keeping track of which keys are currently pressed, just pressed, or just released.
+/// Handles all input through a keyboard, keeping track of which keys are currently pressed, just pressed, or just released.
 /// All methods and parameters are static because there is only one keyboard.
 /// </summary>
 class Keyboard {

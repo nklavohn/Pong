@@ -3,13 +3,14 @@
 #include "Engine/Engine.h"
 #include "Engine/Graphics/ShapeRenderer.h"
 #include "Engine/Physics/CircHitbox.h"
+#include "Galaga/Entities/Projectiles/Photon.h"
 
 constexpr float exhaust_angle = 20;
 constexpr float weapon_angle = 5;
 
 Spaceship::Spaceship() : Player(std::unique_ptr<Hitbox>(new CircHitbox(Vector2::ZERO, 10))), 
 	exhaust(std::make_unique<ExhaustParticle>(), 0.05F),
-	weapon(new PhotoCannon(std::unique_ptr<Particle>(new ExhaustParticle()), 1))
+	weapon(new PhotoCannon(std::unique_ptr<Projectile>(new Photon()), 1))
 {
 	speed = 200;
 	rotSpeed = 250;

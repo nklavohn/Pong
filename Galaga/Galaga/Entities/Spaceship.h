@@ -4,7 +4,7 @@
 #include "Engine/Entities/Player.h"
 #include "Engine/Components/ConstantParticleEmitter.h"
 #include "Engine/Physics/RotationalState.h"
-#include "Engine/Components/InputParticleEmitter.h"
+#include "Engine/Components/InputProjectileEmitter.h"
 #include "Galaga/Entities/Particles/ExhaustParticle.h"
 #include "Engine/IO/Keyboard.h"
 
@@ -41,16 +41,16 @@ private:
 
 	//emitters
 	ConstantParticleEmitter exhaust;
-	std::unique_ptr<InputParticleEmitter> weapon;
+	std::unique_ptr<InputProjectileEmitter> weapon;
 
 	void Move();
 	void Shoot();
 };
 
-class PhotoCannon : public InputParticleEmitter
+class PhotoCannon : public InputProjectileEmitter
 {
 public:
-	PhotoCannon(std::unique_ptr<Particle> _particle, const float& _cooldown) : InputParticleEmitter(std::move(_particle), _cooldown) {};
+	PhotoCannon(std::unique_ptr<Projectile> _projectile, const float& _cooldown) : InputProjectileEmitter(std::move(_projectile), _cooldown) {};
 	bool Input() const override
 	{
 		return Keyboard::IsKeyPressed(Keyboard::SPACE);
